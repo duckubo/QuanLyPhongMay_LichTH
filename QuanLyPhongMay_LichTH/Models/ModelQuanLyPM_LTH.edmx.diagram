@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4e97d67fc9b34462839eec5fefcddcf3" Name="Diagram1">
+        <EntityTypeShape EntityType="Do_An_Phan_MemModel.Admin" Width="1.5" PointX="3.75" PointY="26.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Do_An_Phan_MemModel.Brand" Width="1.5" PointX="3.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Do_An_Phan_MemModel.Credential" Width="1.5" PointX="6.75" PointY="24.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Do_An_Phan_MemModel.GIAO_VIEN" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Do_An_Phan_MemModel.Hang" Width="1.5" PointX="3.75" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Do_An_Phan_MemModel.History" Width="1.5" PointX="8.25" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Do_An_Phan_MemModel.Khoa" Width="1.5" PointX="1.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Do_An_Phan_MemModel.LICH" Width="1.5" PointX="3" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Do_An_Phan_MemModel.LoaiThietBi" Width="1.5" PointX="3.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Do_An_Phan_MemModel.Loi" Width="1.5" PointX="9" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Do_An_Phan_MemModel.Loi_Maytinh" Width="1.5" PointX="11.25" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Do_An_Phan_MemModel.LOP" Width="1.5" PointX="0.75" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Do_An_Phan_MemModel.LOP_SINHVIEN" Width="1.5" PointX="6" PointY="21.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Do_An_Phan_MemModel.MayTinh" Width="1.5" PointX="6" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="Do_An_Phan_MemModel.MayTinh_ThietBi" Width="1.5" PointX="8.25" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Do_An_Phan_MemModel.MONHOC" Width="1.5" PointX="1.5" PointY="27" IsExpanded="true" />
+        <EntityTypeShape EntityType="Do_An_Phan_MemModel.PhieuDangKyDayBu" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Do_An_Phan_MemModel.PhieuDangKyMuonMay" Width="1.5" PointX="3" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="Do_An_Phan_MemModel.PHONG" Width="1.5" PointX="0.75" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Do_An_Phan_MemModel.Role" Width="1.5" PointX="4.5" PointY="29.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Do_An_Phan_MemModel.SINH_VIEN" Width="1.5" PointX="0.75" PointY="30.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Do_An_Phan_MemModel.sysdiagram" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Do_An_Phan_MemModel.ThayTheThietBi" Width="1.5" PointX="10.5" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Do_An_Phan_MemModel.ThietBi" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Do_An_Phan_MemModel.UserGroup" Width="1.5" PointX="1.5" PointY="24.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Do_An_Phan_MemModel.UserLogin" Width="1.5" PointX="1.5" PointY="19.5" IsExpanded="true" />
+        <AssociationConnector Association="Do_An_Phan_MemModel.Admin_UserLogin" ManuallyRouted="false" />
+        <AssociationConnector Association="Do_An_Phan_MemModel.FK__ThietBi__Ma_Nsx__3A179ED3" ManuallyRouted="false" />
+        <AssociationConnector Association="Do_An_Phan_MemModel.FK_Credential_UserGroup" ManuallyRouted="false" />
+        <AssociationConnector Association="Do_An_Phan_MemModel.FK_Credential_UserGroup1" ManuallyRouted="false" />
+        <AssociationConnector Association="Do_An_Phan_MemModel.FK__LOP__Ma_gv__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="Do_An_Phan_MemModel.FK__PhieuDang__Ma_gv__797309D9" ManuallyRouted="false" />
+        <AssociationConnector Association="Do_An_Phan_MemModel.FK_Giang_Vien_UserLogin" ManuallyRouted="false" />
+        <AssociationConnector Association="Do_An_Phan_MemModel.FK_GIAO_VIEN_KHOA" ManuallyRouted="false" />
+        <AssociationConnector Association="Do_An_Phan_MemModel.FK_MayTinh_Hang" ManuallyRouted="false" />
+        <AssociationConnector Association="Do_An_Phan_MemModel.FK_History_Computer" ManuallyRouted="false" />
+        <AssociationConnector Association="Do_An_Phan_MemModel.FK__MONHOC__Ma_khoa__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="Do_An_Phan_MemModel.FK__LICH__Ma_lop__7073AF84" ManuallyRouted="false" />
+        <AssociationConnector Association="Do_An_Phan_MemModel.FK__LICH__Ma_phong__7167D3BD" ManuallyRouted="false" />
+        <AssociationConnector Association="Do_An_Phan_MemModel.FK__ThietBi__Ma_loai__39237A9A" ManuallyRouted="false" />
+        <AssociationConnector Association="Do_An_Phan_MemModel.FK__Loi_Mayti__Ma_lo__59904A2C" ManuallyRouted="false" />
+        <AssociationConnector Association="Do_An_Phan_MemModel.FK__Loi_Mayti__Ma_tb__589C25F3" ManuallyRouted="false" />
+        <AssociationConnector Association="Do_An_Phan_MemModel.Loi_Maytinh2" ManuallyRouted="false" />
+        <AssociationConnector Association="Do_An_Phan_MemModel.FK__LOP__Ma_mon__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="Do_An_Phan_MemModel.FK__LOP_SINHV__Ma_lo__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="Do_An_Phan_MemModel.FK__PhieuDang__Ma_lo__787EE5A0" ManuallyRouted="false" />
+        <AssociationConnector Association="Do_An_Phan_MemModel.FK__LOP_SINHV__Ma_sv__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="Do_An_Phan_MemModel.FK__MayTinh__Ma_phon__6BAEFA67" ManuallyRouted="false" />
+        <AssociationConnector Association="Do_An_Phan_MemModel.FK_MayTinh_ThietBi_MayTinh" ManuallyRouted="false" />
+        <AssociationConnector Association="Do_An_Phan_MemModel.FK__ThayTheTh__Ma_mt__71D1E811" ManuallyRouted="false" />
+        <AssociationConnector Association="Do_An_Phan_MemModel.FK_MayTinh_ThietBi_ThietBi" ManuallyRouted="false" />
+        <AssociationConnector Association="Do_An_Phan_MemModel.FK__PhieuDang__Ma_ph__7A672E12" ManuallyRouted="false" />
+        <AssociationConnector Association="Do_An_Phan_MemModel.FK__PhieuDang__Ma_ph__75A278F5" ManuallyRouted="false" />
+        <AssociationConnector Association="Do_An_Phan_MemModel.FK__PhieuDang__Ma_sv__74AE54BC" ManuallyRouted="false" />
+        <AssociationConnector Association="Do_An_Phan_MemModel.FK_SinhVien_UserLogin" ManuallyRouted="false" />
+        <AssociationConnector Association="Do_An_Phan_MemModel.FK_UserLogin_UserGroup" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

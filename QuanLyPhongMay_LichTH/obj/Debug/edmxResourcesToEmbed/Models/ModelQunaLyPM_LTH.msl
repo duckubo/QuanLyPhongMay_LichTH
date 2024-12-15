@@ -1,0 +1,570 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Do_An_Phan_MemModelStoreContainer" CdmEntityContainer="Do_An_Phan_MemEntities">
+    <EntitySetMapping Name="Admins">
+      <EntityTypeMapping TypeName="Do_An_Phan_MemModel.Admin">
+        <MappingFragment StoreEntitySet="Admin">
+          <ScalarProperty Name="Ma_admin" ColumnName="Ma_admin" />
+          <ScalarProperty Name="Ten_admin" ColumnName="Ten_admin" />
+          <ScalarProperty Name="Ma_tk" ColumnName="Ma_tk" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Brands">
+      <EntityTypeMapping TypeName="Do_An_Phan_MemModel.Brand">
+        <MappingFragment StoreEntitySet="Brand">
+          <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+          <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+          <ScalarProperty Name="DeviceType" ColumnName="DeviceType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Credentials">
+      <EntityTypeMapping TypeName="Do_An_Phan_MemModel.Credential">
+        <MappingFragment StoreEntitySet="Credential">
+          <ScalarProperty Name="UserGroupID" ColumnName="UserGroupID" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GIAO_VIEN">
+      <EntityTypeMapping TypeName="Do_An_Phan_MemModel.GIAO_VIEN">
+        <MappingFragment StoreEntitySet="GIAO_VIEN">
+          <ScalarProperty Name="Ma_gv" ColumnName="Ma_gv" />
+          <ScalarProperty Name="Ten_gv" ColumnName="Ten_gv" />
+          <ScalarProperty Name="Gioi_tinh" ColumnName="Gioi_tinh" />
+          <ScalarProperty Name="Ngaysinh" ColumnName="Ngaysinh" />
+          <ScalarProperty Name="Ma_khoa" ColumnName="Ma_khoa" />
+          <ScalarProperty Name="Bo_mon" ColumnName="Bo_mon" />
+          <ScalarProperty Name="Trinh_do" ColumnName="Trinh_do" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="So_dt" ColumnName="So_dt" />
+          <ScalarProperty Name="Ma_tk" ColumnName="Ma_tk" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Hangs">
+      <EntityTypeMapping TypeName="Do_An_Phan_MemModel.Hang">
+        <MappingFragment StoreEntitySet="Hang">
+          <ScalarProperty Name="Ma_hang" ColumnName="Ma_hang" />
+          <ScalarProperty Name="Ten_hang" ColumnName="Ten_hang" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Histories">
+      <EntityTypeMapping TypeName="Do_An_Phan_MemModel.History">
+        <MappingFragment StoreEntitySet="History">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ComputerId" ColumnName="ComputerId" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Khoas">
+      <EntityTypeMapping TypeName="Do_An_Phan_MemModel.Khoa">
+        <MappingFragment StoreEntitySet="Khoa">
+          <ScalarProperty Name="Ma_khoa" ColumnName="Ma_khoa" />
+          <ScalarProperty Name="Ten_khoa" ColumnName="Ten_khoa" />
+          <ScalarProperty Name="Mo_ta" ColumnName="Mo_ta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LICHes">
+      <EntityTypeMapping TypeName="Do_An_Phan_MemModel.LICH">
+        <MappingFragment StoreEntitySet="LICH">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Ma_lop" ColumnName="Ma_lop" />
+          <ScalarProperty Name="Ma_phong" ColumnName="Ma_phong" />
+          <ScalarProperty Name="Tuan" ColumnName="Tuan" />
+          <ScalarProperty Name="Thu" ColumnName="Thu" />
+          <ScalarProperty Name="Tiet_bd" ColumnName="Tiet_bd" />
+          <ScalarProperty Name="Tiet_kt" ColumnName="Tiet_kt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoaiThietBis">
+      <EntityTypeMapping TypeName="Do_An_Phan_MemModel.LoaiThietBi">
+        <MappingFragment StoreEntitySet="LoaiThietBi">
+          <ScalarProperty Name="Ma_loai" ColumnName="Ma_loai" />
+          <ScalarProperty Name="Ten_loai" ColumnName="Ten_loai" />
+          <ScalarProperty Name="Mo_ta" ColumnName="Mo_ta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lois">
+      <EntityTypeMapping TypeName="Do_An_Phan_MemModel.Loi">
+        <MappingFragment StoreEntitySet="Loi">
+          <ScalarProperty Name="Ma_loi" ColumnName="Ma_loi" />
+          <ScalarProperty Name="Ten_loi" ColumnName="Ten_loi" />
+          <ScalarProperty Name="Mo_ta" ColumnName="Mo_ta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Loi_Maytinh">
+      <EntityTypeMapping TypeName="Do_An_Phan_MemModel.Loi_Maytinh">
+        <MappingFragment StoreEntitySet="Loi_Maytinh">
+          <ScalarProperty Name="Ma_loi_maytinh" ColumnName="Ma_loi_maytinh" />
+          <ScalarProperty Name="Ma_mt" ColumnName="Ma_mt" />
+          <ScalarProperty Name="Ma_loi" ColumnName="Ma_loi" />
+          <ScalarProperty Name="Ngay_bao_loi" ColumnName="Ngay_bao_loi" />
+          <ScalarProperty Name="Noi_dung" ColumnName="Noi_dung" />
+          <ScalarProperty Name="Tinh_trang" ColumnName="Tinh_trang" />
+          <ScalarProperty Name="Ma_tb" ColumnName="Ma_tb" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LOPs">
+      <EntityTypeMapping TypeName="Do_An_Phan_MemModel.LOP">
+        <MappingFragment StoreEntitySet="LOP">
+          <ScalarProperty Name="Ma_lop" ColumnName="Ma_lop" />
+          <ScalarProperty Name="Ten_lop" ColumnName="Ten_lop" />
+          <ScalarProperty Name="Ma_gv" ColumnName="Ma_gv" />
+          <ScalarProperty Name="Ma_mon" ColumnName="Ma_mon" />
+          <ScalarProperty Name="Hoc_ky" ColumnName="Hoc_ky" />
+          <ScalarProperty Name="So_sv" ColumnName="So_sv" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LOP_SINHVIEN">
+      <EntityTypeMapping TypeName="Do_An_Phan_MemModel.LOP_SINHVIEN">
+        <MappingFragment StoreEntitySet="LOP_SINHVIEN">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Ma_lop" ColumnName="Ma_lop" />
+          <ScalarProperty Name="Ma_sv" ColumnName="Ma_sv" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MayTinhs">
+      <EntityTypeMapping TypeName="Do_An_Phan_MemModel.MayTinh">
+        <MappingFragment StoreEntitySet="MayTinh">
+          <ScalarProperty Name="Ma_mt" ColumnName="Ma_mt" />
+          <ScalarProperty Name="Ten_mt" ColumnName="Ten_mt" />
+          <ScalarProperty Name="Cau_hinh" ColumnName="Cau_hinh" />
+          <ScalarProperty Name="Ma_phong" ColumnName="Ma_phong" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="Ngay_them" ColumnName="Ngay_them" />
+          <ScalarProperty Name="Brand" ColumnName="Brand" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MayTinh_ThietBi">
+      <EntityTypeMapping TypeName="Do_An_Phan_MemModel.MayTinh_ThietBi">
+        <MappingFragment StoreEntitySet="MayTinh_ThietBi">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Ma_mt" ColumnName="Ma_mt" />
+          <ScalarProperty Name="Ma_tb" ColumnName="Ma_tb" />
+          <ScalarProperty Name="TimeModified" ColumnName="TimeModified" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MONHOCs">
+      <EntityTypeMapping TypeName="Do_An_Phan_MemModel.MONHOC">
+        <MappingFragment StoreEntitySet="MONHOC">
+          <ScalarProperty Name="Ma_mon" ColumnName="Ma_mon" />
+          <ScalarProperty Name="Ten_mon" ColumnName="Ten_mon" />
+          <ScalarProperty Name="So_tinchi" ColumnName="So_tinchi" />
+          <ScalarProperty Name="Ma_khoa" ColumnName="Ma_khoa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PhieuDangKyDayBus">
+      <EntityTypeMapping TypeName="Do_An_Phan_MemModel.PhieuDangKyDayBu">
+        <MappingFragment StoreEntitySet="PhieuDangKyDayBu">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Ma_lop" ColumnName="Ma_lop" />
+          <ScalarProperty Name="Ma_gv" ColumnName="Ma_gv" />
+          <ScalarProperty Name="Thu" ColumnName="Thu" />
+          <ScalarProperty Name="Tu_tiet" ColumnName="Tu_tiet" />
+          <ScalarProperty Name="Den_tiet" ColumnName="Den_tiet" />
+          <ScalarProperty Name="Ma_phong" ColumnName="Ma_phong" />
+          <ScalarProperty Name="NgayDangKy" ColumnName="NgayDangKy" />
+          <ScalarProperty Name="NgayDay" ColumnName="NgayDay" />
+          <ScalarProperty Name="NgayDuyet" ColumnName="NgayDuyet" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PhieuDangKyMuonMays">
+      <EntityTypeMapping TypeName="Do_An_Phan_MemModel.PhieuDangKyMuonMay">
+        <MappingFragment StoreEntitySet="PhieuDangKyMuonMay">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Ma_sv" ColumnName="Ma_sv" />
+          <ScalarProperty Name="Thu" ColumnName="Thu" />
+          <ScalarProperty Name="Tu_tiet" ColumnName="Tu_tiet" />
+          <ScalarProperty Name="Den_tiet" ColumnName="Den_tiet" />
+          <ScalarProperty Name="Ma_phong" ColumnName="Ma_phong" />
+          <ScalarProperty Name="NgayDangKy" ColumnName="NgayDangKy" />
+          <ScalarProperty Name="NgayMuon" ColumnName="NgayMuon" />
+          <ScalarProperty Name="NgayDuyet" ColumnName="NgayDuyet" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PHONGs">
+      <EntityTypeMapping TypeName="Do_An_Phan_MemModel.PHONG">
+        <MappingFragment StoreEntitySet="PHONG">
+          <ScalarProperty Name="Ma_phong" ColumnName="Ma_phong" />
+          <ScalarProperty Name="Ten_phong" ColumnName="Ten_phong" />
+          <ScalarProperty Name="Vi_tri" ColumnName="Vi_tri" />
+          <ScalarProperty Name="So_tbi" ColumnName="So_tbi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="Do_An_Phan_MemModel.Role">
+        <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SINH_VIEN">
+      <EntityTypeMapping TypeName="Do_An_Phan_MemModel.SINH_VIEN">
+        <MappingFragment StoreEntitySet="SINH_VIEN">
+          <ScalarProperty Name="Ma_sv" ColumnName="Ma_sv" />
+          <ScalarProperty Name="Ten_sv" ColumnName="Ten_sv" />
+          <ScalarProperty Name="Gioi_tinh" ColumnName="Gioi_tinh" />
+          <ScalarProperty Name="Ngay_sinh" ColumnName="Ngay_sinh" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="So_dt" ColumnName="So_dt" />
+          <ScalarProperty Name="Ma_tk" ColumnName="Ma_tk" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="Do_An_Phan_MemModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ThayTheThietBis">
+      <EntityTypeMapping TypeName="Do_An_Phan_MemModel.ThayTheThietBi">
+        <MappingFragment StoreEntitySet="ThayTheThietBi">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Ma_mt_tb" ColumnName="Ma_mt_tb" />
+          <ScalarProperty Name="Ngay_thay" ColumnName="Ngay_thay" />
+          <ScalarProperty Name="Ly_do" ColumnName="Ly_do" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ThietBis">
+      <EntityTypeMapping TypeName="Do_An_Phan_MemModel.ThietBi">
+        <MappingFragment StoreEntitySet="ThietBi">
+          <ScalarProperty Name="Ma_tb" ColumnName="Ma_tb" />
+          <ScalarProperty Name="Ten_tb" ColumnName="Ten_tb" />
+          <ScalarProperty Name="cau_hinh" ColumnName="cau_hinh" />
+          <ScalarProperty Name="Ma_loai" ColumnName="Ma_loai" />
+          <ScalarProperty Name="Ma_Nsx" ColumnName="Ma_Nsx" />
+          <ScalarProperty Name="Ma_mt" ColumnName="Ma_mt" />
+          <ScalarProperty Name="Mo_ta" ColumnName="Mo_ta" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+          <ScalarProperty Name="Ngay_them" ColumnName="Ngay_them" />
+          <ScalarProperty Name="StatusRepair" ColumnName="StatusRepair" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserGroups">
+      <EntityTypeMapping TypeName="Do_An_Phan_MemModel.UserGroup">
+        <MappingFragment StoreEntitySet="UserGroup">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserLogins">
+      <EntityTypeMapping TypeName="Do_An_Phan_MemModel.UserLogin">
+        <MappingFragment StoreEntitySet="UserLogin">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="CheckComputerDeviceExistence" FunctionName="Do_An_Phan_MemModel.Store.CheckComputerDeviceExistence" />
+    <FunctionImportMapping FunctionImportName="DeleteComputer" FunctionName="Do_An_Phan_MemModel.Store.DeleteComputer" />
+    <FunctionImportMapping FunctionImportName="DeleteComputerDevice" FunctionName="Do_An_Phan_MemModel.Store.DeleteComputerDevice" />
+    <FunctionImportMapping FunctionImportName="DeleteDevice" FunctionName="Do_An_Phan_MemModel.Store.DeleteDevice" />
+    <FunctionImportMapping FunctionImportName="DeviceById" FunctionName="Do_An_Phan_MemModel.Store.DeviceById">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Do_An_Phan_MemModel.DeviceById_Result">
+          <ScalarProperty Name="Ma_tb" ColumnName="Ma_tb" />
+          <ScalarProperty Name="Ten_tb" ColumnName="Ten_tb" />
+          <ScalarProperty Name="cau_hinh" ColumnName="cau_hinh" />
+          <ScalarProperty Name="Ma_loai" ColumnName="Ma_loai" />
+          <ScalarProperty Name="Ma_Nsx" ColumnName="Ma_Nsx" />
+          <ScalarProperty Name="Ma_mt" ColumnName="Ma_mt" />
+          <ScalarProperty Name="Mo_ta" ColumnName="Mo_ta" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+          <ScalarProperty Name="Ngay_them" ColumnName="Ngay_them" />
+          <ScalarProperty Name="StatusRepair" ColumnName="StatusRepair" />
+          <ScalarProperty Name="TenMayTinh" ColumnName="TenMayTinh" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetComputerCountDeviceTypes" FunctionName="Do_An_Phan_MemModel.Store.GetComputerCountDeviceTypes">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Do_An_Phan_MemModel.GetComputerCountDeviceTypes_Result">
+          <ScalarProperty Name="ComputerCode" ColumnName="ComputerCode" />
+          <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+          <ScalarProperty Name="TotalDevices" ColumnName="TotalDevices" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetComputerRepairHistory" FunctionName="Do_An_Phan_MemModel.Store.GetComputerRepairHistory">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Do_An_Phan_MemModel.GetComputerRepairHistory_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetComputerStatistics" FunctionName="Do_An_Phan_MemModel.Store.GetComputerStatistics">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Do_An_Phan_MemModel.GetComputerStatistics_Result">
+          <ScalarProperty Name="ComputerCode" ColumnName="ComputerCode" />
+          <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+          <ScalarProperty Name="RoomName" ColumnName="RoomName" />
+          <ScalarProperty Name="TotalDevices" ColumnName="TotalDevices" />
+          <ScalarProperty Name="Available" ColumnName="Available" />
+          <ScalarProperty Name="InUse" ColumnName="InUse" />
+          <ScalarProperty Name="Broken" ColumnName="Broken" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetDevicesOfComputer" FunctionName="Do_An_Phan_MemModel.Store.GetDevicesOfComputer">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Do_An_Phan_MemModel.GetDevicesOfComputer_Result">
+          <ScalarProperty Name="Ma_tb" ColumnName="Ma_tb" />
+          <ScalarProperty Name="Ten_tb" ColumnName="Ten_tb" />
+          <ScalarProperty Name="cau_hinh" ColumnName="cau_hinh" />
+          <ScalarProperty Name="Ma_loai" ColumnName="Ma_loai" />
+          <ScalarProperty Name="Ma_Nsx" ColumnName="Ma_Nsx" />
+          <ScalarProperty Name="Ma_mt" ColumnName="Ma_mt" />
+          <ScalarProperty Name="Mo_ta" ColumnName="Mo_ta" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+          <ScalarProperty Name="Ngay_them" ColumnName="Ngay_them" />
+          <ScalarProperty Name="StatusRepair" ColumnName="StatusRepair" />
+          <ScalarProperty Name="Brandname" ColumnName="Brandname" />
+          <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetDevicesWithRoom" FunctionName="Do_An_Phan_MemModel.Store.GetDevicesWithRoom">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Do_An_Phan_MemModel.GetDevicesWithRoom_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Ma_mt" ColumnName="Ma_mt" />
+          <ScalarProperty Name="Ma_tb" ColumnName="Ma_tb" />
+          <ScalarProperty Name="Ten_tb" ColumnName="Ten_tb" />
+          <ScalarProperty Name="Timemodified" ColumnName="Timemodified" />
+          <ScalarProperty Name="Ma_phong" ColumnName="Ma_phong" />
+          <ScalarProperty Name="Ten_phong" ColumnName="Ten_phong" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetScheduleWithDetails" FunctionName="Do_An_Phan_MemModel.Store.GetScheduleWithDetails">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Do_An_Phan_MemModel.GetScheduleWithDetails_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Ma_lop" ColumnName="Ma_lop" />
+          <ScalarProperty Name="Ma_phong" ColumnName="Ma_phong" />
+          <ScalarProperty Name="Tuan" ColumnName="Tuan" />
+          <ScalarProperty Name="Thu" ColumnName="Thu" />
+          <ScalarProperty Name="Tiet_bd" ColumnName="Tiet_bd" />
+          <ScalarProperty Name="Tiet_kt" ColumnName="Tiet_kt" />
+          <ScalarProperty Name="TenGiaoVien" ColumnName="TenGiaoVien" />
+          <ScalarProperty Name="TenMonHoc" ColumnName="TenMonHoc" />
+          <ScalarProperty Name="TenPhong" ColumnName="TenPhong" />
+          <ScalarProperty Name="ViTri" ColumnName="ViTri" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="InsertComputer" FunctionName="Do_An_Phan_MemModel.Store.InsertComputer" />
+    <FunctionImportMapping FunctionImportName="InsertDevice" FunctionName="Do_An_Phan_MemModel.Store.InsertDevice" />
+    <FunctionImportMapping FunctionImportName="ReturnComputerDevice" FunctionName="Do_An_Phan_MemModel.Store.ReturnComputerDevice" />
+    <FunctionImportMapping FunctionImportName="SeachComputerDevice" FunctionName="Do_An_Phan_MemModel.Store.SeachComputerDevice">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Do_An_Phan_MemModel.SeachComputerDevice_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Ma_mt" ColumnName="Ma_mt" />
+          <ScalarProperty Name="Ma_tb" ColumnName="Ma_tb" />
+          <ScalarProperty Name="TimeModified" ColumnName="TimeModified" />
+          <ScalarProperty Name="TenThietBi" ColumnName="TenThietBi" />
+          <ScalarProperty Name="TenThietBi1" ColumnName="TenThietBi1" />
+          <ScalarProperty Name="MaLoai" ColumnName="MaLoai" />
+          <ScalarProperty Name="Ten_phong" ColumnName="Ten_phong" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SeachDeviceOfComputer" FunctionName="Do_An_Phan_MemModel.Store.SeachDeviceOfComputer">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Do_An_Phan_MemModel.SeachDeviceOfComputer_Result">
+          <ScalarProperty Name="Ma_tb" ColumnName="Ma_tb" />
+          <ScalarProperty Name="Ten_tb" ColumnName="Ten_tb" />
+          <ScalarProperty Name="cau_hinh" ColumnName="cau_hinh" />
+          <ScalarProperty Name="Ma_loai" ColumnName="Ma_loai" />
+          <ScalarProperty Name="Ma_Nsx" ColumnName="Ma_Nsx" />
+          <ScalarProperty Name="Ma_mt" ColumnName="Ma_mt" />
+          <ScalarProperty Name="Mo_ta" ColumnName="Mo_ta" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+          <ScalarProperty Name="Ngay_them" ColumnName="Ngay_them" />
+          <ScalarProperty Name="StatusRepair" ColumnName="StatusRepair" />
+          <ScalarProperty Name="MaMayTinh" ColumnName="MaMayTinh" />
+          <ScalarProperty Name="TenMayTinh" ColumnName="TenMayTinh" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SearchDevice" FunctionName="Do_An_Phan_MemModel.Store.SearchDevice">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Do_An_Phan_MemModel.SearchDevice_Result">
+          <ScalarProperty Name="Ma_tb" ColumnName="Ma_tb" />
+          <ScalarProperty Name="Ten_tb" ColumnName="Ten_tb" />
+          <ScalarProperty Name="cau_hinh" ColumnName="cau_hinh" />
+          <ScalarProperty Name="Ma_loai" ColumnName="Ma_loai" />
+          <ScalarProperty Name="Ma_Nsx" ColumnName="Ma_Nsx" />
+          <ScalarProperty Name="Ma_mt" ColumnName="Ma_mt" />
+          <ScalarProperty Name="Mo_ta" ColumnName="Mo_ta" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+          <ScalarProperty Name="Ngay_them" ColumnName="Ngay_them" />
+          <ScalarProperty Name="StatusRepair" ColumnName="StatusRepair" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SearchDevice2" FunctionName="Do_An_Phan_MemModel.Store.SearchDevice2" />
+    <FunctionImportMapping FunctionImportName="SearchDevice3" FunctionName="Do_An_Phan_MemModel.Store.SearchDevice3">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Do_An_Phan_MemModel.SearchDevice3_Result">
+          <ScalarProperty Name="Ma_tb" ColumnName="Ma_tb" />
+          <ScalarProperty Name="Ten_tb" ColumnName="Ten_tb" />
+          <ScalarProperty Name="cau_hinh" ColumnName="cau_hinh" />
+          <ScalarProperty Name="Ma_loai" ColumnName="Ma_loai" />
+          <ScalarProperty Name="Ma_Nsx" ColumnName="Ma_Nsx" />
+          <ScalarProperty Name="Ma_mt" ColumnName="Ma_mt" />
+          <ScalarProperty Name="Mo_ta" ColumnName="Mo_ta" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+          <ScalarProperty Name="Ngay_them" ColumnName="Ngay_them" />
+          <ScalarProperty Name="StatusRepair" ColumnName="StatusRepair" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SearchDevices" FunctionName="Do_An_Phan_MemModel.Store.SearchDevices">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Do_An_Phan_MemModel.SearchDevices_Result">
+          <ScalarProperty Name="Ma_tb" ColumnName="Ma_tb" />
+          <ScalarProperty Name="Ten_tb" ColumnName="Ten_tb" />
+          <ScalarProperty Name="cau_hinh" ColumnName="cau_hinh" />
+          <ScalarProperty Name="Ma_loai" ColumnName="Ma_loai" />
+          <ScalarProperty Name="Ma_Nsx" ColumnName="Ma_Nsx" />
+          <ScalarProperty Name="Ma_mt" ColumnName="Ma_mt" />
+          <ScalarProperty Name="Mo_ta" ColumnName="Mo_ta" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+          <ScalarProperty Name="Ngay_them" ColumnName="Ngay_them" />
+          <ScalarProperty Name="StatusRepair" ColumnName="StatusRepair" />
+          <ScalarProperty Name="Ten_loai" ColumnName="Ten_loai" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SearchProject" FunctionName="Do_An_Phan_MemModel.Store.SearchProject" />
+    <FunctionImportMapping FunctionImportName="SelectDevicesByCategoryID" FunctionName="Do_An_Phan_MemModel.Store.SelectDevicesByCategoryID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Do_An_Phan_MemModel.SelectDevicesByCategoryID_Result">
+          <ScalarProperty Name="Ma_tb" ColumnName="Ma_tb" />
+          <ScalarProperty Name="Ten_tb" ColumnName="Ten_tb" />
+          <ScalarProperty Name="cau_hinh" ColumnName="cau_hinh" />
+          <ScalarProperty Name="Ma_loai" ColumnName="Ma_loai" />
+          <ScalarProperty Name="Ma_Nsx" ColumnName="Ma_Nsx" />
+          <ScalarProperty Name="Ma_mt" ColumnName="Ma_mt" />
+          <ScalarProperty Name="Mo_ta" ColumnName="Mo_ta" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+          <ScalarProperty Name="Ngay_them" ColumnName="Ngay_them" />
+          <ScalarProperty Name="StatusRepair" ColumnName="StatusRepair" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Do_An_Phan_MemModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Do_An_Phan_MemModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Do_An_Phan_MemModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Do_An_Phan_MemModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Do_An_Phan_MemModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Do_An_Phan_MemModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Do_An_Phan_MemModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Do_An_Phan_MemModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Do_An_Phan_MemModel.Store.sp_upgraddiagrams" />
+    <FunctionImportMapping FunctionImportName="StatisticalDeviceByBrand" FunctionName="Do_An_Phan_MemModel.Store.StatisticalDeviceByBrand">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Do_An_Phan_MemModel.StatisticalDeviceByBrand_Result">
+          <ScalarProperty Name="TypeCode" ColumnName="TypeCode" />
+          <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+          <ScalarProperty Name="TotalDevices" ColumnName="TotalDevices" />
+          <ScalarProperty Name="Available" ColumnName="Available" />
+          <ScalarProperty Name="InUse" ColumnName="InUse" />
+          <ScalarProperty Name="Broken" ColumnName="Broken" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UpdateComputer" FunctionName="Do_An_Phan_MemModel.Store.UpdateComputer" />
+    <FunctionImportMapping FunctionImportName="UpdateDevice" FunctionName="Do_An_Phan_MemModel.Store.UpdateDevice" />
+    <FunctionImportMapping FunctionImportName="InsertOrUpdateDevice" FunctionName="Do_An_Phan_MemModel.Store.InsertOrUpdateDevice" />
+    <FunctionImportMapping FunctionImportName="SearchComputer" FunctionName="Do_An_Phan_MemModel.Store.SearchComputer">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Do_An_Phan_MemModel.SearchComputer_Result1">
+          <ScalarProperty Name="Ma_mt" ColumnName="Ma_mt" />
+          <ScalarProperty Name="Ten_mt" ColumnName="Ten_mt" />
+          <ScalarProperty Name="Cau_hinh" ColumnName="Cau_hinh" />
+          <ScalarProperty Name="Ma_phong" ColumnName="Ma_phong" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="Ngay_them" ColumnName="Ngay_them" />
+          <ScalarProperty Name="Brand" ColumnName="Brand" />
+          <ScalarProperty Name="ten_phong" ColumnName="ten_phong" />
+          <ScalarProperty Name="ten_hang" ColumnName="ten_hang" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="InsertScheduleTest" FunctionName="Do_An_Phan_MemModel.Store.InsertScheduleTest" />
+    <FunctionImportMapping FunctionImportName="UpdateScheduleTest" FunctionName="Do_An_Phan_MemModel.Store.UpdateScheduleTest" />
+    <FunctionImportMapping FunctionImportName="DeleteScheduleTest" FunctionName="Do_An_Phan_MemModel.Store.DeleteScheduleTest" />
+  </EntityContainerMapping>
+</Mapping>

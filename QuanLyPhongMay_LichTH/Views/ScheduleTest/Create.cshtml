@@ -1,0 +1,194 @@
+﻿@model QuanLyPhongMay_LichTH.Models.LICH
+@using QuanLyPhongMay_LichTH.Models;
+@using QuanLyPhongMay_LichTH.Helper
+
+
+@{
+    ViewBag.Title = "Thêm lịch TH";
+    Layout = "~/Views/Share/_LayoutPage1.cshtml";
+}
+<style>
+    /* Định dạng cho input[type="file"] */
+    .input-file {
+        width: 0.1px;
+        height: 0.1px;
+        opacity: 0;
+        overflow: hidden;
+        position: absolute;
+        z-index: -1;
+    }
+
+    /* Thiết kế nút tải lên */
+    .upload-btn {
+        cursor: pointer;
+        display: inline-block;
+        padding: 8px 20px;
+        font-size: 14px;
+        font-weight: bold;
+        color: #fff;
+        background-color: #007bff;
+        border: none;
+        border-radius: 5px;
+    }
+
+        /* Định dạng cho input[type="file"] được ẩn */
+        .upload-btn + .input-file {
+            position: absolute;
+            font-size: 100px;
+            right: 0;
+            top: 0;
+        }
+
+        /* Thiết kế cho nút tải lên */
+        .upload-btn:hover {
+            background-color: #0056b3;
+        }
+</style>
+<link href="~/Content/css/tcssproject.css" rel="stylesheet" />
+<section class="panel">
+    <header class="panel-heading " style="padding-bottom:20px">
+        <a class="edit panel-default" style="margin-right:10px" href="@Url.Action("ScheduleTest", "ScheduleTest")">
+            <span class="icon-border">
+                <i class="icon-arrow-left"> </i>
+            </span>
+        </a>
+        <h4 style="display:inline"> Lập lịch </h4>
+    </header>
+    @using (Html.BeginForm("Upload", "ScheduleTest", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div>
+            <label for="file" class="upload-btn">Chọn tệp Excel:</label>
+            <input type="file" name="file" id="file" accept=".xlsx,.xls" />
+            <input type="submit" value="Tải lên" class="upload-btn" />
+        </div>
+    }
+    @using (Html.BeginForm("Create", "ScheduleTest", FormMethod.Post, new { @enctype = "multipart/form-data", @class = "form-horizontal  editcontent", @Id = "formIdPr" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="panel-body Tlabel-Edit">
+            <div class="col-md-12">
+                <div class="form-group row">
+                    <label class="col-md-2 "> Chọn lớp học phần</label>
+                    <div class="col-md-6">
+                        <select class="input-large form-control myctr form-control" name="Class" id="user">
+                            <option value="0" selected> Chọn lớp học phần </option>
+                            @foreach (var item in ViewData["Lop"] as IList<LOP>)
+                            {
+                                <option value="@item.Ma_lop" @(ViewBag.ClassCode == @item.Ma_lop ? "selected" : "")>@item.Ma_mon-@item.Ten_lop </option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-2 "> Chọn thiết bị </label>
+                    <div class="col-md-6">
+                        <select class="input-large form-control myctr form-control" name="Room" id="user">
+                            <option value="0" selected> Chọn phòng thực hành</option>
+                            @foreach (var item in ViewData["Phong"] as IList<PHONG>)
+                            {
+                                <option value="@item.Ma_phong" @(ViewBag.RoomCode == @item.Ma_phong ? "selected" : "")>@item.Ma_phong-@item.Ten_phong </option>
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group row">
+                    <label class="col-md-2"> Tiết bắt đầu </label>
+                    <div class="col-md-6  input-group">
+                        <input type="text" class="form-control myctr form-control-inline input-large" name="FromDate" value="@ViewBag.FromDate" autocomplete="off" />
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-warning icon-calendar" style="line-height:inherit"></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-2"> Tiết kết thúc </label>
+                    <div class="col-md-6  input-group">
+                        <input type="text" class="form-control myctr form-control-inline input-large " name="ToDate" value="@ViewBag.ToDate" autocomplete="off" />
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-warning icon-calendar" style="line-height:inherit"></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-2">Tuần học</label>
+                    <div class="col-md-6  input-group">
+                        <input type="text" class="form-control myctr form-control-inline input-large " name="Week" value="@ViewBag.Week" autocomplete="off" />
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-warning icon-calendar" style="line-height:inherit"></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-2">Thứ </label>
+                    <div class="col-md-6  input-group">
+                        <input type="text" class="form-control myctr form-control-inline input-large " name="Day" value="@ViewBag.Day" autocomplete="off" />
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-warning icon-calendar" style="line-height:inherit"></button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row form-body">
+            <div class="TcssButton">
+                <button type="submit" class="btn btn-primary btn-large"> Lưu</button>
+                <button type="button" class="btn btn-white">@Html.ActionLink("Hủy", "ScheduleTest", "ScheduleTest", new { id = -1 }) </button>
+
+            </div>
+        </div>
+    }
+
+</section>
+<script>
+    function showHiddenText() {
+        var hiddenText = document.getElementById("hiddenText").value;
+        if (hiddenText == "0" || hiddenText == "-1") {
+            displayText.style.display = "none"; // Ẩn nếu giá trị là 0
+        } else {
+            displayText.style.display = "block"; // Hiển thị nếu giá trị khác 0
+        }
+    }
+    showHiddenText()
+</script>
+<!--Start Scrip-->
+<script>
+    $('.ComputerDevice').addClass('active');
+    $(document).ready(function () {
+        var url = new URL(window.location.href);
+        var c = url.searchParams.get("DeviceType");
+        $('#DeviceType').val(c);
+
+        var table = $('#exampleMT').dataTable({
+            "oLanguage": {
+                "sInfo": "Hiển thị từ _START_ đến _END_ của _TOTAL_ bản ghi",
+                "sSearch": "Tìm Kiếm",
+                "oPaginate": {
+                    "sPrevious": "Trước",
+                    "sNext": "Tiếp",
+                }
+            },
+            //"bLengthChange": false,
+            //"bFilter": false,
+            "aoColumnDefs": [
+                { "aTargets": [0], bSortable: false },
+                { "aTargets": [6], bSortable: false },
+            ]
+        });
+        $("#checkAll1").click(function () {
+            var rows = table.$('tr', { search: 'applied' });
+            if ($('input:checked', rows).length == rows.length) {
+                $('input[type="checkbox"]', rows).prop('checked', false);
+            }
+            else {
+                $('input[type="checkbox"]', rows).prop('checked', true);
+            }
+        });
+        $("body").on("change", "input", function () {
+            var rows = table.$('tr', { search: 'applied' });
+        });
+    });
+</script>
+<!--The end Scrip-->

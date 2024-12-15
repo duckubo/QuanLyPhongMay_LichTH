@@ -1,0 +1,100 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Do An Phan Mem\\QuanLyPhongMay_LichTH\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{36458C11-B115-4883-9F5E-06C7FF16F8FD}|QuanLyPhongMay_LichTH\\QuanLyPhongMay_LichTH.csproj|d:\\do an phan mem\\quanlyphongmay_lichth\\quanlyphongmay_lichth\\views\\device\\device.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{36458C11-B115-4883-9F5E-06C7FF16F8FD}|QuanLyPhongMay_LichTH\\QuanLyPhongMay_LichTH.csproj|solutionrelative:quanlyphongmay_lichth\\views\\device\\device.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36458C11-B115-4883-9F5E-06C7FF16F8FD}|QuanLyPhongMay_LichTH\\QuanLyPhongMay_LichTH.csproj|d:\\do an phan mem\\quanlyphongmay_lichth\\quanlyphongmay_lichth\\views\\device\\devicepartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{36458C11-B115-4883-9F5E-06C7FF16F8FD}|QuanLyPhongMay_LichTH\\QuanLyPhongMay_LichTH.csproj|solutionrelative:quanlyphongmay_lichth\\views\\device\\devicepartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36458C11-B115-4883-9F5E-06C7FF16F8FD}|QuanLyPhongMay_LichTH\\QuanLyPhongMay_LichTH.csproj|d:\\do an phan mem\\quanlyphongmay_lichth\\quanlyphongmay_lichth\\views\\device\\editdevice.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{36458C11-B115-4883-9F5E-06C7FF16F8FD}|QuanLyPhongMay_LichTH\\QuanLyPhongMay_LichTH.csproj|solutionrelative:quanlyphongmay_lichth\\views\\device\\editdevice.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36458C11-B115-4883-9F5E-06C7FF16F8FD}|QuanLyPhongMay_LichTH\\QuanLyPhongMay_LichTH.csproj|d:\\do an phan mem\\quanlyphongmay_lichth\\quanlyphongmay_lichth\\views\\device\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{36458C11-B115-4883-9F5E-06C7FF16F8FD}|QuanLyPhongMay_LichTH\\QuanLyPhongMay_LichTH.csproj|solutionrelative:quanlyphongmay_lichth\\views\\device\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Device.cshtml",
+              "DocumentMoniker": "D:\\Do An Phan Mem\\QuanLyPhongMay_LichTH\\QuanLyPhongMay_LichTH\\Views\\Device\\Device.cshtml",
+              "RelativeDocumentMoniker": "QuanLyPhongMay_LichTH\\Views\\Device\\Device.cshtml",
+              "ToolTip": "D:\\Do An Phan Mem\\QuanLyPhongMay_LichTH\\QuanLyPhongMay_LichTH\\Views\\Device\\Device.cshtml",
+              "RelativeToolTip": "QuanLyPhongMay_LichTH\\Views\\Device\\Device.cshtml",
+              "ViewState": "AQIAAOYAAAAAAAAAAAAAAPUAAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-20T08:22:04.07Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DevicePartial.cshtml",
+              "DocumentMoniker": "D:\\Do An Phan Mem\\QuanLyPhongMay_LichTH\\QuanLyPhongMay_LichTH\\Views\\Device\\DevicePartial.cshtml",
+              "RelativeDocumentMoniker": "QuanLyPhongMay_LichTH\\Views\\Device\\DevicePartial.cshtml",
+              "ToolTip": "D:\\Do An Phan Mem\\QuanLyPhongMay_LichTH\\QuanLyPhongMay_LichTH\\Views\\Device\\DevicePartial.cshtml",
+              "RelativeToolTip": "QuanLyPhongMay_LichTH\\Views\\Device\\DevicePartial.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-20T08:22:03.332Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "EditDevice.cshtml",
+              "DocumentMoniker": "D:\\Do An Phan Mem\\QuanLyPhongMay_LichTH\\QuanLyPhongMay_LichTH\\Views\\Device\\EditDevice.cshtml",
+              "RelativeDocumentMoniker": "QuanLyPhongMay_LichTH\\Views\\Device\\EditDevice.cshtml",
+              "ToolTip": "D:\\Do An Phan Mem\\QuanLyPhongMay_LichTH\\QuanLyPhongMay_LichTH\\Views\\Device\\EditDevice.cshtml",
+              "RelativeToolTip": "QuanLyPhongMay_LichTH\\Views\\Device\\EditDevice.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-20T08:22:01.835Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Do An Phan Mem\\QuanLyPhongMay_LichTH\\QuanLyPhongMay_LichTH\\Views\\Device\\Index.cshtml",
+              "RelativeDocumentMoniker": "QuanLyPhongMay_LichTH\\Views\\Device\\Index.cshtml",
+              "ToolTip": "D:\\Do An Phan Mem\\QuanLyPhongMay_LichTH\\QuanLyPhongMay_LichTH\\Views\\Device\\Index.cshtml",
+              "RelativeToolTip": "QuanLyPhongMay_LichTH\\Views\\Device\\Index.cshtml",
+              "ViewState": "AQIAACYAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-20T08:21:53.533Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,924 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Do_An_Phan_MemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="Ma_admin" />
+    </Key>
+    <Property Name="Ma_admin" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Ten_admin" Type="nvarchar" MaxLength="50" />
+    <Property Name="Ma_tk" Type="varchar" MaxLength="6" />
+  </EntityType>
+  <EntityType Name="Brand">
+    <Key>
+      <PropertyRef Name="BrandID" />
+    </Key>
+    <Property Name="BrandID" Type="int" Nullable="false" />
+    <Property Name="BrandName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="DeviceType" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Credential">
+    <Key>
+      <PropertyRef Name="UserGroupID" />
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="UserGroupID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="RoleID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GIAO_VIEN">
+    <Key>
+      <PropertyRef Name="Ma_gv" />
+    </Key>
+    <Property Name="Ma_gv" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Ten_gv" Type="nvarchar" MaxLength="50" />
+    <Property Name="Gioi_tinh" Type="nvarchar" MaxLength="10" />
+    <Property Name="Ngaysinh" Type="datetime" />
+    <Property Name="Ma_khoa" Type="nvarchar" MaxLength="10" />
+    <Property Name="Bo_mon" Type="nvarchar" MaxLength="50" />
+    <Property Name="Trinh_do" Type="nchar" MaxLength="10" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="So_dt" Type="nvarchar" MaxLength="50" />
+    <Property Name="Ma_tk" Type="varchar" MaxLength="6" />
+  </EntityType>
+  <EntityType Name="Hang">
+    <Key>
+      <PropertyRef Name="Ma_hang" />
+    </Key>
+    <Property Name="Ma_hang" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Ten_hang" Type="nvarchar" MaxLength="50" />
+    <Property Name="status" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="History">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ComputerId" Type="varchar" MaxLength="6" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="Status" Type="int" />
+  </EntityType>
+  <EntityType Name="Khoa">
+    <Key>
+      <PropertyRef Name="Ma_khoa" />
+    </Key>
+    <Property Name="Ma_khoa" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Ten_khoa" Type="nvarchar" MaxLength="50" />
+    <Property Name="Mo_ta" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="LICH">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="6" Nullable="false" />
+    <Property Name="Ma_lop" Type="nchar" MaxLength="10" />
+    <Property Name="Ma_phong" Type="nchar" MaxLength="10" />
+    <Property Name="Tuan" Type="nchar" MaxLength="10" />
+    <Property Name="Thu" Type="nvarchar" MaxLength="20" />
+    <Property Name="Tiet_bd" Type="int" />
+    <Property Name="Tiet_kt" Type="int" />
+  </EntityType>
+  <EntityType Name="LoaiThietBi">
+    <Key>
+      <PropertyRef Name="Ma_loai" />
+    </Key>
+    <Property Name="Ma_loai" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Ten_loai" Type="nvarchar" MaxLength="50" />
+    <Property Name="Mo_ta" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Loi">
+    <Key>
+      <PropertyRef Name="Ma_loi" />
+    </Key>
+    <Property Name="Ma_loi" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Ten_loi" Type="nvarchar" MaxLength="50" />
+    <Property Name="Mo_ta" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Loi_Maytinh">
+    <Key>
+      <PropertyRef Name="Ma_loi_maytinh" />
+    </Key>
+    <Property Name="Ma_loi_maytinh" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ma_mt" Type="varchar" MaxLength="6" />
+    <Property Name="Ma_loi" Type="nchar" MaxLength="10" />
+    <Property Name="Ngay_bao_loi" Type="date" />
+    <Property Name="Noi_dung" Type="nvarchar" MaxLength="255" />
+    <Property Name="Tinh_trang" Type="nvarchar" MaxLength="50" />
+    <Property Name="Ma_tb" Type="varchar" MaxLength="6" />
+  </EntityType>
+  <EntityType Name="LOP">
+    <Key>
+      <PropertyRef Name="Ma_lop" />
+    </Key>
+    <Property Name="Ma_lop" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Ten_lop" Type="nvarchar" MaxLength="50" />
+    <Property Name="Ma_gv" Type="nchar" MaxLength="10" />
+    <Property Name="Ma_mon" Type="nchar" MaxLength="10" />
+    <Property Name="Hoc_ky" Type="nchar" MaxLength="10" />
+    <Property Name="So_sv" Type="int" />
+  </EntityType>
+  <EntityType Name="LOP_SINHVIEN">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ma_lop" Type="nchar" MaxLength="10" />
+    <Property Name="Ma_sv" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="MayTinh">
+    <Key>
+      <PropertyRef Name="Ma_mt" />
+    </Key>
+    <Property Name="Ma_mt" Type="varchar" MaxLength="6" Nullable="false" />
+    <Property Name="Ten_mt" Type="nvarchar" MaxLength="50" />
+    <Property Name="Cau_hinh" Type="nvarchar" MaxLength="50" />
+    <Property Name="Ma_phong" Type="nchar" MaxLength="10" />
+    <Property Name="status" Type="int" />
+    <Property Name="Ngay_them" Type="datetime" />
+    <Property Name="Brand" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="MayTinh_ThietBi">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ma_mt" Type="varchar" MaxLength="6" />
+    <Property Name="Ma_tb" Type="varchar" MaxLength="6" />
+    <Property Name="TimeModified" Type="datetime" />
+  </EntityType>
+  <EntityType Name="MONHOC">
+    <Key>
+      <PropertyRef Name="Ma_mon" />
+    </Key>
+    <Property Name="Ma_mon" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Ten_mon" Type="nvarchar" MaxLength="50" />
+    <Property Name="So_tinchi" Type="float" />
+    <Property Name="Ma_khoa" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="PhieuDangKyDayBu">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ma_lop" Type="nchar" MaxLength="10" />
+    <Property Name="Ma_gv" Type="nchar" MaxLength="10" />
+    <Property Name="Thu" Type="nchar" MaxLength="10" />
+    <Property Name="Tu_tiet" Type="int" />
+    <Property Name="Den_tiet" Type="int" />
+    <Property Name="Ma_phong" Type="nchar" MaxLength="10" />
+    <Property Name="NgayDangKy" Type="date" />
+    <Property Name="NgayDay" Type="date" />
+    <Property Name="NgayDuyet" Type="date" />
+    <Property Name="GhiChu" Type="nvarchar" MaxLength="255" />
+    <Property Name="TrangThai" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="PhieuDangKyMuonMay">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ma_sv" Type="nchar" MaxLength="10" />
+    <Property Name="Thu" Type="nchar" MaxLength="10" />
+    <Property Name="Tu_tiet" Type="int" />
+    <Property Name="Den_tiet" Type="int" />
+    <Property Name="Ma_phong" Type="nchar" MaxLength="10" />
+    <Property Name="NgayDangKy" Type="date" />
+    <Property Name="NgayMuon" Type="date" />
+    <Property Name="NgayDuyet" Type="date" />
+    <Property Name="GhiChu" Type="nvarchar" MaxLength="255" />
+    <Property Name="TrangThai" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="PHONG">
+    <Key>
+      <PropertyRef Name="Ma_phong" />
+    </Key>
+    <Property Name="Ma_phong" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Ten_phong" Type="nvarchar" MaxLength="30" />
+    <Property Name="Vi_tri" Type="nvarchar" MaxLength="30" />
+    <Property Name="So_tbi" Type="int" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="SINH_VIEN">
+    <Key>
+      <PropertyRef Name="Ma_sv" />
+    </Key>
+    <Property Name="Ma_sv" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Ten_sv" Type="nvarchar" MaxLength="50" />
+    <Property Name="Gioi_tinh" Type="nchar" MaxLength="10" />
+    <Property Name="Ngay_sinh" Type="datetime" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="So_dt" Type="nvarchar" MaxLength="50" />
+    <Property Name="Ma_tk" Type="varchar" MaxLength="6" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="ThayTheThietBi">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ma_mt_tb" Type="int" />
+    <Property Name="Ngay_thay" Type="date" />
+    <Property Name="Ly_do" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="ThietBi">
+    <Key>
+      <PropertyRef Name="Ma_tb" />
+    </Key>
+    <Property Name="Ma_tb" Type="varchar" MaxLength="6" Nullable="false" />
+    <Property Name="Ten_tb" Type="nvarchar" MaxLength="50" />
+    <Property Name="cau_hinh" Type="nvarchar" MaxLength="50" />
+    <Property Name="Ma_loai" Type="varchar" MaxLength="10" />
+    <Property Name="Ma_Nsx" Type="int" />
+    <Property Name="Ma_mt" Type="varchar" MaxLength="6" />
+    <Property Name="Mo_ta" Type="nvarchar" MaxLength="255" />
+    <Property Name="status" Type="int" />
+    <Property Name="isDeleted" Type="int" />
+    <Property Name="Ngay_them" Type="datetime" />
+    <Property Name="StatusRepair" Type="int" />
+  </EntityType>
+  <EntityType Name="UserGroup">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="UserLogin">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="6" Nullable="false" />
+    <Property Name="UserName" Type="char" MaxLength="50" />
+    <Property Name="PassWord" Type="char" MaxLength="50" />
+    <Property Name="GroupID" Type="varchar" MaxLength="20" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Email" Type="char" MaxLength="50" />
+    <Property Name="IsDeleted" Type="bit" />
+    <Property Name="Status" Type="int" />
+  </EntityType>
+  <Association Name="Admin_UserLogin">
+    <End Role="UserLogin" Type="Self.UserLogin" Multiplicity="0..1" />
+    <End Role="Admin" Type="Self.Admin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserLogin">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Admin">
+        <PropertyRef Name="Ma_tk" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LICH__Ma_lop__7073AF84">
+    <End Role="LOP" Type="Self.LOP" Multiplicity="0..1" />
+    <End Role="LICH" Type="Self.LICH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOP">
+        <PropertyRef Name="Ma_lop" />
+      </Principal>
+      <Dependent Role="LICH">
+        <PropertyRef Name="Ma_lop" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LICH__Ma_phong__7167D3BD">
+    <End Role="PHONG" Type="Self.PHONG" Multiplicity="0..1" />
+    <End Role="LICH" Type="Self.LICH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PHONG">
+        <PropertyRef Name="Ma_phong" />
+      </Principal>
+      <Dependent Role="LICH">
+        <PropertyRef Name="Ma_phong" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Loi_Mayti__Ma_lo__59904A2C">
+    <End Role="Loi" Type="Self.Loi" Multiplicity="0..1" />
+    <End Role="Loi_Maytinh" Type="Self.Loi_Maytinh" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Loi">
+        <PropertyRef Name="Ma_loi" />
+      </Principal>
+      <Dependent Role="Loi_Maytinh">
+        <PropertyRef Name="Ma_loi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Loi_Mayti__Ma_tb__589C25F3">
+    <End Role="ThietBi" Type="Self.ThietBi" Multiplicity="0..1" />
+    <End Role="Loi_Maytinh" Type="Self.Loi_Maytinh" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ThietBi">
+        <PropertyRef Name="Ma_tb" />
+      </Principal>
+      <Dependent Role="Loi_Maytinh">
+        <PropertyRef Name="Ma_tb" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LOP__Ma_gv__46E78A0C">
+    <End Role="GIAO_VIEN" Type="Self.GIAO_VIEN" Multiplicity="0..1" />
+    <End Role="LOP" Type="Self.LOP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GIAO_VIEN">
+        <PropertyRef Name="Ma_gv" />
+      </Principal>
+      <Dependent Role="LOP">
+        <PropertyRef Name="Ma_gv" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LOP__Ma_mon__47DBAE45">
+    <End Role="MONHOC" Type="Self.MONHOC" Multiplicity="0..1" />
+    <End Role="LOP" Type="Self.LOP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MONHOC">
+        <PropertyRef Name="Ma_mon" />
+      </Principal>
+      <Dependent Role="LOP">
+        <PropertyRef Name="Ma_mon" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LOP_SINHV__Ma_lo__5165187F">
+    <End Role="LOP" Type="Self.LOP" Multiplicity="0..1" />
+    <End Role="LOP_SINHVIEN" Type="Self.LOP_SINHVIEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOP">
+        <PropertyRef Name="Ma_lop" />
+      </Principal>
+      <Dependent Role="LOP_SINHVIEN">
+        <PropertyRef Name="Ma_lop" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LOP_SINHV__Ma_sv__52593CB8">
+    <End Role="SINH_VIEN" Type="Self.SINH_VIEN" Multiplicity="0..1" />
+    <End Role="LOP_SINHVIEN" Type="Self.LOP_SINHVIEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SINH_VIEN">
+        <PropertyRef Name="Ma_sv" />
+      </Principal>
+      <Dependent Role="LOP_SINHVIEN">
+        <PropertyRef Name="Ma_sv" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__MayTinh__Ma_phon__6BAEFA67">
+    <End Role="PHONG" Type="Self.PHONG" Multiplicity="0..1" />
+    <End Role="MayTinh" Type="Self.MayTinh" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PHONG">
+        <PropertyRef Name="Ma_phong" />
+      </Principal>
+      <Dependent Role="MayTinh">
+        <PropertyRef Name="Ma_phong" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__MONHOC__Ma_khoa__440B1D61">
+    <End Role="Khoa" Type="Self.Khoa" Multiplicity="0..1" />
+    <End Role="MONHOC" Type="Self.MONHOC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Khoa">
+        <PropertyRef Name="Ma_khoa" />
+      </Principal>
+      <Dependent Role="MONHOC">
+        <PropertyRef Name="Ma_khoa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PhieuDang__Ma_gv__797309D9">
+    <End Role="GIAO_VIEN" Type="Self.GIAO_VIEN" Multiplicity="0..1" />
+    <End Role="PhieuDangKyDayBu" Type="Self.PhieuDangKyDayBu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GIAO_VIEN">
+        <PropertyRef Name="Ma_gv" />
+      </Principal>
+      <Dependent Role="PhieuDangKyDayBu">
+        <PropertyRef Name="Ma_gv" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PhieuDang__Ma_lo__787EE5A0">
+    <End Role="LOP" Type="Self.LOP" Multiplicity="0..1" />
+    <End Role="PhieuDangKyDayBu" Type="Self.PhieuDangKyDayBu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOP">
+        <PropertyRef Name="Ma_lop" />
+      </Principal>
+      <Dependent Role="PhieuDangKyDayBu">
+        <PropertyRef Name="Ma_lop" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PhieuDang__Ma_ph__75A278F5">
+    <End Role="PHONG" Type="Self.PHONG" Multiplicity="0..1" />
+    <End Role="PhieuDangKyMuonMay" Type="Self.PhieuDangKyMuonMay" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PHONG">
+        <PropertyRef Name="Ma_phong" />
+      </Principal>
+      <Dependent Role="PhieuDangKyMuonMay">
+        <PropertyRef Name="Ma_phong" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PhieuDang__Ma_ph__7A672E12">
+    <End Role="PHONG" Type="Self.PHONG" Multiplicity="0..1" />
+    <End Role="PhieuDangKyDayBu" Type="Self.PhieuDangKyDayBu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PHONG">
+        <PropertyRef Name="Ma_phong" />
+      </Principal>
+      <Dependent Role="PhieuDangKyDayBu">
+        <PropertyRef Name="Ma_phong" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PhieuDang__Ma_sv__74AE54BC">
+    <End Role="SINH_VIEN" Type="Self.SINH_VIEN" Multiplicity="0..1" />
+    <End Role="PhieuDangKyMuonMay" Type="Self.PhieuDangKyMuonMay" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SINH_VIEN">
+        <PropertyRef Name="Ma_sv" />
+      </Principal>
+      <Dependent Role="PhieuDangKyMuonMay">
+        <PropertyRef Name="Ma_sv" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ThayTheTh__Ma_mt__71D1E811">
+    <End Role="MayTinh_ThietBi" Type="Self.MayTinh_ThietBi" Multiplicity="0..1" />
+    <End Role="ThayTheThietBi" Type="Self.ThayTheThietBi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MayTinh_ThietBi">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ThayTheThietBi">
+        <PropertyRef Name="Ma_mt_tb" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ThietBi__Ma_loai__39237A9A">
+    <End Role="LoaiThietBi" Type="Self.LoaiThietBi" Multiplicity="0..1" />
+    <End Role="ThietBi" Type="Self.ThietBi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoaiThietBi">
+        <PropertyRef Name="Ma_loai" />
+      </Principal>
+      <Dependent Role="ThietBi">
+        <PropertyRef Name="Ma_loai" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ThietBi__Ma_Nsx__3A179ED3">
+    <End Role="Brand" Type="Self.Brand" Multiplicity="0..1" />
+    <End Role="ThietBi" Type="Self.ThietBi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Brand">
+        <PropertyRef Name="BrandID" />
+      </Principal>
+      <Dependent Role="ThietBi">
+        <PropertyRef Name="Ma_Nsx" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Credential_UserGroup">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="Credential" Type="Self.Credential" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Credential">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Credential_UserGroup1">
+    <End Role="UserGroup" Type="Self.UserGroup" Multiplicity="1" />
+    <End Role="Credential" Type="Self.Credential" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserGroup">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Credential">
+        <PropertyRef Name="UserGroupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Giang_Vien_UserLogin">
+    <End Role="UserLogin" Type="Self.UserLogin" Multiplicity="0..1" />
+    <End Role="GIAO_VIEN" Type="Self.GIAO_VIEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserLogin">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GIAO_VIEN">
+        <PropertyRef Name="Ma_tk" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GIAO_VIEN_KHOA">
+    <End Role="Khoa" Type="Self.Khoa" Multiplicity="0..1" />
+    <End Role="GIAO_VIEN" Type="Self.GIAO_VIEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Khoa">
+        <PropertyRef Name="Ma_khoa" />
+      </Principal>
+      <Dependent Role="GIAO_VIEN">
+        <PropertyRef Name="Ma_khoa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_History_Computer">
+    <End Role="MayTinh" Type="Self.MayTinh" Multiplicity="0..1" />
+    <End Role="History" Type="Self.History" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MayTinh">
+        <PropertyRef Name="Ma_mt" />
+      </Principal>
+      <Dependent Role="History">
+        <PropertyRef Name="ComputerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MayTinh_Hang">
+    <End Role="Hang" Type="Self.Hang" Multiplicity="0..1" />
+    <End Role="MayTinh" Type="Self.MayTinh" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hang">
+        <PropertyRef Name="Ma_hang" />
+      </Principal>
+      <Dependent Role="MayTinh">
+        <PropertyRef Name="Brand" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MayTinh_ThietBi_MayTinh">
+    <End Role="MayTinh" Type="Self.MayTinh" Multiplicity="0..1" />
+    <End Role="MayTinh_ThietBi" Type="Self.MayTinh_ThietBi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MayTinh">
+        <PropertyRef Name="Ma_mt" />
+      </Principal>
+      <Dependent Role="MayTinh_ThietBi">
+        <PropertyRef Name="Ma_mt" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MayTinh_ThietBi_ThietBi">
+    <End Role="ThietBi" Type="Self.ThietBi" Multiplicity="0..1" />
+    <End Role="MayTinh_ThietBi" Type="Self.MayTinh_ThietBi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ThietBi">
+        <PropertyRef Name="Ma_tb" />
+      </Principal>
+      <Dependent Role="MayTinh_ThietBi">
+        <PropertyRef Name="Ma_tb" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SinhVien_UserLogin">
+    <End Role="UserLogin" Type="Self.UserLogin" Multiplicity="0..1" />
+    <End Role="SINH_VIEN" Type="Self.SINH_VIEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserLogin">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SINH_VIEN">
+        <PropertyRef Name="Ma_tk" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserLogin_UserGroup">
+    <End Role="UserGroup" Type="Self.UserGroup" Multiplicity="0..1" />
+    <End Role="UserLogin" Type="Self.UserLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserGroup">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UserLogin">
+        <PropertyRef Name="GroupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Loi_Maytinh2">
+    <End Role="MayTinh" Type="Self.MayTinh" Multiplicity="0..1" />
+    <End Role="Loi_Maytinh" Type="Self.Loi_Maytinh" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MayTinh">
+        <PropertyRef Name="Ma_mt" />
+      </Principal>
+      <Dependent Role="Loi_Maytinh">
+        <PropertyRef Name="Ma_mt" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="auto_idLI" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar" />
+  <Function Name="auto_idMT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar" />
+  <Function Name="auto_idTB" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar" />
+  <Function Name="auto_idUserLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar" />
+  <Function Name="CheckComputerDeviceExistence" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Ma_mt" Type="varchar" Mode="In" />
+    <Parameter Name="Ma_tb" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="DeleteComputer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ComputerCode" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="DeleteComputerDevice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ComputerCode" Type="varchar" Mode="In" />
+    <Parameter Name="DeviceCode" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="DeleteDevice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Ma_tb" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="DeviceById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Ma_tb" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="GetComputerCountDeviceTypes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Ma_mt" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="GetComputerRepairHistory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Ma_mt" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="GetComputerStatistics" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetDevicesOfComputer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Ma_mt" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="GetDevicesWithRoom" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetScheduleWithDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="InsertComputer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DeviceName" Type="nvarchar" Mode="In" />
+    <Parameter Name="Configuration" Type="nvarchar" Mode="In" />
+    <Parameter Name="RoomID" Type="nchar" Mode="In" />
+    <Parameter Name="Status" Type="int" Mode="In" />
+    <Parameter Name="DateOfPurchase" Type="datetime" Mode="In" />
+    <Parameter Name="SupplierId" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="InsertDevice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Ten_tb" Type="nvarchar" Mode="In" />
+    <Parameter Name="Ma_loai" Type="varchar" Mode="In" />
+    <Parameter Name="Ma_nha_san_xuat" Type="int" Mode="In" />
+    <Parameter Name="Ma_tinh_trang" Type="int" Mode="In" />
+    <Parameter Name="Mo_ta" Type="nvarchar" Mode="In" />
+    <Parameter Name="cau_hinh" Type="nvarchar" Mode="In" />
+    <Parameter Name="Ngay_them" Type="datetime" Mode="In" />
+    <Parameter Name="Ma_mt" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="InsertOrUpdateDevice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Ma_mt" Type="varchar" Mode="In" />
+    <Parameter Name="Ma_tb" Type="varchar" Mode="In" />
+    <Parameter Name="Ngay_them" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="SeachComputerDevice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SeachDeviceOfComputer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ma_loai" Type="varchar" Mode="In" />
+    <Parameter Name="ma_mt" Type="varchar" Mode="In" />
+    <Parameter Name="status" Type="int" Mode="In" />
+    <Parameter Name="brand" Type="int" Mode="In" />
+    <Parameter Name="deviceCode" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SearchDevice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SearchDevice2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="status" Type="int" Mode="In" />
+    <Parameter Name="devicetype" Type="int" Mode="In" />
+    <Parameter Name="guarantee" Type="int" Mode="In" />
+    <Parameter Name="projectid" Type="int" Mode="In" />
+    <Parameter Name="devicecode" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SearchDevice3" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SearchDevices" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ma_loai" Type="varchar" Mode="In" />
+    <Parameter Name="ma_mt" Type="varchar" Mode="In" />
+    <Parameter Name="status" Type="int" Mode="In" />
+    <Parameter Name="brand" Type="int" Mode="In" />
+    <Parameter Name="deviceCode" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SearchProject" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="managerProject" Type="int" Mode="In" />
+    <Parameter Name="status" Type="int" Mode="In" />
+    <Parameter Name="TypeProject" Type="int" Mode="In" />
+    <Parameter Name="ProjectSymbol" Type="nchar" Mode="In" />
+  </Function>
+  <Function Name="SelectDevicesByCategoryID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CategoryID" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="StatisticalDeviceByBrand" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="UpdateComputer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DeviceName" Type="nvarchar" Mode="In" />
+    <Parameter Name="Configuration" Type="nvarchar" Mode="In" />
+    <Parameter Name="RoomID" Type="nchar" Mode="In" />
+    <Parameter Name="OldRoomID" Type="nchar" Mode="In" />
+    <Parameter Name="Status" Type="int" Mode="In" />
+    <Parameter Name="SupplierId" Type="varchar" Mode="In" />
+    <Parameter Name="ComputerCode" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="UpdateDevice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Ma_tb" Type="varchar" Mode="In" />
+    <Parameter Name="Ten_tb" Type="nvarchar" Mode="In" />
+    <Parameter Name="Ma_loai" Type="varchar" Mode="In" />
+    <Parameter Name="Ma_nha_san_xuat" Type="int" Mode="In" />
+    <Parameter Name="Ma_tinh_trang" Type="int" Mode="In" />
+    <Parameter Name="Mo_ta" Type="nvarchar" Mode="In" />
+    <Parameter Name="cau_hinh" Type="nvarchar" Mode="In" />
+    <Parameter Name="Ngay_them" Type="datetime" Mode="In" />
+    <Parameter Name="Ma_mt" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="Do_An_Phan_MemModelStoreContainer">
+    <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Brand" EntityType="Self.Brand" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Credential" EntityType="Self.Credential" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GIAO_VIEN" EntityType="Self.GIAO_VIEN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Hang" EntityType="Self.Hang" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="History" EntityType="Self.History" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Khoa" EntityType="Self.Khoa" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LICH" EntityType="Self.LICH" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LoaiThietBi" EntityType="Self.LoaiThietBi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Loi" EntityType="Self.Loi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Loi_Maytinh" EntityType="Self.Loi_Maytinh" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LOP" EntityType="Self.LOP" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LOP_SINHVIEN" EntityType="Self.LOP_SINHVIEN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MayTinh" EntityType="Self.MayTinh" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MayTinh_ThietBi" EntityType="Self.MayTinh_ThietBi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MONHOC" EntityType="Self.MONHOC" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PhieuDangKyDayBu" EntityType="Self.PhieuDangKyDayBu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PhieuDangKyMuonMay" EntityType="Self.PhieuDangKyMuonMay" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PHONG" EntityType="Self.PHONG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SINH_VIEN" EntityType="Self.SINH_VIEN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ThayTheThietBi" EntityType="Self.ThayTheThietBi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ThietBi" EntityType="Self.ThietBi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserGroup" EntityType="Self.UserGroup" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserLogin" EntityType="Self.UserLogin" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="Admin_UserLogin" Association="Self.Admin_UserLogin">
+      <End Role="UserLogin" EntitySet="UserLogin" />
+      <End Role="Admin" EntitySet="Admin" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LICH__Ma_lop__7073AF84" Association="Self.FK__LICH__Ma_lop__7073AF84">
+      <End Role="LOP" EntitySet="LOP" />
+      <End Role="LICH" EntitySet="LICH" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LICH__Ma_phong__7167D3BD" Association="Self.FK__LICH__Ma_phong__7167D3BD">
+      <End Role="PHONG" EntitySet="PHONG" />
+      <End Role="LICH" EntitySet="LICH" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Loi_Mayti__Ma_lo__59904A2C" Association="Self.FK__Loi_Mayti__Ma_lo__59904A2C">
+      <End Role="Loi" EntitySet="Loi" />
+      <End Role="Loi_Maytinh" EntitySet="Loi_Maytinh" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Loi_Mayti__Ma_tb__589C25F3" Association="Self.FK__Loi_Mayti__Ma_tb__589C25F3">
+      <End Role="ThietBi" EntitySet="ThietBi" />
+      <End Role="Loi_Maytinh" EntitySet="Loi_Maytinh" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LOP__Ma_gv__46E78A0C" Association="Self.FK__LOP__Ma_gv__46E78A0C">
+      <End Role="GIAO_VIEN" EntitySet="GIAO_VIEN" />
+      <End Role="LOP" EntitySet="LOP" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LOP__Ma_mon__47DBAE45" Association="Self.FK__LOP__Ma_mon__47DBAE45">
+      <End Role="MONHOC" EntitySet="MONHOC" />
+      <End Role="LOP" EntitySet="LOP" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LOP_SINHV__Ma_lo__5165187F" Association="Self.FK__LOP_SINHV__Ma_lo__5165187F">
+      <End Role="LOP" EntitySet="LOP" />
+      <End Role="LOP_SINHVIEN" EntitySet="LOP_SINHVIEN" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LOP_SINHV__Ma_sv__52593CB8" Association="Self.FK__LOP_SINHV__Ma_sv__52593CB8">
+      <End Role="SINH_VIEN" EntitySet="SINH_VIEN" />
+      <End Role="LOP_SINHVIEN" EntitySet="LOP_SINHVIEN" />
+    </AssociationSet>
+    <AssociationSet Name="FK__MayTinh__Ma_phon__6BAEFA67" Association="Self.FK__MayTinh__Ma_phon__6BAEFA67">
+      <End Role="PHONG" EntitySet="PHONG" />
+      <End Role="MayTinh" EntitySet="MayTinh" />
+    </AssociationSet>
+    <AssociationSet Name="FK__MONHOC__Ma_khoa__440B1D61" Association="Self.FK__MONHOC__Ma_khoa__440B1D61">
+      <End Role="Khoa" EntitySet="Khoa" />
+      <End Role="MONHOC" EntitySet="MONHOC" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PhieuDang__Ma_gv__797309D9" Association="Self.FK__PhieuDang__Ma_gv__797309D9">
+      <End Role="GIAO_VIEN" EntitySet="GIAO_VIEN" />
+      <End Role="PhieuDangKyDayBu" EntitySet="PhieuDangKyDayBu" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PhieuDang__Ma_lo__787EE5A0" Association="Self.FK__PhieuDang__Ma_lo__787EE5A0">
+      <End Role="LOP" EntitySet="LOP" />
+      <End Role="PhieuDangKyDayBu" EntitySet="PhieuDangKyDayBu" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PhieuDang__Ma_ph__75A278F5" Association="Self.FK__PhieuDang__Ma_ph__75A278F5">
+      <End Role="PHONG" EntitySet="PHONG" />
+      <End Role="PhieuDangKyMuonMay" EntitySet="PhieuDangKyMuonMay" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PhieuDang__Ma_ph__7A672E12" Association="Self.FK__PhieuDang__Ma_ph__7A672E12">
+      <End Role="PHONG" EntitySet="PHONG" />
+      <End Role="PhieuDangKyDayBu" EntitySet="PhieuDangKyDayBu" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PhieuDang__Ma_sv__74AE54BC" Association="Self.FK__PhieuDang__Ma_sv__74AE54BC">
+      <End Role="SINH_VIEN" EntitySet="SINH_VIEN" />
+      <End Role="PhieuDangKyMuonMay" EntitySet="PhieuDangKyMuonMay" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ThayTheTh__Ma_mt__71D1E811" Association="Self.FK__ThayTheTh__Ma_mt__71D1E811">
+      <End Role="MayTinh_ThietBi" EntitySet="MayTinh_ThietBi" />
+      <End Role="ThayTheThietBi" EntitySet="ThayTheThietBi" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ThietBi__Ma_loai__39237A9A" Association="Self.FK__ThietBi__Ma_loai__39237A9A">
+      <End Role="LoaiThietBi" EntitySet="LoaiThietBi" />
+      <End Role="ThietBi" EntitySet="ThietBi" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ThietBi__Ma_Nsx__3A179ED3" Association="Self.FK__ThietBi__Ma_Nsx__3A179ED3">
+      <End Role="Brand" EntitySet="Brand" />
+      <End Role="ThietBi" EntitySet="ThietBi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Credential_UserGroup" Association="Self.FK_Credential_UserGroup">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="Credential" EntitySet="Credential" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Credential_UserGroup1" Association="Self.FK_Credential_UserGroup1">
+      <End Role="UserGroup" EntitySet="UserGroup" />
+      <End Role="Credential" EntitySet="Credential" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Giang_Vien_UserLogin" Association="Self.FK_Giang_Vien_UserLogin">
+      <End Role="UserLogin" EntitySet="UserLogin" />
+      <End Role="GIAO_VIEN" EntitySet="GIAO_VIEN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GIAO_VIEN_KHOA" Association="Self.FK_GIAO_VIEN_KHOA">
+      <End Role="Khoa" EntitySet="Khoa" />
+      <End Role="GIAO_VIEN" EntitySet="GIAO_VIEN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_History_Computer" Association="Self.FK_History_Computer">
+      <End Role="MayTinh" EntitySet="MayTinh" />
+      <End Role="History" EntitySet="History" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MayTinh_Hang" Association="Self.FK_MayTinh_Hang">
+      <End Role="Hang" EntitySet="Hang" />
+      <End Role="MayTinh" EntitySet="MayTinh" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MayTinh_ThietBi_MayTinh" Association="Self.FK_MayTinh_ThietBi_MayTinh">
+      <End Role="MayTinh" EntitySet="MayTinh" />
+      <End Role="MayTinh_ThietBi" EntitySet="MayTinh_ThietBi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MayTinh_ThietBi_ThietBi" Association="Self.FK_MayTinh_ThietBi_ThietBi">
+      <End Role="ThietBi" EntitySet="ThietBi" />
+      <End Role="MayTinh_ThietBi" EntitySet="MayTinh_ThietBi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SinhVien_UserLogin" Association="Self.FK_SinhVien_UserLogin">
+      <End Role="UserLogin" EntitySet="UserLogin" />
+      <End Role="SINH_VIEN" EntitySet="SINH_VIEN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserLogin_UserGroup" Association="Self.FK_UserLogin_UserGroup">
+      <End Role="UserGroup" EntitySet="UserGroup" />
+      <End Role="UserLogin" EntitySet="UserLogin" />
+    </AssociationSet>
+    <AssociationSet Name="Loi_Maytinh2" Association="Self.Loi_Maytinh2">
+      <End Role="MayTinh" EntitySet="MayTinh" />
+      <End Role="Loi_Maytinh" EntitySet="Loi_Maytinh" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

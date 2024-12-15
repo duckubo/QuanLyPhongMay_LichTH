@@ -1,0 +1,58 @@
+﻿@model QuanLyPhongMay_LichTH.Models.LOP
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>LOP</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ten_lop)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ten_lop)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hoc_ky)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hoc_ky)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.So_sv)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.So_sv)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GIAO_VIEN.Ten_gv)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GIAO_VIEN.Ten_gv)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MONHOC.Ten_mon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MONHOC.Ten_mon)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Ma_lop }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

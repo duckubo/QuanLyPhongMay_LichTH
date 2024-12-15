@@ -1,0 +1,245 @@
+﻿
+
+@model  IEnumerable<QuanLyPhongMay_LichTH.Models.GetComputerStatistics_Result>
+@using QuanLyPhongMay_LichTH.Models;
+@using QuanLyPhongMay_LichTH.Helper;
+@{
+    ViewBag.Title = "Thống Kê Máy Tính";
+    Layout = "~/Views/Share/_LayoutPage1.cshtml";
+}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+    .chart-container {
+        display: flex;
+        justify-content: space-between;
+        height: 450px;
+    }
+
+    .chart {
+        width: 300px;
+        height: 300px;
+    }
+
+    /* .pie-chart {
+            margin-right: 50px;
+        }
+
+        .column-chart {
+            margin-left: 20px;
+        } */
+</style>
+<div class="row">
+    <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading mypanel">
+                Thống Kê Máy Tính
+                <div class="btn-group pull-right">
+                    <button class="btn" id="btnExport" onclick="fnExcelReport1();">
+                        Export
+                    </button>
+                </div>
+            </header>
+            <div class="panel-body">
+                <div class="chart-container container">
+                    <div class="chart column-chart">
+                        <h2>Thống kê  theo nhà sản xuất</h2>
+                        <canvas id="barChart" width="450" height="300"></canvas>
+                    </div>
+                    <div class="chart pie-chart">
+                        <h2>Thống kê tình trạng</h2>
+                        <canvas id="pieChart" width="300" height="300"></canvas>
+                    </div>
+
+
+                </div>
+                <div class="adv-table">
+                    <div class="clearfix ">
+                        @using (Html.BeginForm("#", "MayTinh_ThietBi", FormMethod.Post, new { @enctype = "multipart/form-data", @class = "form-horizontal kh" }))
+                        {
+                            <div class="pull-left row col-md-12 nopadding">
+                                <div class="col-md-2 TcssMarg">
+                                    <select class="form-control input-sm m-bot15 myctr" name="TypeOfDevice" id="TypeOfDevice">
+                                        <option value="0">Chọn hãng sản xuất</option>
+                                        @foreach (var item in ViewData["Brand"] as IList<Hang>)
+                                        {
+                                            <option value="@item.Ma_hang" @(ViewBag.type == @item.Ma_hang ? "selected" : "")>@item.Ten_hang</option>
+                                        }
+                                    </select>
+                                </div>
+
+                                <div class="col-md-2 TcssMarg">
+                                    <select class="form-control input-sm m-bot15 myctr" name="TypeOfDevice" id="TypeOfDevice">
+                                        <option value="0">Chọn phòng TH</option>
+                                        @foreach (var item in ViewData["Room"] as IList<PHONG>)
+                                        {
+                                            <option value="@item.Ma_phong" @(ViewBag.type == @item.Ma_phong ? "selected" : "")>@item.Ten_phong</option>
+                                        }
+                                    </select>
+                                </div>
+                                <div class="col-md-1 TcssMarg">
+                                    <div class="btn-group">
+                                        <button class="btn btn-primary btn-sm" type="submit">Tìm kiếm<i class="icon-search"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        <table class="table table-bordered table-hover table-striped" id="history" style="margin-bottom:0px">
+                            <thead>
+                                <tr>
+                                    <th>Mã máy tính</th>
+                                    <th>Tên Hãng</th>
+                                    <th>Tên Phòng máy</th>
+                                    <th>Tổng số thiết bị gắn kèm</th>
+                                    <th>Available</th>
+                                    <th>Broken</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.ComputerCode</td>
+                                        <td>@item.BrandName</td>
+                                        <td>@item.RoomName</td>
+                                        <td style="text-align:right">@item.TotalDevices</td>
+                                        <td style="text-align:right">@item.Available</td>
+                                        <td style="text-align:right">@item.InUse</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+<script>
+    // Dữ liệu cho biểu đồ tròn
+    const pieData = {
+        labels: ["Hư hỏng", "Bình thường"],
+        datasets: [{
+            data: [5, 95],
+            backgroundColor: ["#FF6384", "#FFCE56"]
+        }]
+    };
+
+    // Tạo biểu đồ tròn
+    const pieChart = new Chart(document.getElementById('pieChart'), {
+        type: 'pie',
+        data: pieData,
+        options: {
+            responsive: false
+        }
+    });
+
+    // Dữ liệu cho biểu đồ cột
+    const barData = {
+        labels: ["Dell", "HP", "Lenovo", "Asus", "Acer", "Apple", "Microsoft"],
+        datasets: [{
+            label: "Hãng",
+            data: [10, 5, 15, 30, 25, 7, 0],
+            backgroundColor: "#4CAF50"
+        }]
+    };
+
+    // Tạo biểu đồ cột
+    const barChart = new Chart(document.getElementById('barChart'), {
+        type: 'bar',
+        data: barData,
+        options: {
+            responsive: false
+        }
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $('#history').dataTable({
+            "iDisplayLength": 25,
+            "oLanguage": {
+                "sInfo": "Hiển thị từ _START_ đến _END_ của _TOTAL_ thiết bị",
+                "oPaginate": {
+                    "sPrevious": "Trước",
+                    "sNext": "Tiếp",
+                }
+            },
+            "aoColumnDefs": [
+                { "aTargets": [0], bSortable: false },
+            ]
+        });
+    });
+</script>
+<script>
+    $('.Statistical').addClass('active');
+    $('.StatisticalDevice').addClass('active');
+</script>
+<script>
+
+    function fnExcelReport1() {
+        var tab_text = "<table border='2px'><tr>";
+        var textRange; var j = 1;
+        tab = document.getElementById('history'); // id of table
+        for (j = 0; j < tab.rows.length; j++) {
+            tab_text = tab_text + tab.rows[j].innerHTML + "</tr>";
+        }
+        tab_text = tab_text + "</table>";
+        tab_text = tab_text.replace(/<A[^>]*>|<\/A>/g, "");//remove if u want links in your table
+        tab_text = tab_text.replace(/<img[^>]*>/gi, ""); // remove if u want images in your table
+        tab_text = tab_text.replace(/<input[^>]*>|<\/input>/gi, ""); // reomves input params
+
+        // Create a Blob object for the HTML table
+        var blob = new Blob([tab_text], {
+            type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8"
+        });
+
+        // Specify the file name
+        var fileName = "Say_Thanks_to_Sumit.xls";
+
+        // Check if the browser supports the 'download' attribute
+        if (navigator.msSaveBlob) { // IE 10+
+            navigator.msSaveBlob(blob, fileName);
+        } else {
+            // Create a link element, assign the Blob to it, and then 'click' it programatically
+            var link = document.createElement("a");
+            if (link.download !== undefined) {
+                // feature detection, Browsers that support HTML5 download attribute
+                var url = URL.createObjectURL(blob);
+                link.setAttribute("href", url);
+                link.setAttribute("download", fileName);
+                link.style.visibility = 'hidden';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
+        }
+    }
+
+    function fnExcelReport5() {
+        var tab_text = "<table border='2px'><tr>";
+        var textRange; var j = 0;
+        tab = document.getElementById('history'); // id of table
+        for (j = 0; j < tab.rows.length; j++) {
+            tab_text = tab_text + tab.rows[j].innerHTML + "</tr>";
+            //tab_text=tab_text+"</tr>";
+        }
+        tab_text = tab_text + "</table>";
+        tab_text = tab_text.replace(/<A[^>]*>|<\/A>/g, "");//remove if u want links in your table
+        tab_text = tab_text.replace(/<img[^>]*>/gi, ""); // remove if u want images in your table
+        tab_text = tab_text.replace(/<input[^>]*>|<\/input>/gi, ""); // reomves input params
+        var ua = window.navigator.userAgent;
+        var msie = ua.indexOf("MSIE ");
+        if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./))      // If Internet Explorer
+        {
+            txtArea1.document.open("txt/html", "replace");
+            txtArea1.document.write(tab_text);
+            txtArea1.document.close();
+            txtArea1.focus();
+            sa = txtArea1.document.execCommand("SaveAs", true, "Say Thanks to Sumit.xls");
+        }
+        else                 //other browser not tested on IE 11
+            sa = window.open('data:application/vnd.ms-excel,' + encodeURIComponent(tab_text));
+
+
+        return (sa);
+    }
+</script>

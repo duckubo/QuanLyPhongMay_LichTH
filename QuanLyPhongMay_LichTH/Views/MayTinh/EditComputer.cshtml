@@ -1,0 +1,496 @@
+﻿@model QuanLyPhongMay_LichTH.Models.MayTinh
+@using QuanLyPhongMay_LichTH.Models;
+@using QuanLyPhongMay_LichTH.Helper;
+@{
+    ViewBag.Title = Model.Ten_mt  ;
+    Layout = "~/Views/Share/_LayoutPage1.cshtml";
+}
+<link href="~/Content/css/tcssproject.css" rel="stylesheet" />
+<link href="~/Content/css/select2.min.css" rel="stylesheet" />
+<script src="~/Scripts/select2.min.js"></script>
+<section class="panel">
+    @using (Html.BeginForm("EditComputer", "MayTinh", FormMethod.Post, new { @enctype = "multipart/form-data", @class = "form-horizontal  editcontent" }))
+    {
+        @Html.AntiForgeryToken()
+    <header class="panel-heading mypanel">
+        <a class="edit panel-default" style="margin-right:10px" href="@Url.Action( "Computer", "MayTinh" )">
+            <span class="icon-border">
+                <i class="icon-arrow-left"> </i>
+            </span>
+        </a>
+        Chi tiết  @Model.Ten_mt    + @ViewBag.Id
+
+
+        <div class="pull-right">
+            @*@if (Session["AuthenticationFeature"] != null && (Session["AuthenticationFeature"] as List<SystemFeature>).Any(k => k.ControllerName.Equals("Project") && k.ActionName.Equals("EditProject")))
+            {*@
+            <button type="button" class="btn btn-warning btn-large " id="BtnEdit"> Sửa </button>
+            @*}*@
+            @*@if (Session["AuthenticationFeature"] != null && (Session["AuthenticationFeature"] as List<SystemFeature>).Any(k => k.ControllerName.Equals("Project") && k.ActionName.Equals("EditProject")))
+            {*@
+            <button type="submit" class="btn btn-primary btn-large" id="BtnSave"> Lưu </button>
+            @*}*@
+            @*@if (Session["AuthenticationFeature"] != null && (Session["AuthenticationFeature"] as List<SystemFeature>).Any(k => k.ControllerName.Equals("Project") && k.ActionName.Equals("EditProject")))
+            {*@
+            <button type="reset" class="btn btn-white btn-large" id="BtnCancel"> Hủy </button>
+            @*}*@
+        </div>
+    </header>
+        <!--Start edit-->
+        @*<input class="hidden" value="@Model.Ma_mt" name="Id" />*@
+        <div class="panel-body Tlabel-Edit row" id="DisableProject">
+            <div class="col-md-6">
+
+                <div class="form-group m-bot15 clearfix">
+                    <div class="col-md-4">
+                        <label>Mã Thiết Bị </label>
+                    </div>
+                    <div class="col-md-8">
+                        <input class="form-control myctr" type="text" value="@Model.Ma_mt" name="ComputerCode" autocomplete="off">
+                    </div>
+                </div>
+                <div class="form-group m-bot15 clearfix">
+                    <div class="col-md-4">
+                        <label> Tên máy tính </label>
+                    </div>
+                    <div class="col-md-8">
+                        <input class="form-control myctr" type="text" value="@Model.Ten_mt" name="ComputertName">
+                    </div>
+                </div>
+                <div class="form-group m-bot15 clearfix">
+                    <div class="col-md-4">
+                        <label>Chọn hãng</label>
+                    </div>
+                    <div class="col-md-8">
+                        <select class="input-large form-control myctr ManagerProjectSelect" name="Brand">
+                            <option value="0" @(Model.Hang == null ? "selected" : "")>Chọn nhà sản xuất</option>
+                            @foreach (var item in ViewData["Brand"] as IList<Hang>)
+                            {
+                                <option value="@item.Ma_hang" @(Model.Brand == @item.Ma_hang ? "selected" : "")>@item.Ten_hang</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group m-bot15 clearfix">
+                    <div class="col-md-4">
+                        <label>Chọn phòng</label>
+                    </div>
+                    <div class="col-md-8">
+                        <select class="input-large form-control myctr ManagerProjectSelect" name="RoomID">
+                            <option value="0" @(Model.Hang == null ? "selected" : "")>Chọn phòng</option>
+                            @foreach (var item in ViewData["Room"] as IList<PHONG>)
+                            {
+                                <option value="@item.Ma_phong" @(Model.Ma_phong == @item.Ma_phong ? "selected" : "")>@item.Ten_phong</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="col-md-6">
+                @*<div class="form-group m-bot15 clearfix">
+            <div class="col-md-4">
+                <label>Ngày bắt đầu</label>
+            </div>
+            <div class="col-md-8 clearfix input-group">
+                <input type="text" class="form-control myctr form-control-inline input-medium default-date-picker" size="16" value="@String.Format("{0:yyyy-MM-dd}",Model.FromDate)" name="FromDate" autocomplete="off" />
+                <span class="input-group-btn">
+                    <button class="btn btn-warning icon-calendar" style="line-height:inherit"></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group m-bot15 clearfix">
+            <div class="col-md-4">
+                <label>Ngày kết thúc</label>
+            </div>
+            <div class="col-md-8 clearfix input-group">
+                <input type="text" class="form-control myctr form-control-inline input-medium default-date-picker" size="16" value="@String.Format("{0:yyyy-MM-dd}",Model.ToDate)" name="ToDate" autocomplete="off" />
+                <span class="input-group-btn">
+                    <button class="btn btn-warning icon-calendar" style="line-height:inherit"></button>
+                </span>
+            </div>
+        </div>*@ 
+                <div class="form-group m-bot15 clearfix">
+                    <label class="control-label col-md-4 ">Cấu Hình</label>
+                    <div class="col-md-8">
+                        <textarea class="cke_editable form-control form" rows="3" id="Configuration" name="Configuration">@Model.Cau_hinh</textarea>
+                    </div>
+                </div>
+                <div class="form-group m-bot15 clearfix">
+                    <div class="col-md-4">
+                        <label>Trạng thái</label>
+                    </div>
+                    <div class="col-md-8">
+                        <select class="input-large form-control myctr" name="Status">
+                            <option value="-1" @(Model.status == null ? "selected" : "")>Chọn trạng thái</option>
+                            <option value="0" @(Model.status == 0 ? "selected" : "")>Bình thường</option>
+                            <option value="1" @(Model.status == 1 ? "selected" : "")>Bị hỏng</option>
+
+                        </select>
+                    </div>
+                </div>
+                <input type="hidden" name="CreatedDate" value=@Model.Ngay_them />
+                <input type="hidden" name="OldRoomID" value=@Model.Ma_phong />
+            </div>
+        </div>
+        <!--The end edit-->
+        <!--Header2-->
+        <!--The end header2-->
+        <!--Designe Table-->
+        <div class="panel-body row">
+            <div class="col-md-10">
+                <header class="panel-body Tcsspad">
+                    <h4 style="display:inline">Danh sách thiết bị tại @Model.Ten_mt  </h4>
+                    <div style="float:right">
+                        <div class="btn-group">
+                            <button class="btn dropdown-toggle btn-white" data-toggle="dropdown">
+                                Export<i class="icon-angle-down"></i>
+                            </button>
+                            <ul class="dropdown-menu pull-right">
+                                @*<li><a href="javascript:void(0)" onclick="printDivPr()">Print</a></li>*@
+                                <li><a href="javascript:void(0)" id="btnExportPr" onclick="fnExcelReportPr();">Export to Excel</a></li>
+                            </ul>
+                        </div>
+                        @*@if (Session["AuthenticationFeature"] != null && (Session["AuthenticationFeature"] as List<SystemFeature>).Any(k => k.ControllerName.Equals("Project") && k.ActionName.Equals("AddDeviceInProject1") || k.ActionName.Equals("AddDeviceProjectAll")))
+                            {*@
+                        <a id="btnAddeviceofProject" class="btn btn-success" href="@Url.Action("Create", "Device")">Thêm thiết bị <i class="icon-plus"></i></a>
+
+                        @*}*@
+
+                        @*@if (Session["AuthenticationFeature"] != null && (Session["AuthenticationFeature"] as List<SystemFeature>).Any(k => k.ControllerName.Equals("Project") && k.ActionName.Equals("ReturnDeviceProjectAll")))
+                            {*@
+                        <button class="btn btn-success  btn-large" type="button" href="javascript:void(0)" onclick="ReturnDeviceInProjectAll()">Tháo rời thiết bị  đã chọn <i class="icon-share-alt"></i></button>
+                        @*}*@
+                        <div class="btn-group">
+                            <button class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+                                Quét thiết bị <i class="icon-angle-down"></i>
+                            </button>
+                            <ul class="dropdown-menu pull-right">
+                                <li>
+                                    @*@if (Session["AuthenticationFeature"] != null && (Session["AuthenticationFeature"] as List<SystemFeature>).Any(k => k.ControllerName.Equals("Project") && k.ActionName.Equals("AddDeviceInProjectMachine")))
+                                        {*@
+                                    <a id="btnAddeviceofProjectMachine" class="btn" href="@Url.Action("AddDeviceInDepartmentMachine", "Department", new { id = Model.Ma_mt})">Quét thêm thiết bị <i class="icon-barcode"></i></a>
+                                    @*}*@
+                                </li>
+                                <li>
+                                    @*@if (Session["AuthenticationFeature"] != null && (Session["AuthenticationFeature"] as List<SystemFeature>).Any(k => k.ControllerName.Equals("Project") && k.ActionName.Equals("ReturnDeviceInProjectMachine")))
+                                        {*@
+                                    <a id="btnAddeviceofProjectMachine" class="btn  " href="@Url.Action("ReturnDeviceInDepartmentMachine", "Department", new { id = Model.Ma_mt})">Quét trả thiết bị <i class="icon-barcode"></i></a>
+                                    @*}*@
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </header>
+                <section class="panel" style="min-height:300px;">
+                    <div class="panel-body tcssMarT">
+                        <div class="adv-table">
+                            <table class="display table table-bordered table-striped" id="exampleMT">
+                                <thead>
+                                    <tr>
+                                        <th><input type="checkbox" id="checkAll1" name="check" /></th>
+                                        <th>Mã thiết bị </th>
+                                        <th>Tên thiết bị </th>
+                                        <th>Loại thiết bị</th>
+                                        <th>Cấu hình</th>
+                                        <th>Trạng thái</th>
+                                        <th>Ngày lắp đặt </th>
+                                        <th>Mô tả</th>
+                                        <th>Tháo rời thiết bị</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in ViewData["DeviceOfComputerAll"] as IList<GetDevicesOfComputer_Result>)
+                                    {
+                                        <tr class="gradeX" id="row_@item.Ma_tb">
+                                            <td style="width:3%"><input type="checkbox" name="check" class="check" value="@item.Ma_tb" /></td>
+                                            <td style="width:10%">@item.Ma_tb</td>
+                                            <td style="width:16%">@item.Ten_tb</td>
+                                            <td style="width:12%" class="hidden-phone">@item.Ma_loai</td>
+                                            <td style="width:18%">@Html.Raw(@item.cau_hinh)</td>
+                                            <td style="color:#ff6c60 ;width:10%">
+                                                @Html.Raw(Convert.ToInt32(item.status).GetEnumDescription(typeof(eStatus.DeviceStatus)))<br />
+                                            </td>
+                                            <td style="width:11%" class="center">@String.Format("{0:dd/MM/yyyy}", item.Ngay_them)</td>
+                                            <td style="width:9%"> @Html.Raw(@item.Mo_ta)</td>
+                                            <td style="width:11%" class="center">
+                                                @*@if (Session["AuthenticationFeature"] != null && (Session["AuthenticationFeature"] as List<SystemFeature>).Any(k => k.ControllerName.Equals("Project") && k.ActionName.Equals("ReturnDeviceInProject")))
+                            {*@
+                                                @*<a class="" href="javascript:void(0)" onclick="ConfirmReturn('@item.Ma_mt','@item.Ma_tb')"><i class="icon-share-alt"></i></a>*@
+                                                <a class="" href="@Url.Action("ReturnDeviceInComputer", "MayTinh", new { Id = @item.Ma_mt, DeviceCode = @item.Ma_tb })"><i class="icon-share-alt"></i></a>
+                                                @*}*@
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                            <input type="hidden" id="hiddenIdcp" name="hiddenIdcp" value="@Model.Ma_mt" />
+                            <input type="hidden" id="hiddenDevdv" name="hiddenDevdv" value="@Model.Ma_mt" />
+                        </div>
+                    </div>
+                    <!--Button-->
+                    <div class="form-group panel-body">
+                        <div class="TcssButton">
+                            @*@if (Session["AuthenticationFeature"] != null && (Session["AuthenticationFeature"] as List<SystemFeature>).Any(k => k.ControllerName.Equals("Project") && k.ActionName.Equals("EditProject")))
+                                {
+                                    <button class="btn btn-primary btn-large" type="submit"> Cập nhật </button>
+                                }*@
+                            <button class="btn btn-white btn-large" type="button">@Html.ActionLink("Hủy ", "Computer", "MayTinh")</button>
+
+                        </div>
+                    </div>
+                    <!--The end Button-->
+                </section>
+                <!--The end table-->
+            </div>
+            @Html.Partial("ReturnDeviceInDepartmentPartial")
+            @Html.Partial("ReturnDeviceInDepartmentAllPartial")
+            <div class="col-md-2 tcssMarT">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="tkcs">
+                            <h4 class="FontHeader">  Số lượng thiết bị </h4>
+                            <ul>
+                                @if (ViewData["CountingDeviceType"] != null)
+                                {
+                                    var countingDeviceType = ViewData["CountingDeviceType"] as Dictionary<string, int?>;
+                                    foreach (var item in countingDeviceType)
+                                    {
+                                        <li>
+                                            <a>
+                                                <h4 class="gradeX">@item.Key <i class="text-primary"></i></h4>
+                                                Số lượng: @item.Value
+                                            </a>
+                                        </li>
+                                    }
+                                }
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--The End DesigneTable-->
+        <!--Popup EDIT-->
+        <div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Xác nhận</h4>
+                    </div>
+                    <div class="modal-body">
+                        <!--Containt-->
+                        <div class="form-body">
+                            Bạn chắc chắn muốn trả thiết bị về kho
+                        </div>
+                        <!--The end Containt-->
+                    </div>
+                    <div class="modal-footer col-md-12">
+                        <div class="col-md-5  left">
+                        </div>
+                        <div class="col-md-7">
+                            <button type="button" class="btn btn-primary btn-large" data-dismiss="modal">Đồng ý</button>
+                            <button type="button" class="btn btn-white btn-large" data-dismiss="modal"> Hủy <i class="icon-remove"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    <header class="panel-body row ">
+        <div class="col-md-12 Tcsspad TcssPadT">
+            <div class="col-md-10 ">
+                <a class="styletext"> Lịch sử kiểm tra và thay thế của máy tính</a>
+            </div>
+            <div class="col-md-2" style="text-align:right">
+                @*@if (Session["AuthenticationFeature"] != null && (Session["AuthenticationFeature"] as List<SystemFeature>).Any(k => k.ControllerName.Equals("ScheduleTest") && k.ActionName.Equals("DeleteScheduleTest")))
+                    {*@
+                <button class="btn btn-danger  btn-sm" type="button" onclick="ConfirmDelete1()">Xóa tất cả mục đã chọn <i class="icon-trash"></i> </button>
+                @*}*@
+            </div>
+        </div>
+    </header>
+    <!--Table-->
+    <div class="tcsspadtop">
+        <div class="adv-table panel-body tcssMarT" id="divtype">
+            <table class="display table table-bordered table-striped table-hover" id="exampleMT">
+                <thead>
+                    <tr>
+                        <th><input type="checkbox" id="checkAll" name="check" /></th>
+                        <th>STT</th>
+                        <th>Ngày phát hỏng</th>
+                        <th>Mô tả </th>
+                        <th>Ngày hoàn thành </th>
+
+                        <th>Trạng thái</th>
+                        <th>Xóa</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        int i = 1;
+                    }
+                    @foreach (var item in ViewData["historyScheduleTests"] as IList<GetComputerRepairHistory_Result>)
+                    {
+                    <tr class="gradeA" id="row_@item.Id">
+                        <td><input type="checkbox" name="check" class="check checkbox " value="@item.Id" data-status="@item.Status" /></td>
+                        <td> @i</td>
+                        <td>@String.Format("{0:yyyy-MM-dd}", item.StartDate)</td>
+                        <td>@item.Description</td>
+                        <td>@String.Format("{0:yyyy-MM-dd}", item.EndDate)</td>
+
+                        <td class="hidden-phone">@Html.Raw(Convert.ToInt32(item.Status).GetEnumDescription(typeof(eStatus.ComputerStatusT)))</td>
+                        <td class="center">
+                            @*@if (Session["AuthenticationFeature"] != null && (Session["AuthenticationFeature"] as List<SystemFeature>).Any(k => k.ControllerName.Equals("ScheduleTest") && k.ActionName.Equals("DeleteScheduleTest")))
+            {*@
+                            <a class="edit" onclick="ConfirmDelete(@item.Id)" href="javascript:void(0)"><i class="icon-trash"></i></a>
+                            @*}*@
+                        </td>
+                    </tr>
+                        i++;
+                    }
+                </tbody>
+            </table>
+            <input type="hidden" id="hiddenId1" />
+            <input type="hidden" id="hiddenId"  />
+            <input type="hidden" id="hiddenId2" name="hiddenId2" value="@Model.Ma_mt" />
+        </div>
+    </div>
+</section>
+
+<!--Start Scrip-->
+<script>
+    $(document).ready(function () {
+        var check = @Model.status;
+        if(check == 1)
+        {
+        $("#btnAddeviceofProject").attr('disabled', 'disabled') ;
+        $("#btnAddeviceofProjectMachine").attr('disabled', 'disabled') ;
+        }
+        else
+        {
+            $("#btnAddeviceofProject").removeAttr('disabled');
+            $("#btnAddeviceofProjectMachine").removeAttr('disabled');
+        }
+
+        var table = $('#exampleMT').dataTable({
+            "oLanguage": {
+                "sInfo": "Hiển thị từ _START_ đến _END_ của _TOTAL_ bản ghi",
+                "sSearch": "Tìm Kiếm",
+                "oPaginate": {
+                    "sPrevious": "Trước",
+                    "sNext": "Tiếp",
+                }
+            },
+            "iDisplayLength": 10,
+            //"bLengthChange": false,
+            //"bFilter": false,
+            "aoColumnDefs": [
+                 { "aTargets": [0], bSortable: false },
+                //{ "sWidth": "10%", "aTargets": [1] },
+                //{ "sWidth": "19%", "aTargets": [2] },
+                //{ "sWidth": "10%", "aTargets": [3] },
+                //{ "sWidth": "19%", "aTargets": [4] },
+                // { "sWidth": "11%", "aTargets": [5] },
+                //{ "sWidth": "10%", "aTargets": [6] },
+                //{ "sWidth": "9%", "aTargets": [7] },
+                { "aTargets": [8], bSortable: false },
+
+            ]
+        });
+        $("#checkAll1").click(function () {
+            var rows = table.$('tr', { search: 'applied' });
+            if ($('input:checked', rows).length == rows.length) {
+                $('input[type="checkbox"]', rows).prop('checked', false);
+            }
+            else {
+                $('input[type="checkbox"]', rows).prop('checked', true);
+            }
+        });
+        $("body").on("change", "input", function () {
+            var rows = table.$('tr', { search: 'applied' });
+        });
+    });
+    $('.ManagerProjectSelect').select2();
+    //Disable
+    $('#DisableProject').find('input, button, select,textarea').attr('disabled', 'disabled');
+    $("#BtnEdit").show();
+    $("#BtnSave").hide();
+    $("#BtnCancel").hide();
+    $("#BtnEdit").click(function () {
+        $('#DisableProject').find('input, button, select,textarea').removeAttr('disabled');
+        $("#BtnEdit").hide();
+        $("#BtnSave").show();
+        $("#BtnCancel").show();
+    });
+    $("#BtnSave").click(function () {
+        $("#BtnEdit").show();
+        $("#BtnSave").hide();
+        $("#BtnCancel").hide();
+    });
+    $("#BtnCancel").click(function () {
+        $("#BtnEdit").show();
+        $("#BtnSave").hide();
+        $("#BtnCancel").hide();
+        $('#DisableProject').find('input, button, select,textarea').attr('disabled', 'disabled');
+    });
+    //Exel
+    function fnExcelReportPr() {
+
+        var IdProject = $('#hiddenIdpr').val();
+        //var  Notes = $('# Notes').val();
+        //var DateOfDelivery = $('#DateOfDelivery').val();
+        //var Status = $('#Status').val();
+        //var ConfigDevice = $('#Guarantee').val();
+        //var DeviceName = $('#DeviceName').val();
+        //var DeviceCode = $('#DeviceCode').val();
+        $.ajax({
+            url: "/Department/ExportToExcel",
+            data: {
+                IdProject: IdProject
+                //Notes: Notes,
+                //DateOfDelivery: DateOfDelivery,
+                //Status: Status,
+                //ConfigDevice: ConfigDevice,
+                //DeviceName: DeviceName,
+                //DeviceCode:DeviceCode
+            },
+            success: function (response) {
+                response = response.replace("DeviceCode", "Mã Thiết Bị");
+                response = response.replace("DeviceName", "Tên Thiết Bị");
+                response = response.replace("TypeName", "Tên Loại");
+                response = response.replace("Configuration", "Cấu Hình");
+                response = response.replace("Notes", "Mô tả");
+                response = response.replace("StatusRepair", "Trạng thái");
+                response = response.replace("DateOfDelivery", "Ngày mượn");
+               // response = response.replace(Re) .rows();
+                var ua = window.navigator.userAgent;
+                var msie = ua.indexOf("MSIE ");
+                if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./))      // If Internet Explorer
+                {
+                    txtArea1.document.open("txt/html", "replace");
+                    txtArea1.document.write(response);
+                    txtArea1.document.close();
+                    txtArea1.focus();
+                    sa = txtArea1.document.execCommand("SaveAs", true, "Say Thanks to Sumit.xls");
+                }
+                else                 //other browser not tested on IE 11
+                    sa = window.open('data:application/vnd.ms-excel,' + encodeURIComponent(response));
+                console.log(response)
+            }
+        })
+    }
+    //Print
+    function printDivPr() {
+        var divToPrint = document.getElementById('exampleMT');
+        newWin = window.open("");
+        newWin.document.write(divToPrint.outerHTML);
+        newWin.print();
+        newWin.close();
+    }
+
+</script>
+<!--The end Scrip-->

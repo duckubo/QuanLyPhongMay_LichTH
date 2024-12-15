@@ -1,0 +1,182 @@
+﻿@using QuanLyPhongMay_LichTH.Models;
+@{
+    ViewBag.Title = "Trang Chủ";
+    Layout = "~/Views/Share/_LayoutPage1.cshtml";
+    var ListCount = (Dictionary<string, int>)Model;
+}
+<div class="row">
+    <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading">
+                <h3>Phần mềm quản lý thiết bị công ty!!.</h3>
+            </header>
+            <div class="panel-body">
+                <div class="row state-overview">
+                    <div class="col-md-4 zoom">
+                        <a href="@Url.Action("Device", "Device")">
+                            <section class="panel" style="min-height:0px;border: 1px solid #6ccac9">
+                                <div class="symbol terques">
+                                    <i class="icon-laptop"></i>
+                                </div>
+                                <div class="value">
+                                    <h1 class="count">
+                                        @ListCount["CountDevice"]
+                                    </h1>
+                                    <p>Tất Cả Các Thiết Bị</p>
+                                </div>
+                            </section>
+                        </a>
+                    </div>
+                    <div class="col-md-4 zoom">
+                        <a href="@Url.Action("Computer", "MayTinh")">
+                            <section class="panel" style="min-height:0px;border: 1px solid #ff6c60">
+                                <div class="symbol red">
+                                    <i class="icon-desktop"></i>
+                                </div>
+                                <div class="value">
+                                    <h1 class="count">
+                                        @ListCount["Computer"]
+                                    </h1>
+                                    <p>Quản Lý Máy Tính</p>
+                                </div>
+                            </section>
+                        </a>
+                    </div>
+                    <div class="col-md-4 zoom">
+                        <a href="@Url.Action("ScheduleTest", "ScheduleTest")">
+                            <section class="panel" style="min-height:0px;border: 1px solid #f8d347">
+                                <div class="symbol yellow">
+                                    <i class="icon-list-alt"></i>
+                                </div>
+                                <div class="value">
+                                    <h1 class="count">
+                                        @ListCount["Schedule"]
+                                    </h1>
+                                    <p>Quản Lý Lịch TH</p>
+                                </div>
+                            </section>
+                        </a>
+                    </div>
+                </div>
+                <div class="row state-overview">
+                    <div class="col-md-4 zoom">
+                        <a href="@Url.Action("Index", "PHONG")">
+                            <section class="panel" style="min-height:0px;border: 1px solid #ff6c60">
+                                <div class="symbol red">
+                                    <i class="icon-briefcase"></i>
+                                </div>
+                                <div class="value">
+                                    <h1 class="count">
+                                        @ListCount["Department"]
+                                    </h1>
+                                    <p>Phòng Ban</p>
+                                </div>
+                            </section>
+                        </a>
+                    </div>
+                    <div class="col-md-4 zoom">
+                        <a href="@Url.Action("Request", "Schedule")">
+                            <section class="panel" style="min-height:0px;border: 1px solid #f8d347">
+                                <div class="symbol yellow">
+                                    <i class="icon-inbox"></i>
+                                </div>
+                                <div class="value">
+                                    <h1 class="count2">
+                                        @ListCount["Request"]
+                                    </h1>
+                                    <p>Yêu Cầu Thiết Bị</p>
+                                </div>
+                            </section>
+                        </a>
+                    </div>
+                    <div class="col-md-4 zoom">
+                        <a href="@Url.Action("StudentManagement", "Student")">
+                            <section class="panel" style="min-height:0px;border: 1px solid #6ccac9;">
+                                <div class="symbol terques ">
+                                    <i class="icon-group"></i>
+                                </div>
+                                <div class="value">
+                                    <h1 class="count3">
+                                        @ListCount["Student"]
+                                    </h1>
+                                    <p>Danh Sách Sinh Viên</p>
+                                </div>
+                            </section>
+                        </a>
+                    </div>
+                </div>
+                <div class="row state-overview">
+                    @if (Session["AuthenticationFeature"] != null && (Session["AuthenticationFeature"] as List<SystemFeature>).Any(k => k.ControllerName.Equals("Device") && k.ActionName.Equals("ScanerDevice")))
+                    {
+                        <div class="col-md-4 zoom">
+                            <a href="@Url.Action("Index", "GIAOVIEN")">
+                                <section class="panel" style="min-height:0px;border: 1px solid burlywood">
+                                    <div class="symbol" style="background:beige;border-right: 1px solid burlywood;">
+                                        <i class="icon-barcode" style="color:black"></i>
+                                    </div>
+                                    <div class="value">
+                                        <p class="count" style="margin-top: 11px;font-size: large;">
+                                            Danh Sách Giảng Viên
+                                        </p>
+                                    </div>
+                                </section>
+                            </a>
+                        </div>
+                    }
+
+                    @*@if (Session["AuthenticationFeature"] != null && (Session["AuthenticationFeature"] as List<SystemFeature>).Any(k => k.ControllerName.Equals("Device") && k.ActionName.Equals("StatisticalDevice")))
+        {*@
+                    <div class="col-md-4 zoom">
+                        <a href="@Url.Action("StatisticalDevice", "Device")">
+                            <section class="panel" style="min-height:0px;border: 1px solid #6ccac9">
+                                <div class="symbol terques">
+                                    <i class="icon-bar-chart"></i>
+                                </div>
+                                <div class="value">
+                                    <p class="count" style="margin-top: 11px;font-size: large;">
+                                        Thống Kê Thiết Bị
+                                    </p>
+                                </div>
+                            </section>
+                        </a>
+                    </div>
+                    <div class="col-md-4 zoom">
+                        <a href="@Url.Action("StatisticalComputerDevice", "MayTinh_ThietBi")">
+                            <section class="panel" style="min-height:0px;border: 1px solid currentColor">
+                                <div class="symbol" style="background:currentColor">
+                                    <i class="icon-bar-chart"></i>
+                                </div>
+                                <div class="value">
+                                    <p class="count" style="margin-top: 11px;font-size: large;">
+                                        Thống Kê Máy Tính
+                                    </p>
+                                </div>
+                            </section>
+                        </a>
+                    </div>
+                    @*}*@
+                    @*@if (Session["AuthenticationFeature"] != null && (Session["AuthenticationFeature"] as List<SystemFeature>).Any(k => k.ControllerName.Equals("Project") && k.ActionName.Equals("StatisticProject")))
+        {*@
+                    <div class="col-md-4 zoom">
+                        <a href="@Url.Action("StatisticDepartment", "Department")">
+                            <section class="panel" style="min-height:0px;border: 1px solid currentColor">
+                                <div class="symbol" style="background:currentColor">
+                                    <i class="icon-bar-chart"></i>
+                                </div>
+                                <div class="value">
+                                    <p class="count" style="margin-top: 11px;font-size: large;">
+                                        Thống Kê Phòng Ban
+                                    </p>
+                                </div>
+                            </section>
+                        </a>
+                    </div>
+                    @*}*@
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+<script>
+    $('.Home').addClass('active');
+</script>

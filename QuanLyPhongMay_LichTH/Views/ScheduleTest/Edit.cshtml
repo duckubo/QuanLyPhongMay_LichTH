@@ -1,0 +1,660 @@
+﻿@model QuanLyPhongMay_LichTH.Models.LICH
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Share/_LayoutPage1.cshtml";
+
+}
+
+<link href="~/Content/css/select2.min.css" rel="stylesheet" />
+<script src="~/Content/ckeditor/ckeditor.js"></script>
+<script src="~/Scripts/select2.min.js"></script>
+<div class="row">
+    <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading tab-bg-dark-navy-blue">
+                <ul class="nav nav-tabs">
+
+                    <li class="active" id="navyContent">
+                        <a data-toggle="tab" href="#about-2">
+                            <i class="icon-user"></i>
+                            Chi tiết
+                        </a>
+                    </li>
+                </ul>
+            </header>
+            <div class="panel-body">
+                <div class="tab-content">
+                    <div id="about-2" class="tab-pane active">
+
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="form-horizontal">
+                                <h4>LICH</h4>
+                                <hr />
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                @Html.HiddenFor(model => model.Id)
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Ma_lop, "Ma_lop", htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.DropDownList("Ma_lop", null, htmlAttributes: new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.Ma_lop, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Ma_phong, "Ma_phong", htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.DropDownList("Ma_phong", null, htmlAttributes: new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.Ma_phong, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Tuan, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Tuan, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Tuan, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Thu, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Thu, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Thu, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Tiet_bd, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Tiet_bd, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Tiet_bd, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Tiet_kt, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Tiet_kt, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Tiet_kt, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input type="submit" value="Save" class="btn btn-default" />
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                        <div>
+                            @Html.ActionLink("Back to List", "ScheduleTest")
+                        </div>
+                    </div>
+                    <div id="contact-2" class="tab-pane">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+<script src="~/Common/ScriptCommon.js"></script>
+<script>
+    $(document).ready(function () {
+        CKEDITOR.replace('Configuration');
+        CKEDITOR.replace('Notesdv');
+        CKEDITOR.instances.Notesdv.config.readOnly = true;
+        CKEDITOR.instances.Configuration.config.readOnly = true;
+        $('#history').DataTable({
+            "bScrollInfinite": true,
+            "bScrollCollapse": true,
+            "sScrollY": "250px",
+            "bLengthChange": false,
+            "bFilter": false,
+            "bInfo": false,
+        });
+        var statusrepair = $("#Statusrepair").val();
+        var user = $("#UserId").val();
+        if (user != 0) { $("#edituser").show() }
+        var sta = $("#Statushd").val();
+        console.log(sta == 0)
+        if (statusrepair == 1) { $("#repairdevice").hide() }
+        else if (statusrepair == 0) { $("#repairdevice").show() }
+        if (sta == 0) { $("#addproject").show(); $("#liquidationdevice").show(); $("#deletedevice").show(); $("#Edit").show() }
+        else if (sta == 1) { $("#prjreturn").show(); $("#Edit").show() }
+        else if (sta == 2) { $("#deletedevice").show(); $("#repairdevice").hide() }
+        else if (sta == 3) { $("#deletedevice").show(); $("#liquidationdevice").show(); $("#Edit").show() }
+        $('#detaildevice').find('input, button, select').attr('disabled', 'disabled');
+        //Check thiết bị có trong bảng DeviceOfProject or DeviceDevice
+        var check = $("#hiddenCheck").val();
+        var checkDvDv = $("#hiddenCheckDvDv").val();
+        if (check > 0 || checkDvDv > 0) {
+            $("#TypeOfDevice option").attr('disabled', 'disabled');
+
+        }
+
+    });
+    function EnableEditor2() {
+        CKEDITOR.instances.Notesdv.setReadOnly(false);
+        CKEDITOR.instances.Configuration.setReadOnly(false);
+        CKEDITOR.instances.PurchaseContract.setReadOnly(false);
+    }
+    function disableEditor2() {
+        CKEDITOR.instances.Notesdv.setReadOnly(true);
+        CKEDITOR.instances.Configuration.setReadOnly(true);
+        CKEDITOR.instances.PurchaseContract.setReadOnly(true);
+    }
+    $('.TypeOfDevice').select2();
+    $('.parentid').select2();
+    $('.userid').select2();
+    $('.user').select2();
+    $('.Device').addClass('active');
+    $('.Devicetable').addClass('active');
+    $("#Edit").click(function () {
+        $("#Edit").hide();
+        $("#Save").show();
+        $("#Cancel").show();
+        $('#detaildevice').find('input, button, select').removeAttr('disabled');
+        $("#ParentId option").attr('disabled', 'disabled');
+        EnableEditor2();
+    });
+    $("#Cancel").click(function () {
+        $("#Cancel").hide();
+        $("#Save").hide();
+        $("#Edit").show();
+        $('#detaildevice').find('input, button,select').attr('disabled', 'disabled');
+        disableEditor2();
+    });
+    $("#Save").click(function () {
+        $("#Save").hide();
+        $("#Save").show();
+        $("#Cancel").hide();
+    });
+</script>
+<script>
+    var ConfirmDelete = function () {
+        var sta = $("#Statushd").val();
+        if (sta == 1) { alert("Thiết bị này đang đang được sử dụng không thể xóa!") }
+        else { $("#myModaldelete11").modal('show') }
+    }
+    var DeleteDevice = function () {
+        $("#loaderDiv").show();
+        var dvId = $("#hiddenIddv").val();
+        $.ajax({
+            type: "POST",
+            url: "/Device/DeleteDevice",
+            data: { Id: dvId },
+            success: function (result) {
+                if (result) {
+                    $("#loaderDiv").hide();
+                    $("#myModaldelete11").modal("hide");
+                    window.location = '@Url.Action("Device", "Device")';
+                } else {
+
+                    $("#loaderDiv").hide();
+                    $("#myModaldelete11").modal("hide");
+                    alert("Xóa thiết bị lỗi");
+                }
+            }
+        })
+    }
+</script>
+<script>
+    var Confim1 = function () {
+        var sta = $("#Statushd").val();
+        if (sta == 1) {
+            alert("Thiết Bị Này Đang Trong Dự Án Không Thể Thanh Lý!")
+        }
+        else if (sta == 2) {
+            alert("Thiết Bị Này Đã Được Thanh Lý!")
+        }
+        else {
+            $("#Liquidation").modal('show');
+            $('#btnLiquidation').click(function () {
+                $("#loaderDiv").show();
+                var dvId = $("#hiddenIddv").val();
+                $.ajax({
+                    type: "POST",
+                    url: "/Device/LiquidationDevice",
+                    data: { Id: dvId },
+                    success: function (result) {
+                        if (result) {
+                            $("#loaderDiv").hide();
+                            $("#Liquidation").modal("hide");
+                            window.location = '@Url.Action("Device", "Device")';
+                        } else {
+
+                            $("#loaderDiv").hide();
+                            $("#Liquidation").modal("hide");
+                            alert("Thanh lý thiết bị lỗi. Tồn tại thiết bị con nằm trong thiết bị cha");
+                        }
+                    }
+                })
+            });
+        }
+    }
+</script>
+<script>
+    var DeviceProject = function (Id) {
+        var sta = $("#Statushd").val();
+        if (sta != 0) {
+            alert("Thiết Bị Này Đang Trong Dự Án Hoặc Không Thể Gán!")
+        }
+        else { $("#myModalg").modal('show'); }
+    }
+    var Submit = function () {
+        $(".checkon:checked").each(function () {
+            var check = $(this).val();
+            $("#hiddenprid").val(check);
+        });
+        var dvId = $("#hiddenIddv").val();
+        var pjId = $("#hiddenprid").val();
+        $.ajax({
+            type: "POST",
+            url: "/Device/AddDeviceProject",
+            data: {
+                Iddv: dvId,
+                Idpj: pjId
+            },
+            success: function (result) {
+                if (result) {
+                    $("#loaderDiv").hide();
+                    $("#myModalg").modal("hide");
+                    window.location = '@Url.Action("EditDevice", "Device")';
+                } else {
+                    $("#loaderDiv").hide();
+                    $("#myModalg").modal("hide");
+                    alert("Thêm thiết bị lỗi. Thiết bị là thiết bị con nằm trong thiết bị cha");
+                }
+            }
+        })
+    }
+</script>
+<script>
+    var CreateSupplier = function () {
+        $("#AddSupplier").modal('show');
+        $('#Name').val('');
+        $('#Email').val('');
+        $('#PhoneNumber').val('');
+        $("#Address").val('');
+        $("#Support").val('');
+    }
+    var AddSupplier = function () {
+        var NameSupplier = $("#Name");
+        if (!NameSupplier.val().trim()) {
+            // Add errors highlight
+            NameSupplier.closest('.form-group').removeClass('has-success').addClass('has-error');
+            $("#requiredsupplier").show()
+        } else {
+            // Remove the errors highlight
+            NameSupplier.closest('.form-group').removeClass('has-error').addClass('has-success');
+            var Name = $("#Name").val();
+            var Email = $("#Email").val();
+            var PhoneNumber = $("#PhoneNumber").val();
+            var Address = $("#Address").val();
+            var Support = $("#Support").val();
+            $.ajax({
+                type: "POST",
+                url: "/Device/AddSupplier",
+                data: {
+                    Name: Name,
+                    Email: Email,
+                    PhoneNumber: PhoneNumber,
+                    Address: Address,
+                    Support: Support
+                },
+                success: function (result) {
+                    if (result) {
+                        $("#AddSupplier").modal("hide");
+                        $("#divid").load(location.href + " #divid>*", "");
+                        $("#AddSupplier").load(location.href + " #AddSupplier>*", "");
+                    } else {
+                        $("#AddSupplier").modal("hide");
+                        alert("Thêm bị lỗi");
+                    }
+                }
+            })
+        }
+    }
+</script>
+<script>
+    var NoAdd = function () {
+        $("#AddType").load(location.href + " #AddType>*", "");
+        $("#AddEmployees").load(location.href + " #AddEmployees>*", "");
+        $("#AddSupplier").load(location.href + " #AddSupplier>*", "");
+    }
+    var CreateType = function () {
+        $("#AddType").modal('show');
+        $('#TypeName').val('');
+        $('#TypeSymbol').val('');
+        $('#Notes').val('');
+    }
+    var AddType = function () {
+        var Typerequired = $('#TypeName');
+        var TypeSymbol = $('#TypeSymbol');
+        var a = $('#TypeSymbol').val().trim().length
+        // Check if there is an entered value
+        if (a == 3) {
+            // Check if there is an entered value
+            if (!Typerequired.val().trim()) {
+                // Add errors highlight
+                Typerequired.closest('.form-group').removeClass('has-success').addClass('has-error');
+                $("#requiredtype").show()
+            } else if (!TypeSymbol.val().trim()) {
+                TypeSymbol.closest('.form-group').removeClass('has-success').addClass('has-error');
+                $("#requiredtypesymbol").show()
+                return false;
+            }
+            else {
+                // Remove the errors highlight
+                Typerequired.closest('.form-group').removeClass('has-error').addClass('has-success');
+                var TypeName = $("#TypeName").val();
+                var Notes = $("#Notes").val();
+                var TypeSymbol = $("#TypeSymbol").val();
+                $.ajax({
+                    type: "POST",
+                    url: "/Device/AddDeviceType",
+                    data: {
+                        TypeSymbol: TypeSymbol,
+                        TypeName: TypeName,
+                        Notes: Notes
+                    },
+                    success: function (result) {
+                        if (result) {
+                            $("#AddType").modal("hide");
+                            $("#divtype").load(location.href + " #divtype>*", "");
+                            $("#AddType").load(location.href + " #AddType>*", "");
+                        } else {
+                            $("#AddType").modal("hide");
+                            alert("Thêm bị lỗi");
+                        }
+                    }
+                })
+            }
+        }
+        else {
+            alert('Ký Hiệu Loại Có Đúng 3 Chữ Cái')
+        }
+    }
+</script>
+<script>
+    var ConfirmReturn = function (Id) {
+        $("#hiddenIddv").val(Id);
+        $("#myModalReturn").modal('show')
+    }
+    var ReturnDeviceInProject = function () {
+        var dvId = $("#hiddenIddv").val();
+        var prId = $("#hiddenIdpr").val();
+        $("#loaderDiv").show();
+        $.ajax({
+            type: "POST",
+            url: "/Device/ReturnDeviceInProject",
+            data: {
+                Idpr: prId,
+                Iddv: dvId,
+            },
+            success: function (result) {
+                if (result) {
+                    $("#loaderDiv").hide();
+                    $("#myModalReturn").modal("hide");
+                    window.location = '@Url.Action("EditDevice", "Device")';
+                }
+                else {
+                    $("#loaderDiv").hide();
+                    $("#myModalReturn").modal("hide");
+                    alert("Trả thiết bị lỗi. Thiết bị nằm trong thiết bị cha");
+                }
+            }
+        })
+    }
+</script>
+<script>
+    var CreateEmployees = function () {
+        $("#AddEmployees").modal('show');
+        $("#UserName").val('');
+        $("#FullName").val('');
+        $("#Email").val('');
+        $("#PhoneNumber").val('');
+        $("#Address").val('');
+        $("#Department").val('');
+        $("#Position").val('');
+    }
+    var AddEmployees = function () {
+        var NameUser = $("#UserName");
+        var FullUserName = $("#FullName");
+        if (!NameUser.val().trim()) {
+            // Add errors highlight
+            NameUser.closest('.form-group').removeClass('has-success').addClass('has-error');
+            $("#requiredUserName").show();
+        }
+        else if (!FullUserName.val().trim()) {
+            // Add errors highlight
+            FullUserName.closest('.form-group').removeClass('has-success').addClass('has-error');
+            $("#requiredFullName").show()
+        }
+        else {
+            var UserName = $("#UserName").val();
+            var FullName = $("#FullName").val();
+            var Email = $("#Email").val();
+            var PhoneNumber = $("#PhoneNumber").val();
+            var Address = $("#Address").val();
+            var Department = $("#Department").val();
+            var Position = $("#Position").val();
+            $.ajax({
+                type: "POST",
+                url: "/Device/AddEmployees",
+                data: {
+                    UserName: UserName,
+                    FullName: FullName,
+                    Email: Email,
+                    PhoneNumber: PhoneNumber,
+                    Address: Address,
+                    Department: Department,
+                    Position: Position
+                },
+                success: function (result) {
+                    if (result) {
+                        $("#AddEmployees").modal("hide");
+                        $("#AddEmployees").load(location.href + " #AddEmployees>*", "");
+                        $("#Employees").load(location.href + " #Employees>*", "");
+                    } else {
+                        $("#AddEmployees").modal("hide");
+                        alert("Thêm bị lỗi");
+                    }
+                }
+            })
+
+        }
+    }
+</script>
+<script>
+    var Repair = function (Id) {
+        $("#hiddenIddv").val(Id);
+        $("#user").val('0');
+        $("#Notesrepair").val('');
+        $("#AddRepairDevice").modal('show')
+    }
+    var AddRepair = function () {
+        var Iddv = $("#hiddenIddv").val();
+        var user = $("#user").val();
+        var Notesrepair = $("#Notesrepair").val();
+        $.ajax({
+            type: "POST",
+            url: "/Device/AddRepairDevice",
+            data: {
+                Iddv: Iddv,
+                user: user,
+                Notesrepair: Notesrepair,
+            },
+            success: function (result) {
+                if (result) {
+                    $("#AddRepairDevice").modal("hide");
+                    window.location = '@Url.Action("EditDevice", "Device")';
+                } else {
+                    $("#AddRepairDevice").modal("hide");
+                    alert("Thêm bị lỗi");
+                }
+            }
+        })
+    }
+</script>
+<script>
+    var CreateDeviceCode = function () {
+        var TypeOfDevice = $("#TypeOfDevice").val();
+        if (TypeOfDevice == 0) {
+            alert("Bạn Phải chọn loại thiết bị");
+        }
+        else {
+            $.ajax({
+                url: '/Device/AddDeviceCode',
+                data: {
+                    TypeOfDevice: TypeOfDevice,
+                },
+                type: 'GET',
+                dataType: 'json',
+                success: function (response) {
+                    var data = response.data;
+                    $('#DeviceCode').val(data);
+                },
+            });
+        }
+    }
+</script>
+<script>
+    var GenBarCode = function () {
+        var barcode = $('#DeviceCode').val().trim();
+        if (!barcode) {
+            alert("Bạn Phải Nhập Mã Thiết  Bị")
+        }
+        else {
+            $.ajax({
+                type: "POST",
+                url: "/Device/GenerateBarCode",
+                data: {
+                    barcode: barcode,
+                },
+                success: function (response) {
+                    var data = response.data;
+                    $('#myModal').modal('show')
+                    var BarCodeDevice = $("#BarCodeDevice");
+                    $("#BarCodeDevice").attr('src', data);
+                }
+            })
+        }
+    }
+    var printImg = function () {
+        var win = window.open('');
+        var url = document.getElementById('BarCodeDevice').src
+        var UserDevice = $('#UserDevice').val();
+        var DeviceName = $('#DeviceName').val();
+        var DeviceCode = $('#DeviceCode').val();
+        var PrjDkc = $("#PrjDkc").val();
+        var Price = $('#Price').val();
+        var CreatedDate = $('#CreatedDate').val();
+        if ((DeviceCode.trim().substring(0, 3) == "CHU" || DeviceCode.trim().substring(0, 3) == "DCO") & PrjDkc.trim() == "VP") { var print = '<div style="overflow:hidden;height:80px;width:225px;margin-top:15px;margin-right:30px;border: 1px solid black;display: inline-block;margin-left:5px;"><div style="overflow:hidden;margin-top:1px;margin-left:2px;width: 220px;height:30px"><img src="' + url + '" onload="window.print();window.close()"/></div><div id="DetailBarCode" style="margin-top:4px;border-top: 1px solid black"><div style="margin-left:3px;margin-top:3px"><label>Người SD : ' + UserDevice + '</label><br /><label>Mã TB : ' + DeviceCode + '</label></div></div></div><br/>' }
+        else if ((DeviceCode.trim().substring(0, 3) == "CHU" || DeviceCode.trim().substring(0, 3) == "DCO") & PrjDkc.trim() != "VP") { url += '<div style="overflow:hidden;height:80px;width:225px;margin-top:15px;margin-right:30px;border: 1px solid black;display: inline-block;margin-left:5px;"><div style="overflow:hidden;margin-top:1px;margin-left:2px;width: 220px;height:30px"><img src="' + url + '" onload="window.print();window.close()"/></div><div id="DetailBarCode1" style="margin-top:4px;border-top: 1px solid black"><div style="margin-left:3px;margin-top:3px"><label>Mã TB : ' + DeviceCode + '</label><br /><label>Tên TB : ' + DeviceName + '</label><br /></div></div></div><br/>' }
+        else if (PrjDkc.trim() == "VP") { var print = '<div style="overflow:hidden;height:133px;width:220px;margin-top:8px;margin-right:30px;border: 1px solid black;display: inline-block;margin-left:10px"><div style="overflow:hidden;margin-top:1px;margin-left:2px;width: 216px;height:57px"><img src="' + url + '" onload="window.print();window.close()"/></div><div id="DetailBarCode" style="margin-top:4px;border-top: 1px solid black"><div style="margin-left:3px;margin-top:3px"><label>Người SD : ' + UserDevice + '</label><br /><label>Mã TB : ' + DeviceCode + '</label><br /><label>Tên TB : ' + DeviceName + '</label><br /><label>Ngày BĐSD: ' + CreatedDate + '</label><br /></div></div></div><br/>' }
+        else { var print = '<div style="overflow:hidden;height:133px;width:220px;margin-top:8px;margin-right:30px;border: 1px solid black;display: inline-block;margin-left:10px"><div style="overflow:hidden;margin-top:1px;margin-left:2px;width: 216px;height:57px"><img src="' + url + '" onload="window.print();window.close()"/></div><div id="DetailBarCode2" style="margin-top:4px;border-top: 1px solid black"><div style="margin-left:3px;margin-top:3px"><label>Mã TB : ' + DeviceCode + '</label><br /><label>Tên TB : ' + DeviceName + '</label><br />' }
+        print.replace("null", " ");
+        win.document.write('<html><head><title>Print</title><style>#DetailBarCode label {font-family: sans-serif;font-size: x-small;} #DetailBarCode1 label {font-family: sans-serif;font-size: xx-small;}</style>');
+        win.document.write('</head><body >');
+        win.document.write(print);
+        win.document.write('</body></html>');
+        win.focus();
+    }
+    var ChangeType = function () {
+        var TypeOfDevice = $("#TypeOfDevice").val();
+        if (TypeOfDevice == 0) {
+            alert("Bạn Phải chọn loại thiết bị");
+        }
+        else {
+            $.ajax({
+                url: '/Device/AddDeviceCode',
+                data: {
+                    TypeOfDevice: TypeOfDevice,
+                },
+                type: 'GET',
+                dataType: 'json',
+                success: function (response) {
+                    var data = response.data;
+                    $('#DeviceCode').val(data);
+                },
+            });
+        }
+    }
+</script>
+<script>
+    var GetEmployees = function () {
+        $('#editemployees').modal('show');
+        var id = $("#UserId").val()
+        $.ajax({
+            url: '/Device/GetEmployees',
+            data: {
+                id: id
+            },
+            type: 'GET',
+            dataType: 'json',
+            success: function (response) {
+                var data = response.data;
+                $('#EditName').val(data.UserName);
+                $('#EditFullName').val(data.FullName);
+                $('#EditEmail').val(data.Email);
+                $('#EditPhone').val(data.PhoneNumber);
+                $('#EditDepartment').val(data.Department);
+                $('#EditPosition').val(data.Position);
+                $('#EditID').val(data.Id);
+                ('#EditAddress').val(data.Address);
+            },
+        });
+    }
+    var EditEmployees = function () {
+        var dvId = $("#EditID").val();
+        var UserName = $('#EditName').val();
+        var FullName = $('#EditFullName').val();
+        var PhoneNumber = $('#EditPhone').val();
+        var Email = $('#EditEmail').val();
+        var Department = $('#EditDepartment').val();
+        var Position = $('#EditPosition').val();
+        var Address = $('#EditAddress').val();
+        $.ajax({
+            url: '/Device/EditEmployees',
+            data: {
+                Id: dvId,
+                UserName: UserName,
+                FullName: FullName,
+                PhoneNumber: PhoneNumber,
+                Email: Email,
+                Department: Department,
+                Position: Position
+            },
+            type: 'POST',
+            dataType: 'json',
+            success: function (result) {
+                if (result) {
+                    $("#editemployees").modal("hide");
+                } else {
+                    $("#editemployees").modal("hide");
+                    alert("Sửa lỗi");
+                }
+            }
+        });
+    }
+    var ChangeEmployees = function () {
+        var id = $("#UserId").val()
+        if (id != 0) {
+            $("#edituser").show()
+        }
+        else {
+            $("#edituser").hide()
+        }
+    }
+
+
+
+</script>

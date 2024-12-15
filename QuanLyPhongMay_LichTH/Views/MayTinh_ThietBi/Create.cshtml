@@ -1,0 +1,132 @@
+﻿@model QuanLyPhongMay_LichTH.Models.MayTinh_ThietBi
+@using QuanLyPhongMay_LichTH.Models;
+@using QuanLyPhongMay_LichTH.Helper
+
+
+@{
+    ViewBag.Title = "Thêm thiết bị vào máy tính ";
+    Layout = "~/Views/Share/_LayoutPage1.cshtml";
+}
+<link href="~/Content/css/tcssproject.css" rel="stylesheet" />
+<section class="panel">
+    <header class="panel-heading " style="padding-bottom:20px">
+        <a class="edit panel-default" style="margin-right:10px" href="@Url.Action("ComputerDevice", "MayTinh_ThietBi")">
+            <span class="icon-border">
+                <i class="icon-arrow-left"> </i>
+            </span>
+        </a>
+        <h4 style="display:inline">  Thêm thiết bị vào máy tính </h4>
+    </header>
+    @using (Html.BeginForm("Create", "MayTinh_ThietBi", FormMethod.Post, new { @enctype = "multipart/form-data", @class = "form-horizontal  editcontent", @Id = "formIdPr" }))
+    {
+        @Html.AntiForgeryToken()
+
+<div class="panel-body Tlabel-Edit">
+    <div class="col-md-12">
+        <div class="form-group row">
+            <label class="col-md-2 "> Chọn máy tính</label>
+            <div class="col-md-6">
+                <select class="input-large form-control myctr form-control" name="Computer" id="user">
+                    <option value="0" selected> Chọn máy tính </option>
+                    @foreach (var item in ViewData["Computer"] as IList<MayTinh>)
+                    {
+                        <option value="@item.Ma_mt" @(ViewBag.ComParent == @item.Ma_mt ? "selected" : "")>@item.Ma_mt-@item.Ten_mt </option>
+                    }
+                </select>
+            </div>
+        </div>
+        <label class="col-md-2 "> Chọn thiết bị </label>
+        <div class="col-md-6">
+            <select class="input-large form-control myctr form-control" name="Device" id="user">
+                <option value="0" selected> Chọn thiết bị</option>
+                @foreach (var item in ViewData["Device"] as IList<ThietBi>)
+                {
+                    <option value="@item.Ma_tb" @(ViewBag.Devi == @item.Ma_tb ? "selected" : "")>@item.Ma_tb-@item.Ten_tb </option>
+                }
+            </select>
+        </div>
+    </div>
+    @*<div class="form-group row">
+            <label class="col-md-2"> Ngày bắt đầu </label>
+            <div class="col-md-6  input-group">
+                <input type="text" class="form-control myctr form-control-inline input-large default-date-picker" size="16" name="FromDate" value="@ViewBag.FromDate" autocomplete="off" />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-warning icon-calendar" style="line-height:inherit"></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-2"> Ngày kết thúc </label>
+            <div class="col-md-6  input-group">
+                <input type="text" class="form-control myctr form-control-inline input-large default-date-picker" size="16" name="ToDate" value="@ViewBag.ToDate" autocomplete="off" />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-warning icon-calendar" style="line-height:inherit"></button>
+                </span>
+            </div>
+        </div>*@
+    <div>
+        <input type="hidden" id="hiddenText" value="@ViewBag.Con" />
+        <p id="displayText" style="display:none; color:red;">Đã tồn tại!</p>
+    </div>
+    
+</div>
+        <div class="form-group row form-body">
+            <div class="TcssButton">
+                <button type="submit" class="btn btn-primary btn-large"> Lưu </button>
+                <button type="button" class="btn btn-white">@Html.ActionLink("Hủy", "Create", "MayTinh_ThietBi", new { id = -1}) </button>
+
+            </div>
+        </div>
+    }
+
+</section>
+<script>
+    function showHiddenText() {
+        var hiddenText = document.getElementById("hiddenText").value;
+        if (hiddenText == "0" || hiddenText == "-1" ) {
+            displayText.style.display = "none"; // Ẩn nếu giá trị là 0
+        } else {
+            displayText.style.display = "block"; // Hiển thị nếu giá trị khác 0
+        }
+    }
+    showHiddenText()
+</script>
+<!--Start Scrip-->
+<script>
+    $('.ComputerDevice').addClass('active');
+    $(document).ready(function () {
+        var url = new URL(window.location.href);
+        var c = url.searchParams.get("DeviceType");
+        $('#DeviceType').val(c);
+
+        var table = $('#exampleMT').dataTable({
+            "oLanguage": {
+                "sInfo": "Hiển thị từ _START_ đến _END_ của _TOTAL_ bản ghi",
+                "sSearch": "Tìm Kiếm",
+                "oPaginate": {
+                    "sPrevious": "Trước",
+                    "sNext": "Tiếp",
+                }
+            },
+            //"bLengthChange": false,
+            //"bFilter": false,
+            "aoColumnDefs": [
+                { "aTargets": [0], bSortable: false },
+                { "aTargets": [6], bSortable: false },
+            ]
+        });
+        $("#checkAll1").click(function () {
+            var rows = table.$('tr', { search: 'applied' });
+            if ($('input:checked', rows).length == rows.length) {
+                $('input[type="checkbox"]', rows).prop('checked', false);
+            }
+            else {
+                $('input[type="checkbox"]', rows).prop('checked', true);
+            }
+        });
+        $("body").on("change", "input", function () {
+            var rows = table.$('tr', { search: 'applied' });
+        });
+    });
+</script>
+<!--The end Scrip-->

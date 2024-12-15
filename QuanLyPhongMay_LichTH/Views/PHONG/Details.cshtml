@@ -1,0 +1,42 @@
+﻿@model QuanLyPhongMay_LichTH.Models.PHONG
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PHONG</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ten_phong)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ten_phong)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Vi_tri)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vi_tri)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.So_tbi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.So_tbi)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Ma_phong }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

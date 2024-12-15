@@ -1,0 +1,155 @@
+﻿@using QuanLyPhongMay_LichTH.Models;
+
+@*Xác nhận xóa từng thiết bị (Trên màn thanh lý,...)*@
+<div class="modal fade" id="myModaldelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">DELETE</h4>
+            </div>
+            <div class="modal-body">
+                Bạn có muốn xóa lịch đã chọn?
+            </div>
+            <div class="modal-footer">
+                <button data-dismiss="modal" class="btn btn-default" type="button">Hủy</button>
+                <a id="btnContinueDelete" onclick="DeleteDevice()" class="btn btn-warning"> Xoá</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*Xác nhận thêm thiết bị vào phòng ban (Màn chi tiết TB)*@
+<div class="modal fade" id="myModalg1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Chọn dự án</h4>
+            </div>
+            <div class="modal-body">
+              
+                <input type="hidden" id="hiddenprid" />
+            </div>
+            <div class="modal-footer">
+                <button data-dismiss="modal" class="btn btn-default" type="button">Hủy</button>
+                <button class="btn btn-warning" id="btnContinueAdd"> Chọn</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var ConfirmDelete = function (Id) {
+        $("#hiddenId").val(Id);
+        $("#myModaldelete").modal('show')
+    }
+    var DeleteDevice = function () {
+
+        var dvId = $("#hiddenId").val();
+        $.ajax({
+            type: "POST",
+            url: "/ScheduleTest/DeleteSchedule",
+            data: { Id: dvId },
+            success: function (result) {
+                if (result) {
+                    //  $("#loaderDiv").hide();
+                    $("#myModaldelete").modal("hide");
+                    location.reload();
+                } else {
+
+                    //  $("#loaderDiv").hide();
+                    $("#myModaldelete").modal("hide");
+                    alert("Xóa thiết bị lỗi. Thiết bị là thiết bị con nằm trong thiết bị khác");
+                }
+            }
+        })
+    }
+    var ConfirmDelete2 = function () {
+        var chkArray = [];
+        $(".check:checked").each(function () {
+            chkArray.push($(this).val());
+        });
+        // we join the array separated by the comma 
+        var selected;
+        selected = chkArray.join(',');
+        // check if there is selected checkboxes, by default the length is 1 as it contains one single comma 
+        if (selected.length > 0) {
+            $("#hiddenId1").val(chkArray);
+            $("#myModaldelete1").modal('show');
+            $('#btnContinueDelete1').click(function () {
+                $("#loaderDiv").show();
+                var dvId = $("#hiddenId1").val();
+                $.ajax({
+                    type: "POST",
+                    url: "/ScheduleTest/DeleteSchedule",
+                    data: { Id: dvId },
+                    success: function (result) {
+                        if (result) {
+                            $("#loaderDiv").hide();
+                            $("#myModaldelete1").modal("hide");
+                            location.reload();
+                        } else {
+                            $("#loaderDiv").hide();
+                            $("#myModaldelete1").modal("hide");
+                            alert("Xóa thiết bị lỗi. Tồn tại thiết bị con nằm trong thiết bị khác");
+                        }
+                    }
+                });
+            });
+        }
+    };
+</script>
+<script>
+    var Confim = function () {
+        var chkArray = [];
+        var status = 0;
+        / look for all checkboes that have a class 'chk' attached to it and check if it was checked /
+        var table = $('#example').dataTable()
+        table.$('input[type="checkbox"]').each(function () {
+            if (this.checked) {
+                chkArray.push($(this).val());
+                status += $(this).data("status")
+            }
+        });
+        //$(".check:checked").each(function () {
+        //    chkArray.push($(this).val());
+        //    status += $(this).data("status")
+        //});
+        / we join the array separated by the comma /
+
+        if (chkArray.length > 0) {
+            if (status != 0) {
+                alert("Có những thiết bị đã có sẵn trong dự án hoặc không thể gán!");
+            }
+            else {
+                $("#hiddenId1").val(chkArray);
+                $("#myModalg1").modal('show');
+                $('#btnContinueAdd').click(function () {
+                    $(".checkon:checked").each(function () {
+                        var check = $(this).val();
+                        $("#hiddenprid").val(check);
+                    });
+                    var pjId = $("#hiddenprid").val();
+                    var dvId = $("#hiddenId1").val();
+                    $.ajax({
+                        type: "POST",
+                        url: "/Device/AddDeviceProject1",
+                        data: {
+                            Id: dvId,
+                            PJ: pjId
+                        },
+                        success: function (result) {
+                            if (result) {
+                                $("#myModalg1").modal("hide");
+                                location.reload();
+                            } else {
+                                $("#myModalg1").modal("hide");
+                                alert("Thêm thiết bị lỗi. Có thiết bị con nằm trong thiết bị cha");
+                            }
+                        }
+                    })
+                })
+            }
+        }
+    }
+</script>

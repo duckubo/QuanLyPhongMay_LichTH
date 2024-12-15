@@ -1,0 +1,198 @@
+﻿
+@model  IEnumerable<QuanLyPhongMay_LichTH.Models.StatisticalDeviceByBrand_Result>
+@using QuanLyPhongMay_LichTH.Models;
+@using QuanLyPhongMay_LichTH.Helper;
+@{
+    ViewBag.Title = "Thống Kê Thiết Bị";
+    Layout = "~/Views/Share/_LayoutPage1.cshtml";
+}
+
+<!-- Sử dụng Chart.js từ CDN -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+    .chart-container {
+        display: flex;
+       height: 400px; 
+       justify-content:space-around;
+    }
+
+    .chart {
+        width: 300px;
+        height: 300px;
+    }
+
+    /* .pie-chart {
+            margin-right: 50px;
+        }
+
+        .column-chart {
+            margin-left: 20px;
+        } */
+</style>
+<div class="row">
+    <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading mypanel">
+                Thống Kê Thiết Bị
+
+                <div class="btn-group pull-right">
+                    <button class="btn" id="btnExport" onclick="fnExcelReport();">
+                        Export
+                    </button>
+                </div>
+            </header>
+            <div class="panel-body">
+                <div class="chart-container container" >
+                    <div class="chart pie-chart">
+                        <h2>Thống kê tình trạng</h2>
+                        <canvas id="pieChart" width="300" height="300"></canvas>
+                    </div>
+
+                    <div class="chart column-chart">
+                        <h2>Thống kê loại thiết bị</h2>
+                        <canvas id="barChart" width="300" height="300"></canvas>
+                    </div>
+                </div>
+                <div class="adv-table">
+                    <div class="clearfix ">
+                        @using (Html.BeginForm("SearchStatisticalDevice", "Device", FormMethod.Post, new { @enctype = "multipart/form-data", @class = "form-horizontal kh" }))
+                        {
+                            <div class="pull-left row col-md-12 nopadding">
+                                <div class="col-md-2 TcssMarg">
+                                    <select class="form-control input-sm m-bot15 myctr" name="TypeOfDevice" id="TypeOfDevice">
+                                        <option value="0">Chọn loại thiết bị</option>
+                                        @foreach (var item in ViewData["TypeOfDevice"] as IList<LoaiThietBi>)
+                                        {
+                                            <option value="@item.Ma_loai" @(ViewBag.type == @item.Ma_loai ? "selected" : "")>@item.Ma_loai-@item.Ten_loai</option>
+                                        }
+                                    </select>
+                                </div>
+                                <div class="col-md-1 TcssMarg">
+                                    <div class="btn-group">
+                                        <button class="btn btn-primary btn-sm" type="submit">Tìm kiếm<i class="icon-search"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        <table class="table table-bordered table-hover table-striped" id="history" style="margin-bottom:0px">
+                            <thead>
+                                <tr>
+                                    <th>Mã loại</th>
+                                    <th>Tên loại</th>
+                                    <th>Tổng số thiết bị</th>
+                                    <th>Số thiét bị rảnh</th>
+                                    <th>Số thiết bị đang dùng</th>
+                                    <th>Số thiết bị hỏng</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.TypeCode</td>
+                                        <td>@item.TypeName</td>
+                                        <td style="text-align:right">@item.TotalDevices</td>
+                                        <td style="text-align:right">@item.Available</td>
+                                        <td style="text-align:right">@item.InUse</td>
+                                        <td style="text-align:right">@item.Broken</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<script>
+    // Dữ liệu cho biểu đồ tròn
+    const pieData = {
+        labels: ["Hư hỏng", "Sẵn có", "Đang sử dụng"],
+        datasets: [{
+            data: [10, 20, 70],
+            backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"]
+        }]
+    };
+
+    // Tạo biểu đồ tròn
+    const pieChart = new Chart(document.getElementById('pieChart'), {
+        type: 'pie',
+        data: pieData,
+        options: {
+            responsive: false
+        }
+    });
+
+    // Dữ liệu cho biểu đồ cột
+    const barData = {
+        labels: ["RAM", "HDD", "SSD", "CASE", "FAN"],
+        datasets: [{
+            label: "Thiết bị",
+            data: [10, 15, 20, 25, 30],
+            backgroundColor: "#4CAF50"
+        }]
+    };
+
+    // Tạo biểu đồ cột
+    const barChart = new Chart(document.getElementById('barChart'), {
+        type: 'bar',
+        data: barData,
+        options: {
+            responsive: false
+        }
+    });
+</script>
+<script>
+
+    $(document).ready(function () {
+        $('#history').dataTable({
+            "iDisplayLength": 25,
+            "oLanguage": {
+                "sInfo": "Hiển thị từ _START_ đến _END_ của _TOTAL_ thiết bị",
+                "oPaginate": {
+                    "sPrevious": "Trước",
+                    "sNext": "Tiếp",
+                }
+            },
+            "aoColumnDefs": [
+                { "aTargets": [0], bSortable: false },
+            ]
+        });
+    });
+</script>
+<script>
+    $('.Statistical').addClass('active');
+    $('.StatisticalDeviceType').addClass('active');
+</script>
+<script>
+    function fnExcelReport() {
+        $.ajax({
+            url: "/Device/ExportStatisticalDevice",
+            data: {
+            },
+            success: function (response) {
+                response = response.replace("TypeCode", "Mã Thiết Bị");
+                response = response.replace("TypeName", "Tên Thiết Bị");
+                response = response.replace("TotalDevices", "Số Lần Sử Dụng");
+                response = response.replace("Available", "Số Lần Sửa Chữa");
+                response = response.replace("InUse", "Tổng Tiền Sửa Chữa");
+                response = response.replace("Broken", "Giá");
+                var ua = window.navigator.userAgent;
+                var msie = ua.indexOf("MSIE ");
+                if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./))      // If Internet Explorer
+                {
+                    txtArea1.document.open("txt/html", "replace");
+                    txtArea1.document.write(response);
+                    txtArea1.document.close();
+                    txtArea1.focus();
+                    sa = txtArea1.document.execCommand("SaveAs", true, "Say Thanks to Sumit.xls");
+                }
+                else                 //other browser not tested on IE 11
+                    sa = window.open('data:application/vnd.ms-excel,' + encodeURIComponent(response));
+                console.log(response)
+            }
+        })
+    }
+</script>

@@ -1,0 +1,2744 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Do_An_Phan_MemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="Ma_admin" />
+          </Key>
+          <Property Name="Ma_admin" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Ten_admin" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ma_tk" Type="varchar" MaxLength="6" />
+        </EntityType>
+        <EntityType Name="Brand">
+          <Key>
+            <PropertyRef Name="BrandID" />
+          </Key>
+          <Property Name="BrandID" Type="int" Nullable="false" />
+          <Property Name="BrandName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="DeviceType" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Credential">
+          <Key>
+            <PropertyRef Name="UserGroupID" />
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="UserGroupID" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="RoleID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GIAO_VIEN">
+          <Key>
+            <PropertyRef Name="Ma_gv" />
+          </Key>
+          <Property Name="Ma_gv" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Ten_gv" Type="nvarchar" MaxLength="50" />
+          <Property Name="Gioi_tinh" Type="nvarchar" MaxLength="10" />
+          <Property Name="Ngaysinh" Type="datetime" />
+          <Property Name="Ma_khoa" Type="nvarchar" MaxLength="10" />
+          <Property Name="Bo_mon" Type="nvarchar" MaxLength="50" />
+          <Property Name="Trinh_do" Type="nchar" MaxLength="10" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="So_dt" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ma_tk" Type="varchar" MaxLength="6" />
+        </EntityType>
+        <EntityType Name="Hang">
+          <Key>
+            <PropertyRef Name="Ma_hang" />
+          </Key>
+          <Property Name="Ma_hang" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Ten_hang" Type="nvarchar" MaxLength="50" />
+          <Property Name="status" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="History">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ComputerId" Type="varchar" MaxLength="6" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <EntityType Name="Khoa">
+          <Key>
+            <PropertyRef Name="Ma_khoa" />
+          </Key>
+          <Property Name="Ma_khoa" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Ten_khoa" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mo_ta" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="LICH">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="Ma_lop" Type="nchar" MaxLength="10" />
+          <Property Name="Ma_phong" Type="nchar" MaxLength="10" />
+          <Property Name="Tuan" Type="nchar" MaxLength="10" />
+          <Property Name="Thu" Type="nvarchar" MaxLength="20" />
+          <Property Name="Tiet_bd" Type="int" />
+          <Property Name="Tiet_kt" Type="int" />
+        </EntityType>
+        <EntityType Name="LoaiThietBi">
+          <Key>
+            <PropertyRef Name="Ma_loai" />
+          </Key>
+          <Property Name="Ma_loai" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Ten_loai" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mo_ta" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Loi">
+          <Key>
+            <PropertyRef Name="Ma_loi" />
+          </Key>
+          <Property Name="Ma_loi" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Ten_loi" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mo_ta" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Loi_Maytinh">
+          <Key>
+            <PropertyRef Name="Ma_loi_maytinh" />
+          </Key>
+          <Property Name="Ma_loi_maytinh" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ma_mt" Type="varchar" MaxLength="6" />
+          <Property Name="Ma_loi" Type="nchar" MaxLength="10" />
+          <Property Name="Ngay_bao_loi" Type="date" />
+          <Property Name="Noi_dung" Type="nvarchar" MaxLength="255" />
+          <Property Name="Tinh_trang" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ma_tb" Type="varchar" MaxLength="6" />
+        </EntityType>
+        <EntityType Name="LOP">
+          <Key>
+            <PropertyRef Name="Ma_lop" />
+          </Key>
+          <Property Name="Ma_lop" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Ten_lop" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ma_gv" Type="nchar" MaxLength="10" />
+          <Property Name="Ma_mon" Type="nchar" MaxLength="10" />
+          <Property Name="Hoc_ky" Type="nchar" MaxLength="10" />
+          <Property Name="So_sv" Type="int" />
+        </EntityType>
+        <EntityType Name="LOP_SINHVIEN">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ma_lop" Type="nchar" MaxLength="10" />
+          <Property Name="Ma_sv" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="MayTinh">
+          <Key>
+            <PropertyRef Name="Ma_mt" />
+          </Key>
+          <Property Name="Ma_mt" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="Ten_mt" Type="nvarchar" MaxLength="50" />
+          <Property Name="Cau_hinh" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ma_phong" Type="nchar" MaxLength="10" />
+          <Property Name="status" Type="int" />
+          <Property Name="Ngay_them" Type="datetime" />
+          <Property Name="Brand" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="MayTinh_ThietBi">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ma_mt" Type="varchar" MaxLength="6" />
+          <Property Name="Ma_tb" Type="varchar" MaxLength="6" />
+          <Property Name="TimeModified" Type="datetime" />
+        </EntityType>
+        <EntityType Name="MONHOC">
+          <Key>
+            <PropertyRef Name="Ma_mon" />
+          </Key>
+          <Property Name="Ma_mon" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Ten_mon" Type="nvarchar" MaxLength="50" />
+          <Property Name="So_tinchi" Type="float" />
+          <Property Name="Ma_khoa" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="PhieuDangKyDayBu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ma_lop" Type="nchar" MaxLength="10" />
+          <Property Name="Ma_gv" Type="nchar" MaxLength="10" />
+          <Property Name="Thu" Type="nchar" MaxLength="10" />
+          <Property Name="Tu_tiet" Type="int" />
+          <Property Name="Den_tiet" Type="int" />
+          <Property Name="Ma_phong" Type="nchar" MaxLength="10" />
+          <Property Name="NgayDangKy" Type="date" />
+          <Property Name="NgayDay" Type="date" />
+          <Property Name="NgayDuyet" Type="date" />
+          <Property Name="GhiChu" Type="nvarchar" MaxLength="255" />
+          <Property Name="TrangThai" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PhieuDangKyMuonMay">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ma_sv" Type="nchar" MaxLength="10" />
+          <Property Name="Thu" Type="nchar" MaxLength="10" />
+          <Property Name="Tu_tiet" Type="int" />
+          <Property Name="Den_tiet" Type="int" />
+          <Property Name="Ma_phong" Type="nchar" MaxLength="10" />
+          <Property Name="NgayDangKy" Type="date" />
+          <Property Name="NgayMuon" Type="date" />
+          <Property Name="NgayDuyet" Type="date" />
+          <Property Name="GhiChu" Type="nvarchar" MaxLength="255" />
+          <Property Name="TrangThai" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PHONG">
+          <Key>
+            <PropertyRef Name="Ma_phong" />
+          </Key>
+          <Property Name="Ma_phong" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Ten_phong" Type="nvarchar" MaxLength="30" />
+          <Property Name="Vi_tri" Type="nvarchar" MaxLength="30" />
+          <Property Name="So_tbi" Type="int" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SINH_VIEN">
+          <Key>
+            <PropertyRef Name="Ma_sv" />
+          </Key>
+          <Property Name="Ma_sv" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Ten_sv" Type="nvarchar" MaxLength="50" />
+          <Property Name="Gioi_tinh" Type="nchar" MaxLength="10" />
+          <Property Name="Ngay_sinh" Type="datetime" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="So_dt" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ma_tk" Type="varchar" MaxLength="6" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="ThayTheThietBi">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ma_mt_tb" Type="int" />
+          <Property Name="Ngay_thay" Type="date" />
+          <Property Name="Ly_do" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="ThietBi">
+          <Key>
+            <PropertyRef Name="Ma_tb" />
+          </Key>
+          <Property Name="Ma_tb" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="Ten_tb" Type="nvarchar" MaxLength="50" />
+          <Property Name="cau_hinh" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ma_loai" Type="varchar" MaxLength="10" />
+          <Property Name="Ma_Nsx" Type="int" />
+          <Property Name="Ma_mt" Type="varchar" MaxLength="6" />
+          <Property Name="Mo_ta" Type="nvarchar" MaxLength="255" />
+          <Property Name="status" Type="int" />
+          <Property Name="isDeleted" Type="int" />
+          <Property Name="Ngay_them" Type="datetime" />
+          <Property Name="StatusRepair" Type="int" />
+        </EntityType>
+        <EntityType Name="UserGroup">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="UserLogin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="UserName" Type="char" MaxLength="50" />
+          <Property Name="PassWord" Type="char" MaxLength="50" />
+          <Property Name="GroupID" Type="varchar" MaxLength="20" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Email" Type="char" MaxLength="50" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <Association Name="Admin_UserLogin">
+          <End Role="UserLogin" Type="Self.UserLogin" Multiplicity="0..1" />
+          <End Role="Admin" Type="Self.Admin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserLogin">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Admin">
+              <PropertyRef Name="Ma_tk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LICH__Ma_lop__7073AF84">
+          <End Role="LOP" Type="Self.LOP" Multiplicity="0..1" />
+          <End Role="LICH" Type="Self.LICH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOP">
+              <PropertyRef Name="Ma_lop" />
+            </Principal>
+            <Dependent Role="LICH">
+              <PropertyRef Name="Ma_lop" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LICH__Ma_phong__7167D3BD">
+          <End Role="PHONG" Type="Self.PHONG" Multiplicity="0..1" />
+          <End Role="LICH" Type="Self.LICH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PHONG">
+              <PropertyRef Name="Ma_phong" />
+            </Principal>
+            <Dependent Role="LICH">
+              <PropertyRef Name="Ma_phong" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Loi_Mayti__Ma_lo__59904A2C">
+          <End Role="Loi" Type="Self.Loi" Multiplicity="0..1" />
+          <End Role="Loi_Maytinh" Type="Self.Loi_Maytinh" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Loi">
+              <PropertyRef Name="Ma_loi" />
+            </Principal>
+            <Dependent Role="Loi_Maytinh">
+              <PropertyRef Name="Ma_loi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Loi_Mayti__Ma_tb__589C25F3">
+          <End Role="ThietBi" Type="Self.ThietBi" Multiplicity="0..1" />
+          <End Role="Loi_Maytinh" Type="Self.Loi_Maytinh" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ThietBi">
+              <PropertyRef Name="Ma_tb" />
+            </Principal>
+            <Dependent Role="Loi_Maytinh">
+              <PropertyRef Name="Ma_tb" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LOP__Ma_gv__46E78A0C">
+          <End Role="GIAO_VIEN" Type="Self.GIAO_VIEN" Multiplicity="0..1" />
+          <End Role="LOP" Type="Self.LOP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GIAO_VIEN">
+              <PropertyRef Name="Ma_gv" />
+            </Principal>
+            <Dependent Role="LOP">
+              <PropertyRef Name="Ma_gv" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LOP__Ma_mon__47DBAE45">
+          <End Role="MONHOC" Type="Self.MONHOC" Multiplicity="0..1" />
+          <End Role="LOP" Type="Self.LOP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MONHOC">
+              <PropertyRef Name="Ma_mon" />
+            </Principal>
+            <Dependent Role="LOP">
+              <PropertyRef Name="Ma_mon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LOP_SINHV__Ma_lo__5165187F">
+          <End Role="LOP" Type="Self.LOP" Multiplicity="0..1" />
+          <End Role="LOP_SINHVIEN" Type="Self.LOP_SINHVIEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOP">
+              <PropertyRef Name="Ma_lop" />
+            </Principal>
+            <Dependent Role="LOP_SINHVIEN">
+              <PropertyRef Name="Ma_lop" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LOP_SINHV__Ma_sv__52593CB8">
+          <End Role="SINH_VIEN" Type="Self.SINH_VIEN" Multiplicity="0..1" />
+          <End Role="LOP_SINHVIEN" Type="Self.LOP_SINHVIEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SINH_VIEN">
+              <PropertyRef Name="Ma_sv" />
+            </Principal>
+            <Dependent Role="LOP_SINHVIEN">
+              <PropertyRef Name="Ma_sv" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MayTinh__Ma_phon__6BAEFA67">
+          <End Role="PHONG" Type="Self.PHONG" Multiplicity="0..1" />
+          <End Role="MayTinh" Type="Self.MayTinh" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PHONG">
+              <PropertyRef Name="Ma_phong" />
+            </Principal>
+            <Dependent Role="MayTinh">
+              <PropertyRef Name="Ma_phong" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MONHOC__Ma_khoa__440B1D61">
+          <End Role="Khoa" Type="Self.Khoa" Multiplicity="0..1" />
+          <End Role="MONHOC" Type="Self.MONHOC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Khoa">
+              <PropertyRef Name="Ma_khoa" />
+            </Principal>
+            <Dependent Role="MONHOC">
+              <PropertyRef Name="Ma_khoa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PhieuDang__Ma_gv__797309D9">
+          <End Role="GIAO_VIEN" Type="Self.GIAO_VIEN" Multiplicity="0..1" />
+          <End Role="PhieuDangKyDayBu" Type="Self.PhieuDangKyDayBu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GIAO_VIEN">
+              <PropertyRef Name="Ma_gv" />
+            </Principal>
+            <Dependent Role="PhieuDangKyDayBu">
+              <PropertyRef Name="Ma_gv" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PhieuDang__Ma_lo__787EE5A0">
+          <End Role="LOP" Type="Self.LOP" Multiplicity="0..1" />
+          <End Role="PhieuDangKyDayBu" Type="Self.PhieuDangKyDayBu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOP">
+              <PropertyRef Name="Ma_lop" />
+            </Principal>
+            <Dependent Role="PhieuDangKyDayBu">
+              <PropertyRef Name="Ma_lop" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PhieuDang__Ma_ph__75A278F5">
+          <End Role="PHONG" Type="Self.PHONG" Multiplicity="0..1" />
+          <End Role="PhieuDangKyMuonMay" Type="Self.PhieuDangKyMuonMay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PHONG">
+              <PropertyRef Name="Ma_phong" />
+            </Principal>
+            <Dependent Role="PhieuDangKyMuonMay">
+              <PropertyRef Name="Ma_phong" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PhieuDang__Ma_ph__7A672E12">
+          <End Role="PHONG" Type="Self.PHONG" Multiplicity="0..1" />
+          <End Role="PhieuDangKyDayBu" Type="Self.PhieuDangKyDayBu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PHONG">
+              <PropertyRef Name="Ma_phong" />
+            </Principal>
+            <Dependent Role="PhieuDangKyDayBu">
+              <PropertyRef Name="Ma_phong" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PhieuDang__Ma_sv__74AE54BC">
+          <End Role="SINH_VIEN" Type="Self.SINH_VIEN" Multiplicity="0..1" />
+          <End Role="PhieuDangKyMuonMay" Type="Self.PhieuDangKyMuonMay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SINH_VIEN">
+              <PropertyRef Name="Ma_sv" />
+            </Principal>
+            <Dependent Role="PhieuDangKyMuonMay">
+              <PropertyRef Name="Ma_sv" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ThayTheTh__Ma_mt__71D1E811">
+          <End Role="MayTinh_ThietBi" Type="Self.MayTinh_ThietBi" Multiplicity="0..1" />
+          <End Role="ThayTheThietBi" Type="Self.ThayTheThietBi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MayTinh_ThietBi">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ThayTheThietBi">
+              <PropertyRef Name="Ma_mt_tb" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ThietBi__Ma_loai__39237A9A">
+          <End Role="LoaiThietBi" Type="Self.LoaiThietBi" Multiplicity="0..1" />
+          <End Role="ThietBi" Type="Self.ThietBi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiThietBi">
+              <PropertyRef Name="Ma_loai" />
+            </Principal>
+            <Dependent Role="ThietBi">
+              <PropertyRef Name="Ma_loai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ThietBi__Ma_Nsx__3A179ED3">
+          <End Role="Brand" Type="Self.Brand" Multiplicity="0..1" />
+          <End Role="ThietBi" Type="Self.ThietBi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brand">
+              <PropertyRef Name="BrandID" />
+            </Principal>
+            <Dependent Role="ThietBi">
+              <PropertyRef Name="Ma_Nsx" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Credential_UserGroup">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="Credential" Type="Self.Credential" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Credential">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Credential_UserGroup1">
+          <End Role="UserGroup" Type="Self.UserGroup" Multiplicity="1" />
+          <End Role="Credential" Type="Self.Credential" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserGroup">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Credential">
+              <PropertyRef Name="UserGroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Giang_Vien_UserLogin">
+          <End Role="UserLogin" Type="Self.UserLogin" Multiplicity="0..1" />
+          <End Role="GIAO_VIEN" Type="Self.GIAO_VIEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserLogin">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GIAO_VIEN">
+              <PropertyRef Name="Ma_tk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GIAO_VIEN_KHOA">
+          <End Role="Khoa" Type="Self.Khoa" Multiplicity="0..1" />
+          <End Role="GIAO_VIEN" Type="Self.GIAO_VIEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Khoa">
+              <PropertyRef Name="Ma_khoa" />
+            </Principal>
+            <Dependent Role="GIAO_VIEN">
+              <PropertyRef Name="Ma_khoa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_History_Computer">
+          <End Role="MayTinh" Type="Self.MayTinh" Multiplicity="0..1" />
+          <End Role="History" Type="Self.History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MayTinh">
+              <PropertyRef Name="Ma_mt" />
+            </Principal>
+            <Dependent Role="History">
+              <PropertyRef Name="ComputerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MayTinh_Hang">
+          <End Role="Hang" Type="Self.Hang" Multiplicity="0..1" />
+          <End Role="MayTinh" Type="Self.MayTinh" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hang">
+              <PropertyRef Name="Ma_hang" />
+            </Principal>
+            <Dependent Role="MayTinh">
+              <PropertyRef Name="Brand" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MayTinh_ThietBi_MayTinh">
+          <End Role="MayTinh" Type="Self.MayTinh" Multiplicity="0..1" />
+          <End Role="MayTinh_ThietBi" Type="Self.MayTinh_ThietBi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MayTinh">
+              <PropertyRef Name="Ma_mt" />
+            </Principal>
+            <Dependent Role="MayTinh_ThietBi">
+              <PropertyRef Name="Ma_mt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MayTinh_ThietBi_ThietBi">
+          <End Role="ThietBi" Type="Self.ThietBi" Multiplicity="0..1" />
+          <End Role="MayTinh_ThietBi" Type="Self.MayTinh_ThietBi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ThietBi">
+              <PropertyRef Name="Ma_tb" />
+            </Principal>
+            <Dependent Role="MayTinh_ThietBi">
+              <PropertyRef Name="Ma_tb" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SinhVien_UserLogin">
+          <End Role="UserLogin" Type="Self.UserLogin" Multiplicity="0..1" />
+          <End Role="SINH_VIEN" Type="Self.SINH_VIEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserLogin">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SINH_VIEN">
+              <PropertyRef Name="Ma_tk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserLogin_UserGroup">
+          <End Role="UserGroup" Type="Self.UserGroup" Multiplicity="0..1" />
+          <End Role="UserLogin" Type="Self.UserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserGroup">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserLogin">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Loi_Maytinh2">
+          <End Role="MayTinh" Type="Self.MayTinh" Multiplicity="0..1" />
+          <End Role="Loi_Maytinh" Type="Self.Loi_Maytinh" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MayTinh">
+              <PropertyRef Name="Ma_mt" />
+            </Principal>
+            <Dependent Role="Loi_Maytinh">
+              <PropertyRef Name="Ma_mt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="auto_idLI" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar" />
+        <Function Name="auto_idMT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar" />
+        <Function Name="auto_idTB" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar" />
+        <Function Name="auto_idUserLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar" />
+        <Function Name="CheckComputerDeviceExistence" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Ma_mt" Type="varchar" Mode="In" />
+          <Parameter Name="Ma_tb" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="DeleteComputer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ComputerCode" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="DeleteComputerDevice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Ma_mt" Type="nvarchar" Mode="In" />
+          <Parameter Name="Ma_tb" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="DeleteDevice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Ma_tb" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="DeleteScheduleTest" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="DeviceById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Ma_tb" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="GetComputerCountDeviceTypes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Ma_mt" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetComputerRepairHistory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Ma_mt" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetComputerStatistics" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetDevicesOfComputer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Ma_mt" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetDevicesWithRoom" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetScheduleWithDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="InsertComputer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DeviceName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Configuration" Type="nvarchar" Mode="In" />
+          <Parameter Name="RoomID" Type="nchar" Mode="In" />
+          <Parameter Name="Status" Type="int" Mode="In" />
+          <Parameter Name="DateOfPurchase" Type="datetime" Mode="In" />
+          <Parameter Name="SupplierId" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="InsertDevice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Ten_tb" Type="nvarchar" Mode="In" />
+          <Parameter Name="Ma_loai" Type="varchar" Mode="In" />
+          <Parameter Name="Ma_nha_san_xuat" Type="int" Mode="In" />
+          <Parameter Name="Ma_tinh_trang" Type="int" Mode="In" />
+          <Parameter Name="Mo_ta" Type="nvarchar" Mode="In" />
+          <Parameter Name="cau_hinh" Type="nvarchar" Mode="In" />
+          <Parameter Name="Ngay_them" Type="datetime" Mode="In" />
+          <Parameter Name="Ma_mt" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="InsertOrUpdateDevice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Ma_mt" Type="varchar" Mode="In" />
+          <Parameter Name="Ma_tb" Type="varchar" Mode="In" />
+          <Parameter Name="Ngay_them" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="InsertScheduleTest" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Class" Type="varchar" Mode="In" />
+          <Parameter Name="Room" Type="nchar" Mode="In" />
+          <Parameter Name="Tuan" Type="nchar" Mode="In" />
+          <Parameter Name="Thu" Type="nvarchar" Mode="In" />
+          <Parameter Name="Tiet_bd" Type="int" Mode="In" />
+          <Parameter Name="Tiet_kt" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ReturnComputerDevice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ComputerCode" Type="varchar" Mode="In" />
+          <Parameter Name="DeviceCode" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SeachComputerDevice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SeachDeviceOfComputer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ma_loai" Type="varchar" Mode="In" />
+          <Parameter Name="ma_mt" Type="varchar" Mode="In" />
+          <Parameter Name="status" Type="int" Mode="In" />
+          <Parameter Name="brand" Type="int" Mode="In" />
+          <Parameter Name="deviceCode" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SearchComputer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BrandId" Type="varchar" Mode="In" />
+          <Parameter Name="RoomId" Type="nchar" Mode="In" />
+          <Parameter Name="Status" Type="int" Mode="In" />
+          <Parameter Name="ComputerCode" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SearchDevice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SearchDevice2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="status" Type="int" Mode="In" />
+          <Parameter Name="devicetype" Type="int" Mode="In" />
+          <Parameter Name="guarantee" Type="int" Mode="In" />
+          <Parameter Name="projectid" Type="int" Mode="In" />
+          <Parameter Name="devicecode" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SearchDevice3" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SearchDevices" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ma_loai" Type="varchar" Mode="In" />
+          <Parameter Name="ma_mt" Type="varchar" Mode="In" />
+          <Parameter Name="status" Type="int" Mode="In" />
+          <Parameter Name="brand" Type="int" Mode="In" />
+          <Parameter Name="deviceCode" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SearchProject" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="managerProject" Type="int" Mode="In" />
+          <Parameter Name="status" Type="int" Mode="In" />
+          <Parameter Name="TypeProject" Type="int" Mode="In" />
+          <Parameter Name="ProjectSymbol" Type="nchar" Mode="In" />
+        </Function>
+        <Function Name="SelectDevicesByCategoryID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CategoryID" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="StatisticalDeviceByBrand" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="UpdateComputer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="DeviceName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Configuration" Type="nvarchar" Mode="In" />
+          <Parameter Name="RoomID" Type="nchar" Mode="In" />
+          <Parameter Name="OldRoomID" Type="nchar" Mode="In" />
+          <Parameter Name="Status" Type="int" Mode="In" />
+          <Parameter Name="SupplierId" Type="varchar" Mode="In" />
+          <Parameter Name="ComputerCode" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="UpdateDevice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Ma_tb" Type="varchar" Mode="In" />
+          <Parameter Name="Ten_tb" Type="nvarchar" Mode="In" />
+          <Parameter Name="Ma_loai" Type="varchar" Mode="In" />
+          <Parameter Name="Ma_nha_san_xuat" Type="int" Mode="In" />
+          <Parameter Name="Ma_tinh_trang" Type="int" Mode="In" />
+          <Parameter Name="Mo_ta" Type="nvarchar" Mode="In" />
+          <Parameter Name="cau_hinh" Type="nvarchar" Mode="In" />
+          <Parameter Name="Ngay_them" Type="datetime" Mode="In" />
+          <Parameter Name="Ma_mt" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="UpdateScheduleTest" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="varchar" Mode="In" />
+          <Parameter Name="Class" Type="varchar" Mode="In" />
+          <Parameter Name="Room" Type="nchar" Mode="In" />
+          <Parameter Name="Tuan" Type="nchar" Mode="In" />
+          <Parameter Name="Thu" Type="nvarchar" Mode="In" />
+          <Parameter Name="Tiet_bd" Type="int" Mode="In" />
+          <Parameter Name="Tiet_kt" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="Do_An_Phan_MemModelStoreContainer">
+          <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Brand" EntityType="Self.Brand" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Credential" EntityType="Self.Credential" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GIAO_VIEN" EntityType="Self.GIAO_VIEN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hang" EntityType="Self.Hang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="History" EntityType="Self.History" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Khoa" EntityType="Self.Khoa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LICH" EntityType="Self.LICH" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoaiThietBi" EntityType="Self.LoaiThietBi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Loi" EntityType="Self.Loi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Loi_Maytinh" EntityType="Self.Loi_Maytinh" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOP" EntityType="Self.LOP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOP_SINHVIEN" EntityType="Self.LOP_SINHVIEN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MayTinh" EntityType="Self.MayTinh" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MayTinh_ThietBi" EntityType="Self.MayTinh_ThietBi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MONHOC" EntityType="Self.MONHOC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PhieuDangKyDayBu" EntityType="Self.PhieuDangKyDayBu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PhieuDangKyMuonMay" EntityType="Self.PhieuDangKyMuonMay" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PHONG" EntityType="Self.PHONG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SINH_VIEN" EntityType="Self.SINH_VIEN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ThayTheThietBi" EntityType="Self.ThayTheThietBi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ThietBi" EntityType="Self.ThietBi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserGroup" EntityType="Self.UserGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserLogin" EntityType="Self.UserLogin" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="Admin_UserLogin" Association="Self.Admin_UserLogin">
+            <End Role="UserLogin" EntitySet="UserLogin" />
+            <End Role="Admin" EntitySet="Admin" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LICH__Ma_lop__7073AF84" Association="Self.FK__LICH__Ma_lop__7073AF84">
+            <End Role="LOP" EntitySet="LOP" />
+            <End Role="LICH" EntitySet="LICH" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LICH__Ma_phong__7167D3BD" Association="Self.FK__LICH__Ma_phong__7167D3BD">
+            <End Role="PHONG" EntitySet="PHONG" />
+            <End Role="LICH" EntitySet="LICH" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Loi_Mayti__Ma_lo__59904A2C" Association="Self.FK__Loi_Mayti__Ma_lo__59904A2C">
+            <End Role="Loi" EntitySet="Loi" />
+            <End Role="Loi_Maytinh" EntitySet="Loi_Maytinh" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Loi_Mayti__Ma_tb__589C25F3" Association="Self.FK__Loi_Mayti__Ma_tb__589C25F3">
+            <End Role="ThietBi" EntitySet="ThietBi" />
+            <End Role="Loi_Maytinh" EntitySet="Loi_Maytinh" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LOP__Ma_gv__46E78A0C" Association="Self.FK__LOP__Ma_gv__46E78A0C">
+            <End Role="GIAO_VIEN" EntitySet="GIAO_VIEN" />
+            <End Role="LOP" EntitySet="LOP" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LOP__Ma_mon__47DBAE45" Association="Self.FK__LOP__Ma_mon__47DBAE45">
+            <End Role="MONHOC" EntitySet="MONHOC" />
+            <End Role="LOP" EntitySet="LOP" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LOP_SINHV__Ma_lo__5165187F" Association="Self.FK__LOP_SINHV__Ma_lo__5165187F">
+            <End Role="LOP" EntitySet="LOP" />
+            <End Role="LOP_SINHVIEN" EntitySet="LOP_SINHVIEN" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LOP_SINHV__Ma_sv__52593CB8" Association="Self.FK__LOP_SINHV__Ma_sv__52593CB8">
+            <End Role="SINH_VIEN" EntitySet="SINH_VIEN" />
+            <End Role="LOP_SINHVIEN" EntitySet="LOP_SINHVIEN" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MayTinh__Ma_phon__6BAEFA67" Association="Self.FK__MayTinh__Ma_phon__6BAEFA67">
+            <End Role="PHONG" EntitySet="PHONG" />
+            <End Role="MayTinh" EntitySet="MayTinh" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MONHOC__Ma_khoa__440B1D61" Association="Self.FK__MONHOC__Ma_khoa__440B1D61">
+            <End Role="Khoa" EntitySet="Khoa" />
+            <End Role="MONHOC" EntitySet="MONHOC" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PhieuDang__Ma_gv__797309D9" Association="Self.FK__PhieuDang__Ma_gv__797309D9">
+            <End Role="GIAO_VIEN" EntitySet="GIAO_VIEN" />
+            <End Role="PhieuDangKyDayBu" EntitySet="PhieuDangKyDayBu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PhieuDang__Ma_lo__787EE5A0" Association="Self.FK__PhieuDang__Ma_lo__787EE5A0">
+            <End Role="LOP" EntitySet="LOP" />
+            <End Role="PhieuDangKyDayBu" EntitySet="PhieuDangKyDayBu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PhieuDang__Ma_ph__75A278F5" Association="Self.FK__PhieuDang__Ma_ph__75A278F5">
+            <End Role="PHONG" EntitySet="PHONG" />
+            <End Role="PhieuDangKyMuonMay" EntitySet="PhieuDangKyMuonMay" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PhieuDang__Ma_ph__7A672E12" Association="Self.FK__PhieuDang__Ma_ph__7A672E12">
+            <End Role="PHONG" EntitySet="PHONG" />
+            <End Role="PhieuDangKyDayBu" EntitySet="PhieuDangKyDayBu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PhieuDang__Ma_sv__74AE54BC" Association="Self.FK__PhieuDang__Ma_sv__74AE54BC">
+            <End Role="SINH_VIEN" EntitySet="SINH_VIEN" />
+            <End Role="PhieuDangKyMuonMay" EntitySet="PhieuDangKyMuonMay" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ThayTheTh__Ma_mt__71D1E811" Association="Self.FK__ThayTheTh__Ma_mt__71D1E811">
+            <End Role="MayTinh_ThietBi" EntitySet="MayTinh_ThietBi" />
+            <End Role="ThayTheThietBi" EntitySet="ThayTheThietBi" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ThietBi__Ma_loai__39237A9A" Association="Self.FK__ThietBi__Ma_loai__39237A9A">
+            <End Role="LoaiThietBi" EntitySet="LoaiThietBi" />
+            <End Role="ThietBi" EntitySet="ThietBi" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ThietBi__Ma_Nsx__3A179ED3" Association="Self.FK__ThietBi__Ma_Nsx__3A179ED3">
+            <End Role="Brand" EntitySet="Brand" />
+            <End Role="ThietBi" EntitySet="ThietBi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Credential_UserGroup" Association="Self.FK_Credential_UserGroup">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Credential" EntitySet="Credential" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Credential_UserGroup1" Association="Self.FK_Credential_UserGroup1">
+            <End Role="UserGroup" EntitySet="UserGroup" />
+            <End Role="Credential" EntitySet="Credential" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Giang_Vien_UserLogin" Association="Self.FK_Giang_Vien_UserLogin">
+            <End Role="UserLogin" EntitySet="UserLogin" />
+            <End Role="GIAO_VIEN" EntitySet="GIAO_VIEN" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GIAO_VIEN_KHOA" Association="Self.FK_GIAO_VIEN_KHOA">
+            <End Role="Khoa" EntitySet="Khoa" />
+            <End Role="GIAO_VIEN" EntitySet="GIAO_VIEN" />
+          </AssociationSet>
+          <AssociationSet Name="FK_History_Computer" Association="Self.FK_History_Computer">
+            <End Role="MayTinh" EntitySet="MayTinh" />
+            <End Role="History" EntitySet="History" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MayTinh_Hang" Association="Self.FK_MayTinh_Hang">
+            <End Role="Hang" EntitySet="Hang" />
+            <End Role="MayTinh" EntitySet="MayTinh" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MayTinh_ThietBi_MayTinh" Association="Self.FK_MayTinh_ThietBi_MayTinh">
+            <End Role="MayTinh" EntitySet="MayTinh" />
+            <End Role="MayTinh_ThietBi" EntitySet="MayTinh_ThietBi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MayTinh_ThietBi_ThietBi" Association="Self.FK_MayTinh_ThietBi_ThietBi">
+            <End Role="ThietBi" EntitySet="ThietBi" />
+            <End Role="MayTinh_ThietBi" EntitySet="MayTinh_ThietBi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SinhVien_UserLogin" Association="Self.FK_SinhVien_UserLogin">
+            <End Role="UserLogin" EntitySet="UserLogin" />
+            <End Role="SINH_VIEN" EntitySet="SINH_VIEN" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserLogin_UserGroup" Association="Self.FK_UserLogin_UserGroup">
+            <End Role="UserGroup" EntitySet="UserGroup" />
+            <End Role="UserLogin" EntitySet="UserLogin" />
+          </AssociationSet>
+          <AssociationSet Name="Loi_Maytinh2" Association="Self.Loi_Maytinh2">
+            <End Role="MayTinh" EntitySet="MayTinh" />
+            <End Role="Loi_Maytinh" EntitySet="Loi_Maytinh" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Do_An_Phan_MemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="Ma_admin" />
+          </Key>
+          <Property Name="Ma_admin" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Ten_admin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ma_tk" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="UserLogin" Relationship="Self.Admin_UserLogin" FromRole="Admin" ToRole="UserLogin" />
+        </EntityType>
+        <EntityType Name="Brand">
+          <Key>
+            <PropertyRef Name="BrandID" />
+          </Key>
+          <Property Name="BrandID" Type="Int32" Nullable="false" />
+          <Property Name="BrandName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DeviceType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ThietBis" Relationship="Self.FK__ThietBi__Ma_Nsx__3A179ED3" FromRole="Brand" ToRole="ThietBi" />
+        </EntityType>
+        <EntityType Name="Credential">
+          <Key>
+            <PropertyRef Name="UserGroupID" />
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="UserGroupID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RoleID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_Credential_UserGroup" FromRole="Credential" ToRole="Role" />
+          <NavigationProperty Name="UserGroup" Relationship="Self.FK_Credential_UserGroup1" FromRole="Credential" ToRole="UserGroup" />
+        </EntityType>
+        <EntityType Name="GIAO_VIEN">
+          <Key>
+            <PropertyRef Name="Ma_gv" />
+          </Key>
+          <Property Name="Ma_gv" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Ten_gv" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Gioi_tinh" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Ngaysinh" Type="DateTime" Precision="3" />
+          <Property Name="Ma_khoa" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Bo_mon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Trinh_do" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="So_dt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ma_tk" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="LOPs" Relationship="Self.FK__LOP__Ma_gv__46E78A0C" FromRole="GIAO_VIEN" ToRole="LOP" />
+          <NavigationProperty Name="PhieuDangKyDayBus" Relationship="Self.FK__PhieuDang__Ma_gv__797309D9" FromRole="GIAO_VIEN" ToRole="PhieuDangKyDayBu" />
+          <NavigationProperty Name="UserLogin" Relationship="Self.FK_Giang_Vien_UserLogin" FromRole="GIAO_VIEN" ToRole="UserLogin" />
+          <NavigationProperty Name="Khoa" Relationship="Self.FK_GIAO_VIEN_KHOA" FromRole="GIAO_VIEN" ToRole="Khoa" />
+        </EntityType>
+        <EntityType Name="Hang">
+          <Key>
+            <PropertyRef Name="Ma_hang" />
+          </Key>
+          <Property Name="Ma_hang" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ten_hang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MayTinhs" Relationship="Self.FK_MayTinh_Hang" FromRole="Hang" ToRole="MayTinh" />
+        </EntityType>
+        <EntityType Name="History">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ComputerId" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="Int32" />
+          <NavigationProperty Name="MayTinh" Relationship="Self.FK_History_Computer" FromRole="History" ToRole="MayTinh" />
+        </EntityType>
+        <EntityType Name="Khoa">
+          <Key>
+            <PropertyRef Name="Ma_khoa" />
+          </Key>
+          <Property Name="Ma_khoa" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Ten_khoa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mo_ta" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="GIAO_VIEN" Relationship="Self.FK_GIAO_VIEN_KHOA" FromRole="Khoa" ToRole="GIAO_VIEN" />
+          <NavigationProperty Name="MONHOCs" Relationship="Self.FK__MONHOC__Ma_khoa__440B1D61" FromRole="Khoa" ToRole="MONHOC" />
+        </EntityType>
+        <EntityType Name="LICH">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ma_lop" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Ma_phong" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Tuan" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Thu" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Tiet_bd" Type="Int32" />
+          <Property Name="Tiet_kt" Type="Int32" />
+          <NavigationProperty Name="LOP" Relationship="Self.FK__LICH__Ma_lop__7073AF84" FromRole="LICH" ToRole="LOP" />
+          <NavigationProperty Name="PHONG" Relationship="Self.FK__LICH__Ma_phong__7167D3BD" FromRole="LICH" ToRole="PHONG" />
+        </EntityType>
+        <EntityType Name="LoaiThietBi">
+          <Key>
+            <PropertyRef Name="Ma_loai" />
+          </Key>
+          <Property Name="Ma_loai" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ten_loai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mo_ta" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ThietBis" Relationship="Self.FK__ThietBi__Ma_loai__39237A9A" FromRole="LoaiThietBi" ToRole="ThietBi" />
+        </EntityType>
+        <EntityType Name="Loi">
+          <Key>
+            <PropertyRef Name="Ma_loi" />
+          </Key>
+          <Property Name="Ma_loi" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Ten_loi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mo_ta" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Loi_Maytinh" Relationship="Self.FK__Loi_Mayti__Ma_lo__59904A2C" FromRole="Loi" ToRole="Loi_Maytinh" />
+        </EntityType>
+        <EntityType Name="Loi_Maytinh">
+          <Key>
+            <PropertyRef Name="Ma_loi_maytinh" />
+          </Key>
+          <Property Name="Ma_loi_maytinh" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ma_mt" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="Ma_loi" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Ngay_bao_loi" Type="DateTime" Precision="0" />
+          <Property Name="Noi_dung" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Tinh_trang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ma_tb" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Loi" Relationship="Self.FK__Loi_Mayti__Ma_lo__59904A2C" FromRole="Loi_Maytinh" ToRole="Loi" />
+          <NavigationProperty Name="ThietBi" Relationship="Self.FK__Loi_Mayti__Ma_tb__589C25F3" FromRole="Loi_Maytinh" ToRole="ThietBi" />
+          <NavigationProperty Name="MayTinh" Relationship="Self.Loi_Maytinh2" FromRole="Loi_Maytinh" ToRole="MayTinh" />
+        </EntityType>
+        <EntityType Name="LOP">
+          <Key>
+            <PropertyRef Name="Ma_lop" />
+          </Key>
+          <Property Name="Ma_lop" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Ten_lop" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ma_gv" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Ma_mon" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Hoc_ky" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="So_sv" Type="Int32" />
+          <NavigationProperty Name="GIAO_VIEN" Relationship="Self.FK__LOP__Ma_gv__46E78A0C" FromRole="LOP" ToRole="GIAO_VIEN" />
+          <NavigationProperty Name="LICHes" Relationship="Self.FK__LICH__Ma_lop__7073AF84" FromRole="LOP" ToRole="LICH" />
+          <NavigationProperty Name="MONHOC" Relationship="Self.FK__LOP__Ma_mon__47DBAE45" FromRole="LOP" ToRole="MONHOC" />
+          <NavigationProperty Name="LOP_SINHVIEN" Relationship="Self.FK__LOP_SINHV__Ma_lo__5165187F" FromRole="LOP" ToRole="LOP_SINHVIEN" />
+          <NavigationProperty Name="PhieuDangKyDayBus" Relationship="Self.FK__PhieuDang__Ma_lo__787EE5A0" FromRole="LOP" ToRole="PhieuDangKyDayBu" />
+        </EntityType>
+        <EntityType Name="LOP_SINHVIEN">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ma_lop" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Ma_sv" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="LOP" Relationship="Self.FK__LOP_SINHV__Ma_lo__5165187F" FromRole="LOP_SINHVIEN" ToRole="LOP" />
+          <NavigationProperty Name="SINH_VIEN" Relationship="Self.FK__LOP_SINHV__Ma_sv__52593CB8" FromRole="LOP_SINHVIEN" ToRole="SINH_VIEN" />
+        </EntityType>
+        <EntityType Name="MayTinh">
+          <Key>
+            <PropertyRef Name="Ma_mt" />
+          </Key>
+          <Property Name="Ma_mt" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ten_mt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Cau_hinh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ma_phong" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="status" Type="Int32" />
+          <Property Name="Ngay_them" Type="DateTime" Precision="3" />
+          <Property Name="Brand" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Hang" Relationship="Self.FK_MayTinh_Hang" FromRole="MayTinh" ToRole="Hang" />
+          <NavigationProperty Name="Histories" Relationship="Self.FK_History_Computer" FromRole="MayTinh" ToRole="History" />
+          <NavigationProperty Name="Loi_Maytinh" Relationship="Self.Loi_Maytinh2" FromRole="MayTinh" ToRole="Loi_Maytinh" />
+          <NavigationProperty Name="PHONG" Relationship="Self.FK__MayTinh__Ma_phon__6BAEFA67" FromRole="MayTinh" ToRole="PHONG" />
+          <NavigationProperty Name="MayTinh_ThietBi" Relationship="Self.FK_MayTinh_ThietBi_MayTinh" FromRole="MayTinh" ToRole="MayTinh_ThietBi" />
+        </EntityType>
+        <EntityType Name="MayTinh_ThietBi">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ma_mt" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="Ma_tb" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="TimeModified" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="MayTinh" Relationship="Self.FK_MayTinh_ThietBi_MayTinh" FromRole="MayTinh_ThietBi" ToRole="MayTinh" />
+          <NavigationProperty Name="ThayTheThietBis" Relationship="Self.FK__ThayTheTh__Ma_mt__71D1E811" FromRole="MayTinh_ThietBi" ToRole="ThayTheThietBi" />
+          <NavigationProperty Name="ThietBi" Relationship="Self.FK_MayTinh_ThietBi_ThietBi" FromRole="MayTinh_ThietBi" ToRole="ThietBi" />
+        </EntityType>
+        <EntityType Name="MONHOC">
+          <Key>
+            <PropertyRef Name="Ma_mon" />
+          </Key>
+          <Property Name="Ma_mon" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Ten_mon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="So_tinchi" Type="Double" />
+          <Property Name="Ma_khoa" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Khoa" Relationship="Self.FK__MONHOC__Ma_khoa__440B1D61" FromRole="MONHOC" ToRole="Khoa" />
+          <NavigationProperty Name="LOPs" Relationship="Self.FK__LOP__Ma_mon__47DBAE45" FromRole="MONHOC" ToRole="LOP" />
+        </EntityType>
+        <EntityType Name="PhieuDangKyDayBu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ma_lop" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Ma_gv" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Thu" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Tu_tiet" Type="Int32" />
+          <Property Name="Den_tiet" Type="Int32" />
+          <Property Name="Ma_phong" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="NgayDangKy" Type="DateTime" Precision="0" />
+          <Property Name="NgayDay" Type="DateTime" Precision="0" />
+          <Property Name="NgayDuyet" Type="DateTime" Precision="0" />
+          <Property Name="GhiChu" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="GIAO_VIEN" Relationship="Self.FK__PhieuDang__Ma_gv__797309D9" FromRole="PhieuDangKyDayBu" ToRole="GIAO_VIEN" />
+          <NavigationProperty Name="LOP" Relationship="Self.FK__PhieuDang__Ma_lo__787EE5A0" FromRole="PhieuDangKyDayBu" ToRole="LOP" />
+          <NavigationProperty Name="PHONG" Relationship="Self.FK__PhieuDang__Ma_ph__7A672E12" FromRole="PhieuDangKyDayBu" ToRole="PHONG" />
+        </EntityType>
+        <EntityType Name="PhieuDangKyMuonMay">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ma_sv" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Thu" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Tu_tiet" Type="Int32" />
+          <Property Name="Den_tiet" Type="Int32" />
+          <Property Name="Ma_phong" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="NgayDangKy" Type="DateTime" Precision="0" />
+          <Property Name="NgayMuon" Type="DateTime" Precision="0" />
+          <Property Name="NgayDuyet" Type="DateTime" Precision="0" />
+          <Property Name="GhiChu" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PHONG" Relationship="Self.FK__PhieuDang__Ma_ph__75A278F5" FromRole="PhieuDangKyMuonMay" ToRole="PHONG" />
+          <NavigationProperty Name="SINH_VIEN" Relationship="Self.FK__PhieuDang__Ma_sv__74AE54BC" FromRole="PhieuDangKyMuonMay" ToRole="SINH_VIEN" />
+        </EntityType>
+        <EntityType Name="PHONG">
+          <Key>
+            <PropertyRef Name="Ma_phong" />
+          </Key>
+          <Property Name="Ma_phong" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Ten_phong" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Vi_tri" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="So_tbi" Type="Int32" />
+          <NavigationProperty Name="LICHes" Relationship="Self.FK__LICH__Ma_phong__7167D3BD" FromRole="PHONG" ToRole="LICH" />
+          <NavigationProperty Name="MayTinhs" Relationship="Self.FK__MayTinh__Ma_phon__6BAEFA67" FromRole="PHONG" ToRole="MayTinh" />
+          <NavigationProperty Name="PhieuDangKyDayBus" Relationship="Self.FK__PhieuDang__Ma_ph__7A672E12" FromRole="PHONG" ToRole="PhieuDangKyDayBu" />
+          <NavigationProperty Name="PhieuDangKyMuonMays" Relationship="Self.FK__PhieuDang__Ma_ph__75A278F5" FromRole="PHONG" ToRole="PhieuDangKyMuonMay" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Credentials" Relationship="Self.FK_Credential_UserGroup" FromRole="Role" ToRole="Credential" />
+        </EntityType>
+        <EntityType Name="SINH_VIEN">
+          <Key>
+            <PropertyRef Name="Ma_sv" />
+          </Key>
+          <Property Name="Ma_sv" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Ten_sv" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Gioi_tinh" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Ngay_sinh" Type="DateTime" Precision="3" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="So_dt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ma_tk" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="LOP_SINHVIEN" Relationship="Self.FK__LOP_SINHV__Ma_sv__52593CB8" FromRole="SINH_VIEN" ToRole="LOP_SINHVIEN" />
+          <NavigationProperty Name="PhieuDangKyMuonMays" Relationship="Self.FK__PhieuDang__Ma_sv__74AE54BC" FromRole="SINH_VIEN" ToRole="PhieuDangKyMuonMay" />
+          <NavigationProperty Name="UserLogin" Relationship="Self.FK_SinhVien_UserLogin" FromRole="SINH_VIEN" ToRole="UserLogin" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="ThayTheThietBi">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ma_mt_tb" Type="Int32" />
+          <Property Name="Ngay_thay" Type="DateTime" Precision="0" />
+          <Property Name="Ly_do" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MayTinh_ThietBi" Relationship="Self.FK__ThayTheTh__Ma_mt__71D1E811" FromRole="ThayTheThietBi" ToRole="MayTinh_ThietBi" />
+        </EntityType>
+        <EntityType Name="ThietBi">
+          <Key>
+            <PropertyRef Name="Ma_tb" />
+          </Key>
+          <Property Name="Ma_tb" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ten_tb" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cau_hinh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ma_loai" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Ma_Nsx" Type="Int32" />
+          <Property Name="Ma_mt" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="Mo_ta" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="Int32" />
+          <Property Name="isDeleted" Type="Int32" />
+          <Property Name="Ngay_them" Type="DateTime" Precision="3" />
+          <Property Name="StatusRepair" Type="Int32" />
+          <NavigationProperty Name="Brand" Relationship="Self.FK__ThietBi__Ma_Nsx__3A179ED3" FromRole="ThietBi" ToRole="Brand" />
+          <NavigationProperty Name="LoaiThietBi" Relationship="Self.FK__ThietBi__Ma_loai__39237A9A" FromRole="ThietBi" ToRole="LoaiThietBi" />
+          <NavigationProperty Name="Loi_Maytinh" Relationship="Self.FK__Loi_Mayti__Ma_tb__589C25F3" FromRole="ThietBi" ToRole="Loi_Maytinh" />
+          <NavigationProperty Name="MayTinh_ThietBi" Relationship="Self.FK_MayTinh_ThietBi_ThietBi" FromRole="ThietBi" ToRole="MayTinh_ThietBi" />
+        </EntityType>
+        <EntityType Name="UserGroup">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Credentials" Relationship="Self.FK_Credential_UserGroup1" FromRole="UserGroup" ToRole="Credential" />
+          <NavigationProperty Name="UserLogins" Relationship="Self.FK_UserLogin_UserGroup" FromRole="UserGroup" ToRole="UserLogin" />
+        </EntityType>
+        <EntityType Name="UserLogin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="PassWord" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="GroupID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="FullName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="Status" Type="Int32" />
+          <NavigationProperty Name="Admins" Relationship="Self.Admin_UserLogin" FromRole="UserLogin" ToRole="Admin" />
+          <NavigationProperty Name="GIAO_VIEN" Relationship="Self.FK_Giang_Vien_UserLogin" FromRole="UserLogin" ToRole="GIAO_VIEN" />
+          <NavigationProperty Name="SINH_VIEN" Relationship="Self.FK_SinhVien_UserLogin" FromRole="UserLogin" ToRole="SINH_VIEN" />
+          <NavigationProperty Name="UserGroup" Relationship="Self.FK_UserLogin_UserGroup" FromRole="UserLogin" ToRole="UserGroup" />
+        </EntityType>
+        <Association Name="Admin_UserLogin">
+          <End Role="UserLogin" Type="Self.UserLogin" Multiplicity="0..1" />
+          <End Role="Admin" Type="Self.Admin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserLogin">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Admin">
+              <PropertyRef Name="Ma_tk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ThietBi__Ma_Nsx__3A179ED3">
+          <End Role="Brand" Type="Self.Brand" Multiplicity="0..1" />
+          <End Role="ThietBi" Type="Self.ThietBi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brand">
+              <PropertyRef Name="BrandID" />
+            </Principal>
+            <Dependent Role="ThietBi">
+              <PropertyRef Name="Ma_Nsx" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Credential_UserGroup">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="Credential" Type="Self.Credential" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Credential">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Credential_UserGroup1">
+          <End Role="UserGroup" Type="Self.UserGroup" Multiplicity="1" />
+          <End Role="Credential" Type="Self.Credential" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserGroup">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Credential">
+              <PropertyRef Name="UserGroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LOP__Ma_gv__46E78A0C">
+          <End Role="GIAO_VIEN" Type="Self.GIAO_VIEN" Multiplicity="0..1" />
+          <End Role="LOP" Type="Self.LOP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GIAO_VIEN">
+              <PropertyRef Name="Ma_gv" />
+            </Principal>
+            <Dependent Role="LOP">
+              <PropertyRef Name="Ma_gv" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PhieuDang__Ma_gv__797309D9">
+          <End Role="GIAO_VIEN" Type="Self.GIAO_VIEN" Multiplicity="0..1" />
+          <End Role="PhieuDangKyDayBu" Type="Self.PhieuDangKyDayBu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GIAO_VIEN">
+              <PropertyRef Name="Ma_gv" />
+            </Principal>
+            <Dependent Role="PhieuDangKyDayBu">
+              <PropertyRef Name="Ma_gv" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Giang_Vien_UserLogin">
+          <End Role="UserLogin" Type="Self.UserLogin" Multiplicity="0..1" />
+          <End Role="GIAO_VIEN" Type="Self.GIAO_VIEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserLogin">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GIAO_VIEN">
+              <PropertyRef Name="Ma_tk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GIAO_VIEN_KHOA">
+          <End Role="Khoa" Type="Self.Khoa" Multiplicity="0..1" />
+          <End Role="GIAO_VIEN" Type="Self.GIAO_VIEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Khoa">
+              <PropertyRef Name="Ma_khoa" />
+            </Principal>
+            <Dependent Role="GIAO_VIEN">
+              <PropertyRef Name="Ma_khoa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MayTinh_Hang">
+          <End Role="Hang" Type="Self.Hang" Multiplicity="0..1" />
+          <End Role="MayTinh" Type="Self.MayTinh" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hang">
+              <PropertyRef Name="Ma_hang" />
+            </Principal>
+            <Dependent Role="MayTinh">
+              <PropertyRef Name="Brand" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_History_Computer">
+          <End Role="MayTinh" Type="Self.MayTinh" Multiplicity="0..1" />
+          <End Role="History" Type="Self.History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MayTinh">
+              <PropertyRef Name="Ma_mt" />
+            </Principal>
+            <Dependent Role="History">
+              <PropertyRef Name="ComputerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MONHOC__Ma_khoa__440B1D61">
+          <End Role="Khoa" Type="Self.Khoa" Multiplicity="0..1" />
+          <End Role="MONHOC" Type="Self.MONHOC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Khoa">
+              <PropertyRef Name="Ma_khoa" />
+            </Principal>
+            <Dependent Role="MONHOC">
+              <PropertyRef Name="Ma_khoa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LICH__Ma_lop__7073AF84">
+          <End Role="LOP" Type="Self.LOP" Multiplicity="0..1" />
+          <End Role="LICH" Type="Self.LICH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOP">
+              <PropertyRef Name="Ma_lop" />
+            </Principal>
+            <Dependent Role="LICH">
+              <PropertyRef Name="Ma_lop" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LICH__Ma_phong__7167D3BD">
+          <End Role="PHONG" Type="Self.PHONG" Multiplicity="0..1" />
+          <End Role="LICH" Type="Self.LICH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PHONG">
+              <PropertyRef Name="Ma_phong" />
+            </Principal>
+            <Dependent Role="LICH">
+              <PropertyRef Name="Ma_phong" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ThietBi__Ma_loai__39237A9A">
+          <End Role="LoaiThietBi" Type="Self.LoaiThietBi" Multiplicity="0..1" />
+          <End Role="ThietBi" Type="Self.ThietBi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiThietBi">
+              <PropertyRef Name="Ma_loai" />
+            </Principal>
+            <Dependent Role="ThietBi">
+              <PropertyRef Name="Ma_loai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Loi_Mayti__Ma_lo__59904A2C">
+          <End Role="Loi" Type="Self.Loi" Multiplicity="0..1" />
+          <End Role="Loi_Maytinh" Type="Self.Loi_Maytinh" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Loi">
+              <PropertyRef Name="Ma_loi" />
+            </Principal>
+            <Dependent Role="Loi_Maytinh">
+              <PropertyRef Name="Ma_loi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Loi_Mayti__Ma_tb__589C25F3">
+          <End Role="ThietBi" Type="Self.ThietBi" Multiplicity="0..1" />
+          <End Role="Loi_Maytinh" Type="Self.Loi_Maytinh" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ThietBi">
+              <PropertyRef Name="Ma_tb" />
+            </Principal>
+            <Dependent Role="Loi_Maytinh">
+              <PropertyRef Name="Ma_tb" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Loi_Maytinh2">
+          <End Role="MayTinh" Type="Self.MayTinh" Multiplicity="0..1" />
+          <End Role="Loi_Maytinh" Type="Self.Loi_Maytinh" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MayTinh">
+              <PropertyRef Name="Ma_mt" />
+            </Principal>
+            <Dependent Role="Loi_Maytinh">
+              <PropertyRef Name="Ma_mt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LOP__Ma_mon__47DBAE45">
+          <End Role="MONHOC" Type="Self.MONHOC" Multiplicity="0..1" />
+          <End Role="LOP" Type="Self.LOP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MONHOC">
+              <PropertyRef Name="Ma_mon" />
+            </Principal>
+            <Dependent Role="LOP">
+              <PropertyRef Name="Ma_mon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LOP_SINHV__Ma_lo__5165187F">
+          <End Role="LOP" Type="Self.LOP" Multiplicity="0..1" />
+          <End Role="LOP_SINHVIEN" Type="Self.LOP_SINHVIEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOP">
+              <PropertyRef Name="Ma_lop" />
+            </Principal>
+            <Dependent Role="LOP_SINHVIEN">
+              <PropertyRef Name="Ma_lop" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PhieuDang__Ma_lo__787EE5A0">
+          <End Role="LOP" Type="Self.LOP" Multiplicity="0..1" />
+          <End Role="PhieuDangKyDayBu" Type="Self.PhieuDangKyDayBu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOP">
+              <PropertyRef Name="Ma_lop" />
+            </Principal>
+            <Dependent Role="PhieuDangKyDayBu">
+              <PropertyRef Name="Ma_lop" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LOP_SINHV__Ma_sv__52593CB8">
+          <End Role="SINH_VIEN" Type="Self.SINH_VIEN" Multiplicity="0..1" />
+          <End Role="LOP_SINHVIEN" Type="Self.LOP_SINHVIEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SINH_VIEN">
+              <PropertyRef Name="Ma_sv" />
+            </Principal>
+            <Dependent Role="LOP_SINHVIEN">
+              <PropertyRef Name="Ma_sv" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MayTinh__Ma_phon__6BAEFA67">
+          <End Role="PHONG" Type="Self.PHONG" Multiplicity="0..1" />
+          <End Role="MayTinh" Type="Self.MayTinh" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PHONG">
+              <PropertyRef Name="Ma_phong" />
+            </Principal>
+            <Dependent Role="MayTinh">
+              <PropertyRef Name="Ma_phong" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MayTinh_ThietBi_MayTinh">
+          <End Role="MayTinh" Type="Self.MayTinh" Multiplicity="0..1" />
+          <End Role="MayTinh_ThietBi" Type="Self.MayTinh_ThietBi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MayTinh">
+              <PropertyRef Name="Ma_mt" />
+            </Principal>
+            <Dependent Role="MayTinh_ThietBi">
+              <PropertyRef Name="Ma_mt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ThayTheTh__Ma_mt__71D1E811">
+          <End Role="MayTinh_ThietBi" Type="Self.MayTinh_ThietBi" Multiplicity="0..1" />
+          <End Role="ThayTheThietBi" Type="Self.ThayTheThietBi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MayTinh_ThietBi">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ThayTheThietBi">
+              <PropertyRef Name="Ma_mt_tb" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MayTinh_ThietBi_ThietBi">
+          <End Role="ThietBi" Type="Self.ThietBi" Multiplicity="0..1" />
+          <End Role="MayTinh_ThietBi" Type="Self.MayTinh_ThietBi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ThietBi">
+              <PropertyRef Name="Ma_tb" />
+            </Principal>
+            <Dependent Role="MayTinh_ThietBi">
+              <PropertyRef Name="Ma_tb" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PhieuDang__Ma_ph__7A672E12">
+          <End Role="PHONG" Type="Self.PHONG" Multiplicity="0..1" />
+          <End Role="PhieuDangKyDayBu" Type="Self.PhieuDangKyDayBu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PHONG">
+              <PropertyRef Name="Ma_phong" />
+            </Principal>
+            <Dependent Role="PhieuDangKyDayBu">
+              <PropertyRef Name="Ma_phong" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PhieuDang__Ma_ph__75A278F5">
+          <End Role="PHONG" Type="Self.PHONG" Multiplicity="0..1" />
+          <End Role="PhieuDangKyMuonMay" Type="Self.PhieuDangKyMuonMay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PHONG">
+              <PropertyRef Name="Ma_phong" />
+            </Principal>
+            <Dependent Role="PhieuDangKyMuonMay">
+              <PropertyRef Name="Ma_phong" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PhieuDang__Ma_sv__74AE54BC">
+          <End Role="SINH_VIEN" Type="Self.SINH_VIEN" Multiplicity="0..1" />
+          <End Role="PhieuDangKyMuonMay" Type="Self.PhieuDangKyMuonMay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SINH_VIEN">
+              <PropertyRef Name="Ma_sv" />
+            </Principal>
+            <Dependent Role="PhieuDangKyMuonMay">
+              <PropertyRef Name="Ma_sv" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SinhVien_UserLogin">
+          <End Role="UserLogin" Type="Self.UserLogin" Multiplicity="0..1" />
+          <End Role="SINH_VIEN" Type="Self.SINH_VIEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserLogin">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SINH_VIEN">
+              <PropertyRef Name="Ma_tk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserLogin_UserGroup">
+          <End Role="UserGroup" Type="Self.UserGroup" Multiplicity="0..1" />
+          <End Role="UserLogin" Type="Self.UserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserGroup">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserLogin">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Do_An_Phan_MemEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Admins" EntityType="Self.Admin" />
+          <EntitySet Name="Brands" EntityType="Self.Brand" />
+          <EntitySet Name="Credentials" EntityType="Self.Credential" />
+          <EntitySet Name="GIAO_VIEN" EntityType="Self.GIAO_VIEN" />
+          <EntitySet Name="Hangs" EntityType="Self.Hang" />
+          <EntitySet Name="Histories" EntityType="Self.History" />
+          <EntitySet Name="Khoas" EntityType="Self.Khoa" />
+          <EntitySet Name="LICHes" EntityType="Self.LICH" />
+          <EntitySet Name="LoaiThietBis" EntityType="Self.LoaiThietBi" />
+          <EntitySet Name="Lois" EntityType="Self.Loi" />
+          <EntitySet Name="Loi_Maytinh" EntityType="Self.Loi_Maytinh" />
+          <EntitySet Name="LOPs" EntityType="Self.LOP" />
+          <EntitySet Name="LOP_SINHVIEN" EntityType="Self.LOP_SINHVIEN" />
+          <EntitySet Name="MayTinhs" EntityType="Self.MayTinh" />
+          <EntitySet Name="MayTinh_ThietBi" EntityType="Self.MayTinh_ThietBi" />
+          <EntitySet Name="MONHOCs" EntityType="Self.MONHOC" />
+          <EntitySet Name="PhieuDangKyDayBus" EntityType="Self.PhieuDangKyDayBu" />
+          <EntitySet Name="PhieuDangKyMuonMays" EntityType="Self.PhieuDangKyMuonMay" />
+          <EntitySet Name="PHONGs" EntityType="Self.PHONG" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="SINH_VIEN" EntityType="Self.SINH_VIEN" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="ThayTheThietBis" EntityType="Self.ThayTheThietBi" />
+          <EntitySet Name="ThietBis" EntityType="Self.ThietBi" />
+          <EntitySet Name="UserGroups" EntityType="Self.UserGroup" />
+          <EntitySet Name="UserLogins" EntityType="Self.UserLogin" />
+          <AssociationSet Name="Admin_UserLogin" Association="Self.Admin_UserLogin">
+            <End Role="UserLogin" EntitySet="UserLogins" />
+            <End Role="Admin" EntitySet="Admins" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ThietBi__Ma_Nsx__3A179ED3" Association="Self.FK__ThietBi__Ma_Nsx__3A179ED3">
+            <End Role="Brand" EntitySet="Brands" />
+            <End Role="ThietBi" EntitySet="ThietBis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Credential_UserGroup" Association="Self.FK_Credential_UserGroup">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="Credential" EntitySet="Credentials" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Credential_UserGroup1" Association="Self.FK_Credential_UserGroup1">
+            <End Role="UserGroup" EntitySet="UserGroups" />
+            <End Role="Credential" EntitySet="Credentials" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LOP__Ma_gv__46E78A0C" Association="Self.FK__LOP__Ma_gv__46E78A0C">
+            <End Role="GIAO_VIEN" EntitySet="GIAO_VIEN" />
+            <End Role="LOP" EntitySet="LOPs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PhieuDang__Ma_gv__797309D9" Association="Self.FK__PhieuDang__Ma_gv__797309D9">
+            <End Role="GIAO_VIEN" EntitySet="GIAO_VIEN" />
+            <End Role="PhieuDangKyDayBu" EntitySet="PhieuDangKyDayBus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Giang_Vien_UserLogin" Association="Self.FK_Giang_Vien_UserLogin">
+            <End Role="UserLogin" EntitySet="UserLogins" />
+            <End Role="GIAO_VIEN" EntitySet="GIAO_VIEN" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GIAO_VIEN_KHOA" Association="Self.FK_GIAO_VIEN_KHOA">
+            <End Role="Khoa" EntitySet="Khoas" />
+            <End Role="GIAO_VIEN" EntitySet="GIAO_VIEN" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MayTinh_Hang" Association="Self.FK_MayTinh_Hang">
+            <End Role="Hang" EntitySet="Hangs" />
+            <End Role="MayTinh" EntitySet="MayTinhs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_History_Computer" Association="Self.FK_History_Computer">
+            <End Role="MayTinh" EntitySet="MayTinhs" />
+            <End Role="History" EntitySet="Histories" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MONHOC__Ma_khoa__440B1D61" Association="Self.FK__MONHOC__Ma_khoa__440B1D61">
+            <End Role="Khoa" EntitySet="Khoas" />
+            <End Role="MONHOC" EntitySet="MONHOCs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LICH__Ma_lop__7073AF84" Association="Self.FK__LICH__Ma_lop__7073AF84">
+            <End Role="LOP" EntitySet="LOPs" />
+            <End Role="LICH" EntitySet="LICHes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LICH__Ma_phong__7167D3BD" Association="Self.FK__LICH__Ma_phong__7167D3BD">
+            <End Role="PHONG" EntitySet="PHONGs" />
+            <End Role="LICH" EntitySet="LICHes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ThietBi__Ma_loai__39237A9A" Association="Self.FK__ThietBi__Ma_loai__39237A9A">
+            <End Role="LoaiThietBi" EntitySet="LoaiThietBis" />
+            <End Role="ThietBi" EntitySet="ThietBis" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Loi_Mayti__Ma_lo__59904A2C" Association="Self.FK__Loi_Mayti__Ma_lo__59904A2C">
+            <End Role="Loi" EntitySet="Lois" />
+            <End Role="Loi_Maytinh" EntitySet="Loi_Maytinh" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Loi_Mayti__Ma_tb__589C25F3" Association="Self.FK__Loi_Mayti__Ma_tb__589C25F3">
+            <End Role="ThietBi" EntitySet="ThietBis" />
+            <End Role="Loi_Maytinh" EntitySet="Loi_Maytinh" />
+          </AssociationSet>
+          <AssociationSet Name="Loi_Maytinh2" Association="Self.Loi_Maytinh2">
+            <End Role="MayTinh" EntitySet="MayTinhs" />
+            <End Role="Loi_Maytinh" EntitySet="Loi_Maytinh" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LOP__Ma_mon__47DBAE45" Association="Self.FK__LOP__Ma_mon__47DBAE45">
+            <End Role="MONHOC" EntitySet="MONHOCs" />
+            <End Role="LOP" EntitySet="LOPs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LOP_SINHV__Ma_lo__5165187F" Association="Self.FK__LOP_SINHV__Ma_lo__5165187F">
+            <End Role="LOP" EntitySet="LOPs" />
+            <End Role="LOP_SINHVIEN" EntitySet="LOP_SINHVIEN" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PhieuDang__Ma_lo__787EE5A0" Association="Self.FK__PhieuDang__Ma_lo__787EE5A0">
+            <End Role="LOP" EntitySet="LOPs" />
+            <End Role="PhieuDangKyDayBu" EntitySet="PhieuDangKyDayBus" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LOP_SINHV__Ma_sv__52593CB8" Association="Self.FK__LOP_SINHV__Ma_sv__52593CB8">
+            <End Role="SINH_VIEN" EntitySet="SINH_VIEN" />
+            <End Role="LOP_SINHVIEN" EntitySet="LOP_SINHVIEN" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MayTinh__Ma_phon__6BAEFA67" Association="Self.FK__MayTinh__Ma_phon__6BAEFA67">
+            <End Role="PHONG" EntitySet="PHONGs" />
+            <End Role="MayTinh" EntitySet="MayTinhs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MayTinh_ThietBi_MayTinh" Association="Self.FK_MayTinh_ThietBi_MayTinh">
+            <End Role="MayTinh" EntitySet="MayTinhs" />
+            <End Role="MayTinh_ThietBi" EntitySet="MayTinh_ThietBi" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ThayTheTh__Ma_mt__71D1E811" Association="Self.FK__ThayTheTh__Ma_mt__71D1E811">
+            <End Role="MayTinh_ThietBi" EntitySet="MayTinh_ThietBi" />
+            <End Role="ThayTheThietBi" EntitySet="ThayTheThietBis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MayTinh_ThietBi_ThietBi" Association="Self.FK_MayTinh_ThietBi_ThietBi">
+            <End Role="ThietBi" EntitySet="ThietBis" />
+            <End Role="MayTinh_ThietBi" EntitySet="MayTinh_ThietBi" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PhieuDang__Ma_ph__7A672E12" Association="Self.FK__PhieuDang__Ma_ph__7A672E12">
+            <End Role="PHONG" EntitySet="PHONGs" />
+            <End Role="PhieuDangKyDayBu" EntitySet="PhieuDangKyDayBus" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PhieuDang__Ma_ph__75A278F5" Association="Self.FK__PhieuDang__Ma_ph__75A278F5">
+            <End Role="PHONG" EntitySet="PHONGs" />
+            <End Role="PhieuDangKyMuonMay" EntitySet="PhieuDangKyMuonMays" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PhieuDang__Ma_sv__74AE54BC" Association="Self.FK__PhieuDang__Ma_sv__74AE54BC">
+            <End Role="SINH_VIEN" EntitySet="SINH_VIEN" />
+            <End Role="PhieuDangKyMuonMay" EntitySet="PhieuDangKyMuonMays" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SinhVien_UserLogin" Association="Self.FK_SinhVien_UserLogin">
+            <End Role="UserLogin" EntitySet="UserLogins" />
+            <End Role="SINH_VIEN" EntitySet="SINH_VIEN" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserLogin_UserGroup" Association="Self.FK_UserLogin_UserGroup">
+            <End Role="UserGroup" EntitySet="UserGroups" />
+            <End Role="UserLogin" EntitySet="UserLogins" />
+          </AssociationSet>
+          <FunctionImport Name="CheckComputerDeviceExistence" ReturnType="Collection(Int32)">
+            <Parameter Name="Ma_mt" Mode="In" Type="String" />
+            <Parameter Name="Ma_tb" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteComputer">
+            <Parameter Name="ComputerCode" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteComputerDevice">
+            <Parameter Name="Ma_mt" Mode="In" Type="String" />
+            <Parameter Name="Ma_tb" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteDevice">
+            <Parameter Name="Ma_tb" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteScheduleTest">
+            <Parameter Name="Id" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DeviceById" ReturnType="Collection(Do_An_Phan_MemModel.DeviceById_Result)">
+            <Parameter Name="Ma_tb" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetComputerCountDeviceTypes" ReturnType="Collection(Do_An_Phan_MemModel.GetComputerCountDeviceTypes_Result)">
+            <Parameter Name="Ma_mt" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetComputerRepairHistory" ReturnType="Collection(Do_An_Phan_MemModel.GetComputerRepairHistory_Result)">
+            <Parameter Name="Ma_mt" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetComputerStatistics" ReturnType="Collection(Do_An_Phan_MemModel.GetComputerStatistics_Result)" />
+          <FunctionImport Name="GetDevicesOfComputer" ReturnType="Collection(Do_An_Phan_MemModel.GetDevicesOfComputer_Result)">
+            <Parameter Name="Ma_mt" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetDevicesWithRoom" ReturnType="Collection(Do_An_Phan_MemModel.GetDevicesWithRoom_Result)" />
+          <FunctionImport Name="GetScheduleWithDetails" ReturnType="Collection(Do_An_Phan_MemModel.GetScheduleWithDetails_Result)" />
+          <FunctionImport Name="InsertComputer">
+            <Parameter Name="DeviceName" Mode="In" Type="String" />
+            <Parameter Name="Configuration" Mode="In" Type="String" />
+            <Parameter Name="RoomID" Mode="In" Type="String" />
+            <Parameter Name="Status" Mode="In" Type="Int32" />
+            <Parameter Name="DateOfPurchase" Mode="In" Type="DateTime" />
+            <Parameter Name="SupplierId" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="InsertDevice">
+            <Parameter Name="Ten_tb" Mode="In" Type="String" />
+            <Parameter Name="Ma_loai" Mode="In" Type="String" />
+            <Parameter Name="Ma_nha_san_xuat" Mode="In" Type="Int32" />
+            <Parameter Name="Ma_tinh_trang" Mode="In" Type="Int32" />
+            <Parameter Name="Mo_ta" Mode="In" Type="String" />
+            <Parameter Name="cau_hinh" Mode="In" Type="String" />
+            <Parameter Name="Ngay_them" Mode="In" Type="DateTime" />
+            <Parameter Name="Ma_mt" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="InsertOrUpdateDevice">
+            <Parameter Name="Ma_mt" Mode="In" Type="String" />
+            <Parameter Name="Ma_tb" Mode="In" Type="String" />
+            <Parameter Name="Ngay_them" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="InsertScheduleTest">
+            <Parameter Name="Class" Mode="In" Type="String" />
+            <Parameter Name="Room" Mode="In" Type="String" />
+            <Parameter Name="Tuan" Mode="In" Type="String" />
+            <Parameter Name="Thu" Mode="In" Type="String" />
+            <Parameter Name="Tiet_bd" Mode="In" Type="Int32" />
+            <Parameter Name="Tiet_kt" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ReturnComputerDevice">
+            <Parameter Name="ComputerCode" Mode="In" Type="String" />
+            <Parameter Name="DeviceCode" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SeachComputerDevice" ReturnType="Collection(Do_An_Phan_MemModel.SeachComputerDevice_Result)" />
+          <FunctionImport Name="SeachDeviceOfComputer" ReturnType="Collection(Do_An_Phan_MemModel.SeachDeviceOfComputer_Result)">
+            <Parameter Name="ma_loai" Mode="In" Type="String" />
+            <Parameter Name="ma_mt" Mode="In" Type="String" />
+            <Parameter Name="status" Mode="In" Type="Int32" />
+            <Parameter Name="brand" Mode="In" Type="Int32" />
+            <Parameter Name="deviceCode" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SearchComputer" ReturnType="Collection(Do_An_Phan_MemModel.SearchComputer_Result)">
+            <Parameter Name="BrandId" Mode="In" Type="String" />
+            <Parameter Name="RoomId" Mode="In" Type="String" />
+            <Parameter Name="Status" Mode="In" Type="Int32" />
+            <Parameter Name="ComputerCode" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SearchDevice" ReturnType="Collection(Do_An_Phan_MemModel.SearchDevice_Result)" />
+          <FunctionImport Name="SearchDevice2">
+            <Parameter Name="status" Mode="In" Type="Int32" />
+            <Parameter Name="devicetype" Mode="In" Type="Int32" />
+            <Parameter Name="guarantee" Mode="In" Type="Int32" />
+            <Parameter Name="projectid" Mode="In" Type="Int32" />
+            <Parameter Name="devicecode" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SearchDevice3" ReturnType="Collection(Do_An_Phan_MemModel.SearchDevice3_Result)" />
+          <FunctionImport Name="SearchDevices" ReturnType="Collection(Do_An_Phan_MemModel.SearchDevices_Result)">
+            <Parameter Name="ma_loai" Mode="In" Type="String" />
+            <Parameter Name="ma_mt" Mode="In" Type="String" />
+            <Parameter Name="status" Mode="In" Type="Int32" />
+            <Parameter Name="brand" Mode="In" Type="Int32" />
+            <Parameter Name="deviceCode" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SearchProject">
+            <Parameter Name="managerProject" Mode="In" Type="Int32" />
+            <Parameter Name="status" Mode="In" Type="Int32" />
+            <Parameter Name="TypeProject" Mode="In" Type="Int32" />
+            <Parameter Name="ProjectSymbol" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SelectDevicesByCategoryID" ReturnType="Collection(Do_An_Phan_MemModel.SelectDevicesByCategoryID_Result)">
+            <Parameter Name="CategoryID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(Do_An_Phan_MemModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(Do_An_Phan_MemModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="StatisticalDeviceByBrand" ReturnType="Collection(Do_An_Phan_MemModel.StatisticalDeviceByBrand_Result)" />
+          <FunctionImport Name="UpdateComputer">
+            <Parameter Name="DeviceName" Mode="In" Type="String" />
+            <Parameter Name="Configuration" Mode="In" Type="String" />
+            <Parameter Name="RoomID" Mode="In" Type="String" />
+            <Parameter Name="OldRoomID" Mode="In" Type="String" />
+            <Parameter Name="Status" Mode="In" Type="Int32" />
+            <Parameter Name="SupplierId" Mode="In" Type="String" />
+            <Parameter Name="ComputerCode" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateDevice">
+            <Parameter Name="Ma_tb" Mode="In" Type="String" />
+            <Parameter Name="Ten_tb" Mode="In" Type="String" />
+            <Parameter Name="Ma_loai" Mode="In" Type="String" />
+            <Parameter Name="Ma_nha_san_xuat" Mode="In" Type="Int32" />
+            <Parameter Name="Ma_tinh_trang" Mode="In" Type="Int32" />
+            <Parameter Name="Mo_ta" Mode="In" Type="String" />
+            <Parameter Name="cau_hinh" Mode="In" Type="String" />
+            <Parameter Name="Ngay_them" Mode="In" Type="DateTime" />
+            <Parameter Name="Ma_mt" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateScheduleTest">
+            <Parameter Name="Id" Mode="In" Type="String" />
+            <Parameter Name="Class" Mode="In" Type="String" />
+            <Parameter Name="Room" Mode="In" Type="String" />
+            <Parameter Name="Tuan" Mode="In" Type="String" />
+            <Parameter Name="Thu" Mode="In" Type="String" />
+            <Parameter Name="Tiet_bd" Mode="In" Type="Int32" />
+            <Parameter Name="Tiet_kt" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="DeviceById_Result">
+          <Property Type="String" Name="Ma_tb" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="Ten_tb" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="cau_hinh" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Ma_loai" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="Ma_Nsx" Nullable="true" />
+          <Property Type="String" Name="Ma_mt" Nullable="true" MaxLength="6" />
+          <Property Type="String" Name="Mo_ta" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="status" Nullable="true" />
+          <Property Type="Int32" Name="isDeleted" Nullable="true" />
+          <Property Type="DateTime" Name="Ngay_them" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="StatusRepair" Nullable="true" />
+          <Property Type="String" Name="TenMayTinh" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetComputerCountDeviceTypes_Result">
+          <Property Type="String" Name="ComputerCode" Nullable="true" MaxLength="6" />
+          <Property Type="String" Name="TypeName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="TotalDevices" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetComputerRepairHistory_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="true" />
+          <Property Type="DateTime" Name="StartDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="EndDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="Status" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetComputerStatistics_Result">
+          <Property Type="String" Name="ComputerCode" Nullable="true" MaxLength="6" />
+          <Property Type="String" Name="BrandName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="RoomName" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="TotalDevices" Nullable="true" />
+          <Property Type="Int32" Name="Available" Nullable="true" />
+          <Property Type="Int32" Name="InUse" Nullable="true" />
+          <Property Type="Int32" Name="Broken" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetDevicesOfComputer_Result">
+          <Property Type="String" Name="Ma_tb" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="Ten_tb" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="cau_hinh" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Ma_loai" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="Ma_Nsx" Nullable="true" />
+          <Property Type="String" Name="Ma_mt" Nullable="true" MaxLength="6" />
+          <Property Type="String" Name="Mo_ta" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="status" Nullable="true" />
+          <Property Type="Int32" Name="isDeleted" Nullable="true" />
+          <Property Type="DateTime" Name="Ngay_them" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="StatusRepair" Nullable="true" />
+          <Property Type="String" Name="Brandname" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="TypeName" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetDevicesWithRoom_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Ma_mt" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="Ma_tb" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="Ten_tb" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="Timemodified" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Ma_phong" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Ten_phong" Nullable="true" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="GetScheduleWithDetails_Result">
+          <Property Type="String" Name="Id" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="Ma_lop" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Ma_phong" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Tuan" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Thu" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="Tiet_bd" Nullable="true" />
+          <Property Type="Int32" Name="Tiet_kt" Nullable="true" />
+          <Property Type="String" Name="TenGiaoVien" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="TenMonHoc" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="TenPhong" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="ViTri" Nullable="true" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="SeachComputerDevice_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Ma_mt" Nullable="true" MaxLength="6" />
+          <Property Type="String" Name="Ma_tb" Nullable="true" MaxLength="6" />
+          <Property Type="DateTime" Name="TimeModified" Nullable="true" Precision="23" />
+          <Property Type="String" Name="TenThietBi" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="TenThietBi1" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MaLoai" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Ten_phong" Nullable="true" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="SeachDeviceOfComputer_Result">
+          <Property Type="String" Name="Ma_tb" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="Ten_tb" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="cau_hinh" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Ma_loai" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="Ma_Nsx" Nullable="true" />
+          <Property Type="String" Name="Ma_mt" Nullable="true" MaxLength="6" />
+          <Property Type="String" Name="Mo_ta" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="status" Nullable="true" />
+          <Property Type="Int32" Name="isDeleted" Nullable="true" />
+          <Property Type="DateTime" Name="Ngay_them" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="StatusRepair" Nullable="true" />
+          <Property Type="String" Name="MaMayTinh" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="TenMayTinh" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SearchComputer_Result">
+          <Property Type="String" Name="Ma_mt" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="Ten_mt" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Cau_hinh" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Ma_phong" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="status" Nullable="true" />
+          <Property Type="DateTime" Name="Ngay_them" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Brand" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="ten_phong" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="ten_hang" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SearchDevice_Result">
+          <Property Type="String" Name="Ma_tb" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="Ten_tb" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="cau_hinh" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Ma_loai" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="Ma_Nsx" Nullable="true" />
+          <Property Type="String" Name="Ma_mt" Nullable="true" MaxLength="6" />
+          <Property Type="String" Name="Mo_ta" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="status" Nullable="true" />
+          <Property Type="Int32" Name="isDeleted" Nullable="true" />
+          <Property Type="DateTime" Name="Ngay_them" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="StatusRepair" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SearchDevice3_Result">
+          <Property Type="String" Name="Ma_tb" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="Ten_tb" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="cau_hinh" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Ma_loai" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="Ma_Nsx" Nullable="true" />
+          <Property Type="String" Name="Ma_mt" Nullable="true" MaxLength="6" />
+          <Property Type="String" Name="Mo_ta" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="status" Nullable="true" />
+          <Property Type="Int32" Name="isDeleted" Nullable="true" />
+          <Property Type="DateTime" Name="Ngay_them" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="StatusRepair" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SearchDevices_Result">
+          <Property Type="String" Name="Ma_tb" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="Ten_tb" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="cau_hinh" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Ma_loai" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="Ma_Nsx" Nullable="true" />
+          <Property Type="String" Name="Ma_mt" Nullable="true" MaxLength="6" />
+          <Property Type="String" Name="Mo_ta" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="status" Nullable="true" />
+          <Property Type="Int32" Name="isDeleted" Nullable="true" />
+          <Property Type="DateTime" Name="Ngay_them" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="StatusRepair" Nullable="true" />
+          <Property Type="String" Name="Ten_loai" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SelectDevicesByCategoryID_Result">
+          <Property Type="String" Name="Ma_tb" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="Ten_tb" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="cau_hinh" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Ma_loai" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="Ma_Nsx" Nullable="true" />
+          <Property Type="String" Name="Ma_mt" Nullable="true" MaxLength="6" />
+          <Property Type="String" Name="Mo_ta" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="status" Nullable="true" />
+          <Property Type="Int32" Name="isDeleted" Nullable="true" />
+          <Property Type="DateTime" Name="Ngay_them" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="StatusRepair" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="StatisticalDeviceByBrand_Result">
+          <Property Type="String" Name="TypeCode" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="TypeName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="TotalDevices" Nullable="true" />
+          <Property Type="Int32" Name="Available" Nullable="true" />
+          <Property Type="Int32" Name="InUse" Nullable="true" />
+          <Property Type="Int32" Name="Broken" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Do_An_Phan_MemModelStoreContainer" CdmEntityContainer="Do_An_Phan_MemEntities">
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="Do_An_Phan_MemModel.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="Ma_admin" ColumnName="Ma_admin" />
+                <ScalarProperty Name="Ten_admin" ColumnName="Ten_admin" />
+                <ScalarProperty Name="Ma_tk" ColumnName="Ma_tk" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Brands">
+            <EntityTypeMapping TypeName="Do_An_Phan_MemModel.Brand">
+              <MappingFragment StoreEntitySet="Brand">
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+                <ScalarProperty Name="DeviceType" ColumnName="DeviceType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Credentials">
+            <EntityTypeMapping TypeName="Do_An_Phan_MemModel.Credential">
+              <MappingFragment StoreEntitySet="Credential">
+                <ScalarProperty Name="UserGroupID" ColumnName="UserGroupID" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GIAO_VIEN">
+            <EntityTypeMapping TypeName="Do_An_Phan_MemModel.GIAO_VIEN">
+              <MappingFragment StoreEntitySet="GIAO_VIEN">
+                <ScalarProperty Name="Ma_gv" ColumnName="Ma_gv" />
+                <ScalarProperty Name="Ten_gv" ColumnName="Ten_gv" />
+                <ScalarProperty Name="Gioi_tinh" ColumnName="Gioi_tinh" />
+                <ScalarProperty Name="Ngaysinh" ColumnName="Ngaysinh" />
+                <ScalarProperty Name="Ma_khoa" ColumnName="Ma_khoa" />
+                <ScalarProperty Name="Bo_mon" ColumnName="Bo_mon" />
+                <ScalarProperty Name="Trinh_do" ColumnName="Trinh_do" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="So_dt" ColumnName="So_dt" />
+                <ScalarProperty Name="Ma_tk" ColumnName="Ma_tk" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hangs">
+            <EntityTypeMapping TypeName="Do_An_Phan_MemModel.Hang">
+              <MappingFragment StoreEntitySet="Hang">
+                <ScalarProperty Name="Ma_hang" ColumnName="Ma_hang" />
+                <ScalarProperty Name="Ten_hang" ColumnName="Ten_hang" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Histories">
+            <EntityTypeMapping TypeName="Do_An_Phan_MemModel.History">
+              <MappingFragment StoreEntitySet="History">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ComputerId" ColumnName="ComputerId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Khoas">
+            <EntityTypeMapping TypeName="Do_An_Phan_MemModel.Khoa">
+              <MappingFragment StoreEntitySet="Khoa">
+                <ScalarProperty Name="Ma_khoa" ColumnName="Ma_khoa" />
+                <ScalarProperty Name="Ten_khoa" ColumnName="Ten_khoa" />
+                <ScalarProperty Name="Mo_ta" ColumnName="Mo_ta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LICHes">
+            <EntityTypeMapping TypeName="Do_An_Phan_MemModel.LICH">
+              <MappingFragment StoreEntitySet="LICH">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Ma_lop" ColumnName="Ma_lop" />
+                <ScalarProperty Name="Ma_phong" ColumnName="Ma_phong" />
+                <ScalarProperty Name="Tuan" ColumnName="Tuan" />
+                <ScalarProperty Name="Thu" ColumnName="Thu" />
+                <ScalarProperty Name="Tiet_bd" ColumnName="Tiet_bd" />
+                <ScalarProperty Name="Tiet_kt" ColumnName="Tiet_kt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoaiThietBis">
+            <EntityTypeMapping TypeName="Do_An_Phan_MemModel.LoaiThietBi">
+              <MappingFragment StoreEntitySet="LoaiThietBi">
+                <ScalarProperty Name="Ma_loai" ColumnName="Ma_loai" />
+                <ScalarProperty Name="Ten_loai" ColumnName="Ten_loai" />
+                <ScalarProperty Name="Mo_ta" ColumnName="Mo_ta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lois">
+            <EntityTypeMapping TypeName="Do_An_Phan_MemModel.Loi">
+              <MappingFragment StoreEntitySet="Loi">
+                <ScalarProperty Name="Ma_loi" ColumnName="Ma_loi" />
+                <ScalarProperty Name="Ten_loi" ColumnName="Ten_loi" />
+                <ScalarProperty Name="Mo_ta" ColumnName="Mo_ta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Loi_Maytinh">
+            <EntityTypeMapping TypeName="Do_An_Phan_MemModel.Loi_Maytinh">
+              <MappingFragment StoreEntitySet="Loi_Maytinh">
+                <ScalarProperty Name="Ma_loi_maytinh" ColumnName="Ma_loi_maytinh" />
+                <ScalarProperty Name="Ma_mt" ColumnName="Ma_mt" />
+                <ScalarProperty Name="Ma_loi" ColumnName="Ma_loi" />
+                <ScalarProperty Name="Ngay_bao_loi" ColumnName="Ngay_bao_loi" />
+                <ScalarProperty Name="Noi_dung" ColumnName="Noi_dung" />
+                <ScalarProperty Name="Tinh_trang" ColumnName="Tinh_trang" />
+                <ScalarProperty Name="Ma_tb" ColumnName="Ma_tb" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOPs">
+            <EntityTypeMapping TypeName="Do_An_Phan_MemModel.LOP">
+              <MappingFragment StoreEntitySet="LOP">
+                <ScalarProperty Name="Ma_lop" ColumnName="Ma_lop" />
+                <ScalarProperty Name="Ten_lop" ColumnName="Ten_lop" />
+                <ScalarProperty Name="Ma_gv" ColumnName="Ma_gv" />
+                <ScalarProperty Name="Ma_mon" ColumnName="Ma_mon" />
+                <ScalarProperty Name="Hoc_ky" ColumnName="Hoc_ky" />
+                <ScalarProperty Name="So_sv" ColumnName="So_sv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOP_SINHVIEN">
+            <EntityTypeMapping TypeName="Do_An_Phan_MemModel.LOP_SINHVIEN">
+              <MappingFragment StoreEntitySet="LOP_SINHVIEN">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Ma_lop" ColumnName="Ma_lop" />
+                <ScalarProperty Name="Ma_sv" ColumnName="Ma_sv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MayTinhs">
+            <EntityTypeMapping TypeName="Do_An_Phan_MemModel.MayTinh">
+              <MappingFragment StoreEntitySet="MayTinh">
+                <ScalarProperty Name="Ma_mt" ColumnName="Ma_mt" />
+                <ScalarProperty Name="Ten_mt" ColumnName="Ten_mt" />
+                <ScalarProperty Name="Cau_hinh" ColumnName="Cau_hinh" />
+                <ScalarProperty Name="Ma_phong" ColumnName="Ma_phong" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="Ngay_them" ColumnName="Ngay_them" />
+                <ScalarProperty Name="Brand" ColumnName="Brand" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MayTinh_ThietBi">
+            <EntityTypeMapping TypeName="Do_An_Phan_MemModel.MayTinh_ThietBi">
+              <MappingFragment StoreEntitySet="MayTinh_ThietBi">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Ma_mt" ColumnName="Ma_mt" />
+                <ScalarProperty Name="Ma_tb" ColumnName="Ma_tb" />
+                <ScalarProperty Name="TimeModified" ColumnName="TimeModified" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MONHOCs">
+            <EntityTypeMapping TypeName="Do_An_Phan_MemModel.MONHOC">
+              <MappingFragment StoreEntitySet="MONHOC">
+                <ScalarProperty Name="Ma_mon" ColumnName="Ma_mon" />
+                <ScalarProperty Name="Ten_mon" ColumnName="Ten_mon" />
+                <ScalarProperty Name="So_tinchi" ColumnName="So_tinchi" />
+                <ScalarProperty Name="Ma_khoa" ColumnName="Ma_khoa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PhieuDangKyDayBus">
+            <EntityTypeMapping TypeName="Do_An_Phan_MemModel.PhieuDangKyDayBu">
+              <MappingFragment StoreEntitySet="PhieuDangKyDayBu">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Ma_lop" ColumnName="Ma_lop" />
+                <ScalarProperty Name="Ma_gv" ColumnName="Ma_gv" />
+                <ScalarProperty Name="Thu" ColumnName="Thu" />
+                <ScalarProperty Name="Tu_tiet" ColumnName="Tu_tiet" />
+                <ScalarProperty Name="Den_tiet" ColumnName="Den_tiet" />
+                <ScalarProperty Name="Ma_phong" ColumnName="Ma_phong" />
+                <ScalarProperty Name="NgayDangKy" ColumnName="NgayDangKy" />
+                <ScalarProperty Name="NgayDay" ColumnName="NgayDay" />
+                <ScalarProperty Name="NgayDuyet" ColumnName="NgayDuyet" />
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PhieuDangKyMuonMays">
+            <EntityTypeMapping TypeName="Do_An_Phan_MemModel.PhieuDangKyMuonMay">
+              <MappingFragment StoreEntitySet="PhieuDangKyMuonMay">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Ma_sv" ColumnName="Ma_sv" />
+                <ScalarProperty Name="Thu" ColumnName="Thu" />
+                <ScalarProperty Name="Tu_tiet" ColumnName="Tu_tiet" />
+                <ScalarProperty Name="Den_tiet" ColumnName="Den_tiet" />
+                <ScalarProperty Name="Ma_phong" ColumnName="Ma_phong" />
+                <ScalarProperty Name="NgayDangKy" ColumnName="NgayDangKy" />
+                <ScalarProperty Name="NgayMuon" ColumnName="NgayMuon" />
+                <ScalarProperty Name="NgayDuyet" ColumnName="NgayDuyet" />
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PHONGs">
+            <EntityTypeMapping TypeName="Do_An_Phan_MemModel.PHONG">
+              <MappingFragment StoreEntitySet="PHONG">
+                <ScalarProperty Name="Ma_phong" ColumnName="Ma_phong" />
+                <ScalarProperty Name="Ten_phong" ColumnName="Ten_phong" />
+                <ScalarProperty Name="Vi_tri" ColumnName="Vi_tri" />
+                <ScalarProperty Name="So_tbi" ColumnName="So_tbi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="Do_An_Phan_MemModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SINH_VIEN">
+            <EntityTypeMapping TypeName="Do_An_Phan_MemModel.SINH_VIEN">
+              <MappingFragment StoreEntitySet="SINH_VIEN">
+                <ScalarProperty Name="Ma_sv" ColumnName="Ma_sv" />
+                <ScalarProperty Name="Ten_sv" ColumnName="Ten_sv" />
+                <ScalarProperty Name="Gioi_tinh" ColumnName="Gioi_tinh" />
+                <ScalarProperty Name="Ngay_sinh" ColumnName="Ngay_sinh" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="So_dt" ColumnName="So_dt" />
+                <ScalarProperty Name="Ma_tk" ColumnName="Ma_tk" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Do_An_Phan_MemModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ThayTheThietBis">
+            <EntityTypeMapping TypeName="Do_An_Phan_MemModel.ThayTheThietBi">
+              <MappingFragment StoreEntitySet="ThayTheThietBi">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Ma_mt_tb" ColumnName="Ma_mt_tb" />
+                <ScalarProperty Name="Ngay_thay" ColumnName="Ngay_thay" />
+                <ScalarProperty Name="Ly_do" ColumnName="Ly_do" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ThietBis">
+            <EntityTypeMapping TypeName="Do_An_Phan_MemModel.ThietBi">
+              <MappingFragment StoreEntitySet="ThietBi">
+                <ScalarProperty Name="Ma_tb" ColumnName="Ma_tb" />
+                <ScalarProperty Name="Ten_tb" ColumnName="Ten_tb" />
+                <ScalarProperty Name="cau_hinh" ColumnName="cau_hinh" />
+                <ScalarProperty Name="Ma_loai" ColumnName="Ma_loai" />
+                <ScalarProperty Name="Ma_Nsx" ColumnName="Ma_Nsx" />
+                <ScalarProperty Name="Ma_mt" ColumnName="Ma_mt" />
+                <ScalarProperty Name="Mo_ta" ColumnName="Mo_ta" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+                <ScalarProperty Name="Ngay_them" ColumnName="Ngay_them" />
+                <ScalarProperty Name="StatusRepair" ColumnName="StatusRepair" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserGroups">
+            <EntityTypeMapping TypeName="Do_An_Phan_MemModel.UserGroup">
+              <MappingFragment StoreEntitySet="UserGroup">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserLogins">
+            <EntityTypeMapping TypeName="Do_An_Phan_MemModel.UserLogin">
+              <MappingFragment StoreEntitySet="UserLogin">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="CheckComputerDeviceExistence" FunctionName="Do_An_Phan_MemModel.Store.CheckComputerDeviceExistence" />
+          <FunctionImportMapping FunctionImportName="DeleteComputer" FunctionName="Do_An_Phan_MemModel.Store.DeleteComputer" />
+          <FunctionImportMapping FunctionImportName="DeleteComputerDevice" FunctionName="Do_An_Phan_MemModel.Store.DeleteComputerDevice" />
+          <FunctionImportMapping FunctionImportName="DeleteDevice" FunctionName="Do_An_Phan_MemModel.Store.DeleteDevice" />
+          <FunctionImportMapping FunctionImportName="DeleteScheduleTest" FunctionName="Do_An_Phan_MemModel.Store.DeleteScheduleTest" />
+          <FunctionImportMapping FunctionImportName="DeviceById" FunctionName="Do_An_Phan_MemModel.Store.DeviceById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Do_An_Phan_MemModel.DeviceById_Result">
+                <ScalarProperty Name="Ma_tb" ColumnName="Ma_tb" />
+                <ScalarProperty Name="Ten_tb" ColumnName="Ten_tb" />
+                <ScalarProperty Name="cau_hinh" ColumnName="cau_hinh" />
+                <ScalarProperty Name="Ma_loai" ColumnName="Ma_loai" />
+                <ScalarProperty Name="Ma_Nsx" ColumnName="Ma_Nsx" />
+                <ScalarProperty Name="Ma_mt" ColumnName="Ma_mt" />
+                <ScalarProperty Name="Mo_ta" ColumnName="Mo_ta" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+                <ScalarProperty Name="Ngay_them" ColumnName="Ngay_them" />
+                <ScalarProperty Name="StatusRepair" ColumnName="StatusRepair" />
+                <ScalarProperty Name="TenMayTinh" ColumnName="TenMayTinh" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetComputerCountDeviceTypes" FunctionName="Do_An_Phan_MemModel.Store.GetComputerCountDeviceTypes">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Do_An_Phan_MemModel.GetComputerCountDeviceTypes_Result">
+                <ScalarProperty Name="ComputerCode" ColumnName="ComputerCode" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+                <ScalarProperty Name="TotalDevices" ColumnName="TotalDevices" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetComputerRepairHistory" FunctionName="Do_An_Phan_MemModel.Store.GetComputerRepairHistory">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Do_An_Phan_MemModel.GetComputerRepairHistory_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetComputerStatistics" FunctionName="Do_An_Phan_MemModel.Store.GetComputerStatistics">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Do_An_Phan_MemModel.GetComputerStatistics_Result">
+                <ScalarProperty Name="ComputerCode" ColumnName="ComputerCode" />
+                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+                <ScalarProperty Name="RoomName" ColumnName="RoomName" />
+                <ScalarProperty Name="TotalDevices" ColumnName="TotalDevices" />
+                <ScalarProperty Name="Available" ColumnName="Available" />
+                <ScalarProperty Name="InUse" ColumnName="InUse" />
+                <ScalarProperty Name="Broken" ColumnName="Broken" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetDevicesOfComputer" FunctionName="Do_An_Phan_MemModel.Store.GetDevicesOfComputer">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Do_An_Phan_MemModel.GetDevicesOfComputer_Result">
+                <ScalarProperty Name="Ma_tb" ColumnName="Ma_tb" />
+                <ScalarProperty Name="Ten_tb" ColumnName="Ten_tb" />
+                <ScalarProperty Name="cau_hinh" ColumnName="cau_hinh" />
+                <ScalarProperty Name="Ma_loai" ColumnName="Ma_loai" />
+                <ScalarProperty Name="Ma_Nsx" ColumnName="Ma_Nsx" />
+                <ScalarProperty Name="Ma_mt" ColumnName="Ma_mt" />
+                <ScalarProperty Name="Mo_ta" ColumnName="Mo_ta" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+                <ScalarProperty Name="Ngay_them" ColumnName="Ngay_them" />
+                <ScalarProperty Name="StatusRepair" ColumnName="StatusRepair" />
+                <ScalarProperty Name="Brandname" ColumnName="Brandname" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetDevicesWithRoom" FunctionName="Do_An_Phan_MemModel.Store.GetDevicesWithRoom">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Do_An_Phan_MemModel.GetDevicesWithRoom_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Ma_mt" ColumnName="Ma_mt" />
+                <ScalarProperty Name="Ma_tb" ColumnName="Ma_tb" />
+                <ScalarProperty Name="Ten_tb" ColumnName="Ten_tb" />
+                <ScalarProperty Name="Timemodified" ColumnName="Timemodified" />
+                <ScalarProperty Name="Ma_phong" ColumnName="Ma_phong" />
+                <ScalarProperty Name="Ten_phong" ColumnName="Ten_phong" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetScheduleWithDetails" FunctionName="Do_An_Phan_MemModel.Store.GetScheduleWithDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Do_An_Phan_MemModel.GetScheduleWithDetails_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Ma_lop" ColumnName="Ma_lop" />
+                <ScalarProperty Name="Ma_phong" ColumnName="Ma_phong" />
+                <ScalarProperty Name="Tuan" ColumnName="Tuan" />
+                <ScalarProperty Name="Thu" ColumnName="Thu" />
+                <ScalarProperty Name="Tiet_bd" ColumnName="Tiet_bd" />
+                <ScalarProperty Name="Tiet_kt" ColumnName="Tiet_kt" />
+                <ScalarProperty Name="TenGiaoVien" ColumnName="TenGiaoVien" />
+                <ScalarProperty Name="TenMonHoc" ColumnName="TenMonHoc" />
+                <ScalarProperty Name="TenPhong" ColumnName="TenPhong" />
+                <ScalarProperty Name="ViTri" ColumnName="ViTri" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="InsertComputer" FunctionName="Do_An_Phan_MemModel.Store.InsertComputer" />
+          <FunctionImportMapping FunctionImportName="InsertDevice" FunctionName="Do_An_Phan_MemModel.Store.InsertDevice" />
+          <FunctionImportMapping FunctionImportName="InsertOrUpdateDevice" FunctionName="Do_An_Phan_MemModel.Store.InsertOrUpdateDevice" />
+          <FunctionImportMapping FunctionImportName="InsertScheduleTest" FunctionName="Do_An_Phan_MemModel.Store.InsertScheduleTest" />
+          <FunctionImportMapping FunctionImportName="ReturnComputerDevice" FunctionName="Do_An_Phan_MemModel.Store.ReturnComputerDevice" />
+          <FunctionImportMapping FunctionImportName="SeachComputerDevice" FunctionName="Do_An_Phan_MemModel.Store.SeachComputerDevice">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Do_An_Phan_MemModel.SeachComputerDevice_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Ma_mt" ColumnName="Ma_mt" />
+                <ScalarProperty Name="Ma_tb" ColumnName="Ma_tb" />
+                <ScalarProperty Name="TimeModified" ColumnName="TimeModified" />
+                <ScalarProperty Name="TenThietBi" ColumnName="TenThietBi" />
+                <ScalarProperty Name="TenThietBi1" ColumnName="TenThietBi1" />
+                <ScalarProperty Name="MaLoai" ColumnName="MaLoai" />
+                <ScalarProperty Name="Ten_phong" ColumnName="Ten_phong" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SeachDeviceOfComputer" FunctionName="Do_An_Phan_MemModel.Store.SeachDeviceOfComputer">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Do_An_Phan_MemModel.SeachDeviceOfComputer_Result">
+                <ScalarProperty Name="Ma_tb" ColumnName="Ma_tb" />
+                <ScalarProperty Name="Ten_tb" ColumnName="Ten_tb" />
+                <ScalarProperty Name="cau_hinh" ColumnName="cau_hinh" />
+                <ScalarProperty Name="Ma_loai" ColumnName="Ma_loai" />
+                <ScalarProperty Name="Ma_Nsx" ColumnName="Ma_Nsx" />
+                <ScalarProperty Name="Ma_mt" ColumnName="Ma_mt" />
+                <ScalarProperty Name="Mo_ta" ColumnName="Mo_ta" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+                <ScalarProperty Name="Ngay_them" ColumnName="Ngay_them" />
+                <ScalarProperty Name="StatusRepair" ColumnName="StatusRepair" />
+                <ScalarProperty Name="MaMayTinh" ColumnName="MaMayTinh" />
+                <ScalarProperty Name="TenMayTinh" ColumnName="TenMayTinh" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SearchComputer" FunctionName="Do_An_Phan_MemModel.Store.SearchComputer">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Do_An_Phan_MemModel.SearchComputer_Result">
+                <ScalarProperty Name="Ma_mt" ColumnName="Ma_mt" />
+                <ScalarProperty Name="Ten_mt" ColumnName="Ten_mt" />
+                <ScalarProperty Name="Cau_hinh" ColumnName="Cau_hinh" />
+                <ScalarProperty Name="Ma_phong" ColumnName="Ma_phong" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="Ngay_them" ColumnName="Ngay_them" />
+                <ScalarProperty Name="Brand" ColumnName="Brand" />
+                <ScalarProperty Name="ten_phong" ColumnName="ten_phong" />
+                <ScalarProperty Name="ten_hang" ColumnName="ten_hang" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SearchDevice" FunctionName="Do_An_Phan_MemModel.Store.SearchDevice">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Do_An_Phan_MemModel.SearchDevice_Result">
+                <ScalarProperty Name="Ma_tb" ColumnName="Ma_tb" />
+                <ScalarProperty Name="Ten_tb" ColumnName="Ten_tb" />
+                <ScalarProperty Name="cau_hinh" ColumnName="cau_hinh" />
+                <ScalarProperty Name="Ma_loai" ColumnName="Ma_loai" />
+                <ScalarProperty Name="Ma_Nsx" ColumnName="Ma_Nsx" />
+                <ScalarProperty Name="Ma_mt" ColumnName="Ma_mt" />
+                <ScalarProperty Name="Mo_ta" ColumnName="Mo_ta" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+                <ScalarProperty Name="Ngay_them" ColumnName="Ngay_them" />
+                <ScalarProperty Name="StatusRepair" ColumnName="StatusRepair" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SearchDevice2" FunctionName="Do_An_Phan_MemModel.Store.SearchDevice2" />
+          <FunctionImportMapping FunctionImportName="SearchDevice3" FunctionName="Do_An_Phan_MemModel.Store.SearchDevice3">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Do_An_Phan_MemModel.SearchDevice3_Result">
+                <ScalarProperty Name="Ma_tb" ColumnName="Ma_tb" />
+                <ScalarProperty Name="Ten_tb" ColumnName="Ten_tb" />
+                <ScalarProperty Name="cau_hinh" ColumnName="cau_hinh" />
+                <ScalarProperty Name="Ma_loai" ColumnName="Ma_loai" />
+                <ScalarProperty Name="Ma_Nsx" ColumnName="Ma_Nsx" />
+                <ScalarProperty Name="Ma_mt" ColumnName="Ma_mt" />
+                <ScalarProperty Name="Mo_ta" ColumnName="Mo_ta" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+                <ScalarProperty Name="Ngay_them" ColumnName="Ngay_them" />
+                <ScalarProperty Name="StatusRepair" ColumnName="StatusRepair" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SearchDevices" FunctionName="Do_An_Phan_MemModel.Store.SearchDevices">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Do_An_Phan_MemModel.SearchDevices_Result">
+                <ScalarProperty Name="Ma_tb" ColumnName="Ma_tb" />
+                <ScalarProperty Name="Ten_tb" ColumnName="Ten_tb" />
+                <ScalarProperty Name="cau_hinh" ColumnName="cau_hinh" />
+                <ScalarProperty Name="Ma_loai" ColumnName="Ma_loai" />
+                <ScalarProperty Name="Ma_Nsx" ColumnName="Ma_Nsx" />
+                <ScalarProperty Name="Ma_mt" ColumnName="Ma_mt" />
+                <ScalarProperty Name="Mo_ta" ColumnName="Mo_ta" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+                <ScalarProperty Name="Ngay_them" ColumnName="Ngay_them" />
+                <ScalarProperty Name="StatusRepair" ColumnName="StatusRepair" />
+                <ScalarProperty Name="Ten_loai" ColumnName="Ten_loai" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SearchProject" FunctionName="Do_An_Phan_MemModel.Store.SearchProject" />
+          <FunctionImportMapping FunctionImportName="SelectDevicesByCategoryID" FunctionName="Do_An_Phan_MemModel.Store.SelectDevicesByCategoryID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Do_An_Phan_MemModel.SelectDevicesByCategoryID_Result">
+                <ScalarProperty Name="Ma_tb" ColumnName="Ma_tb" />
+                <ScalarProperty Name="Ten_tb" ColumnName="Ten_tb" />
+                <ScalarProperty Name="cau_hinh" ColumnName="cau_hinh" />
+                <ScalarProperty Name="Ma_loai" ColumnName="Ma_loai" />
+                <ScalarProperty Name="Ma_Nsx" ColumnName="Ma_Nsx" />
+                <ScalarProperty Name="Ma_mt" ColumnName="Ma_mt" />
+                <ScalarProperty Name="Mo_ta" ColumnName="Mo_ta" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+                <ScalarProperty Name="Ngay_them" ColumnName="Ngay_them" />
+                <ScalarProperty Name="StatusRepair" ColumnName="StatusRepair" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Do_An_Phan_MemModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Do_An_Phan_MemModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Do_An_Phan_MemModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Do_An_Phan_MemModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Do_An_Phan_MemModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Do_An_Phan_MemModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Do_An_Phan_MemModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Do_An_Phan_MemModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Do_An_Phan_MemModel.Store.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="StatisticalDeviceByBrand" FunctionName="Do_An_Phan_MemModel.Store.StatisticalDeviceByBrand">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Do_An_Phan_MemModel.StatisticalDeviceByBrand_Result">
+                <ScalarProperty Name="TypeCode" ColumnName="TypeCode" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+                <ScalarProperty Name="TotalDevices" ColumnName="TotalDevices" />
+                <ScalarProperty Name="Available" ColumnName="Available" />
+                <ScalarProperty Name="InUse" ColumnName="InUse" />
+                <ScalarProperty Name="Broken" ColumnName="Broken" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UpdateComputer" FunctionName="Do_An_Phan_MemModel.Store.UpdateComputer" />
+          <FunctionImportMapping FunctionImportName="UpdateDevice" FunctionName="Do_An_Phan_MemModel.Store.UpdateDevice" />
+          <FunctionImportMapping FunctionImportName="UpdateScheduleTest" FunctionName="Do_An_Phan_MemModel.Store.UpdateScheduleTest" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
